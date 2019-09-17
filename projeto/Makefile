@@ -12,7 +12,3 @@ conf-git-reni:
 conf-git-pedro:
 	git config --global user.name "pphenriquesm"
 	git config --global user.email "pphenriue543@gmail.com"
-
-conf-git-gui:
-	git config --global user.name "GuiLira"
-	git config --global user.email "liraguilherme252@gmail.com"
