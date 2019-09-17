@@ -8,3 +8,7 @@ runserver:
 conf-git-reni:
 	git config --global user.name "renissonsilva"
 	git config --global user.email "renissonx@gmail.com"
+
+conf-git-pedro:
+	git config --global user.name "pphenriquesm"
+	git config --global user.email "pphenriue543@gmail.com"
