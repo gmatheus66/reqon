@@ -18,5 +18,5 @@ conf-git-gui:
 	git config --global user.email "liraguilherme252@gmail.com"
 
 conf-git-math:
-	git config --global user.name "Ggmatheus66"
+	git config --global user.name "gmatheus66"
 	git config --global user.email "gmatheus66@hotmail.com"
