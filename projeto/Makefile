@@ -20,3 +20,8 @@ conf-git-gui:
 conf-git-math:
 	git config --global user.name "gmatheus66"
 	git config --global user.email "gmatheus66@hotmail.com"
+
+conf-git-aline:
+        git config --global user.name "alinevenceslau"
+        git config --global user.email "alineepecris79@gmail.com"
+
