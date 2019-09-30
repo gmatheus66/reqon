@@ -18,11 +18,11 @@ class CreateMatriculaTable extends Migration
             $table->string('matricula',9);
             $table->integer('ano');
             $table->string('semestre',10);
-            $table->unsignedBigInteger('curso_id');
-            $table->unsignedBigInteger('aluno_id');
+            // $table->unsignedBigInteger('curso_id');
+            // $table->unsignedBigInteger('aluno_id');
 
-            $table->foreign('curso_id')->references('id')->on('curso');
-            $table->foreign('aluno_id')->references('id')->on('aluno');
+            // $table->foreign('curso_id')->references('id')->on('curso');
+            // $table->foreign('aluno_id')->references('id')->on('aluno');
             $table->timestamps();
         });
     }
