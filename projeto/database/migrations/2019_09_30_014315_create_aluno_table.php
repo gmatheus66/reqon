@@ -18,6 +18,7 @@ class CreateAlunoTable extends Migration
             $table->string('nome',50);
             $table->string('email',50);
             $table->date('data_nasc');
+            $table->string('senha',8);
             $table->string('cpf',11);
             $table->char('glg_token',255);
             $table->char('fcb_token',255);
