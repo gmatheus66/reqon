@@ -15,7 +15,7 @@ class CreateSubtiposTable extends Migration
     {
         Schema::create('subtipos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descricao',45);
+            $table->string('descricao',100);
             $table->timestamps();
             $table->unsignedBigInteger('tipo_id');
 
