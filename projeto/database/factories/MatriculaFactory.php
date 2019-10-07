@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Matricula::class, function (Faker $faker) {
     return [
-        'numero' => $faker->numberBetween(001, 999),
+        'matricula' => $faker->numberBetween(001, 999),
         'ano' => $faker->year($max = 'now'),
         // 'campus' => $faker->campus
     ];
