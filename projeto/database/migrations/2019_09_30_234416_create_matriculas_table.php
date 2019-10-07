@@ -15,7 +15,7 @@ class CreateMatriculasTable extends Migration
     {
         Schema::create('matriculas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('matricula',9);
+            $table->string('matricula',14);
             $table->integer('ano');
             $table->string('semestre',10);
             $table->enum('status',['Cursando','Trancado','Concluido']);
