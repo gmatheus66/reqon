@@ -21,9 +21,7 @@ class CreateMatriculasTable extends Migration
             $table->enum('status',['Cursando','Trancado','Concluido']);
             $table->unsignedBigInteger('curso_id');
             $table->unsignedBigInteger('aluno_id');
-            $table->unsignedBigInteger('req_id');
-            
-            $table->foreign('req_id')->references('id')->on('requerimentos');
+           
             $table->foreign('curso_id')->references('id')->on('cursos');
             $table->foreign('aluno_id')->references('id')->on('alunos');
             $table->timestamps();
