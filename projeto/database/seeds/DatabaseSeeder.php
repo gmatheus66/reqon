@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             StatusesTableSeeder::class,
             TiposTableSeeder::class,
             SubtiposTableSeeder::class,
-            CursosTableSeeder::class
+            CursosTableSeeder::class,
+            MatriculasTableSeeder::class
         ]);
 
     }
