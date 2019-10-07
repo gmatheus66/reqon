@@ -1,5 +1,6 @@
 <?php
 
+use App\Matricula;
 use Illuminate\Database\Seeder;
 
 class MatriculasTableSeeder extends Seeder
@@ -11,6 +12,6 @@ class MatriculasTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory('App\Matricula',10)->create();
     }
 }
