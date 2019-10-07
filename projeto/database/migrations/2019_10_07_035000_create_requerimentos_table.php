@@ -23,12 +23,14 @@ class CreateRequerimentosTable extends Migration
             $table->unsignedBigInteger('req_pai_id');
             $table->unsignedBigInteger('funcionario_id');
             $table->unsignedBigInteger('setor_id');
+            $table->unsignedBigInteger('matricula_id');
 
             $table->foreign('subtipo_id')->references('id')->on('subtipos');
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->foreign('req_pai_id')->references('id')->on('requerimentos');
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');
             $table->foreign('setor_id')->references('id')->on('setors');
+            $table->foreign('matricula_id')->references('id')->on('matriculas');
             $table->timestamps();
         });
     }
