@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Requerimento;
 use App\Subtipo;
 use App\Tipo;
+use App\Aluno;
+use App\Matricula;
 
 
 class RequerimentoController extends Controller
@@ -14,7 +16,7 @@ class RequerimentoController extends Controller
         
         $requerimento = Requerimento::all();
 
-        return view('requerimento.index', compact('requerimento'));
+        return view('requerimento.index',compact('requerimento'));
         
     }
 
@@ -29,22 +31,23 @@ class RequerimentoController extends Controller
     public function store(Request $request){
         $request->validate([
             'descricao'=>'required',
-            'subtipo_id'=>'required',
-            'matricula_id'=> 'required'
+            'subtipo'=>'required'
         ]);
-
+        
         $req = new Requerimento([
-            'protocolo' => mt_rand(1,999999999)->unique(),
-            'descricao' => $request->post('descricao'),
-            'subtipo_id' => $request->post('subtipo_id'),
-            'status_id' => null,
+            'protocolo' => mt_rand(1,999999999),
+            'descricao' => $request->get('descricao'),
+            'subtipo_id' => $request->get('subtipo'),
+            'status_id' => 1,
             'req_pai_id' => null,
             'funcionario_id' => null,
             'setor_id' => null,
-            'matricula_id' => ''
+            'matricula_id' => null
         ]);
 
         $req->save();
+
+        return view('requerimento.index')->with('sucesso', 'Requerimento Criado');
         
     }
 
