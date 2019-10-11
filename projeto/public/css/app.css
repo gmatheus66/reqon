@@ -10644,3 +10644,12 @@ a.text-dark:focus {
   }
 }
 
+#container #myTabContent {
+  border: 1px solid black;
+}
+
+#container #myTabContent .sub {
+  display: block;
+  margin-left: 10px;
+}
+
