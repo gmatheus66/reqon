@@ -1,8 +1,6 @@
-runserver:
-	sudo apt-get install php7.2 php7.2-mbstring php7.2-mysql php7.2-intl php7.2-xml composer
-	composer install --no-scripts
-	cp .env.example .env
-	php artisan key:generate
+server:
+	composer update
+	php artisan migrate:fresh --seed
 	php artisan serve
 
 conf-git-reni:
