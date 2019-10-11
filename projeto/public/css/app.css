@@ -10653,3 +10653,10 @@ a.text-dark:focus {
   margin-left: 10px;
 }
 
+.navClass{
+  background-color: #00061a!important;
+}
+.navbar-brand , .nav-link{
+  color:white!important;
+
+}
