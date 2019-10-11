@@ -20,10 +20,10 @@ class CreateRequerimentosTable extends Migration
 
             $table->unsignedBigInteger('subtipo_id');
             $table->unsignedBigInteger('status_id');
-            $table->unsignedBigInteger('req_pai_id');
-            $table->unsignedBigInteger('funcionario_id');
-            $table->unsignedBigInteger('setor_id');
-            $table->unsignedBigInteger('matricula_id');
+            $table->unsignedBigInteger('req_pai_id')->nullable();
+            $table->unsignedBigInteger('funcionario_id')->nullable();
+            $table->unsignedBigInteger('setor_id')->nullable();
+            $table->unsignedBigInteger('matricula_id')->nullable();
 
             $table->foreign('subtipo_id')->references('id')->on('subtipos');
             $table->foreign('status_id')->references('id')->on('statuses');
