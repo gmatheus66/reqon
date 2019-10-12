@@ -1,12 +1,20 @@
-#container{
+.container{
 
     #myTabContent{
-        border: 1px solid black;
-        
         .sub{
-            display: block;
-            margin-left: 10px;
+            margin-top: 1%;
         }
+ 
     }
 
+    a{
+        color: #000;
+    }
+    #desc{
+        margin-top: 5%;
+    }
+
+    .btn-req{
+        margin-bottom: 10%;
+    }
 }
