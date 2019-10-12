@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/registerfunc', 'FuncionarioController@')->name('registerfunc');
 
 Route::resource('requerimento', 'RequerimentoController');
 
