@@ -17,25 +17,26 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 @foreach($tipo as $tp)
-                    <div class="tab-pane fade sub" id="{{$tp->descricao}}" role="tabpanel" aria-label="{{$tp->descricao}}-tab">
+                    <div class="tab-pane fade" id="{{$tp->descricao}}" role="tabpanel" aria-label="{{$tp->descricao}}-tab">
+                        
                     @foreach($tp->subtipos as $sub)
-                        <input type="radio" id="sub-{{$sub->id}}" name="subtipo" value="{{$sub->id}}">
-                        <label for="sub-{{$sub->id}}">
-                            {{$sub->descricao}}
-                        </label>
-                        </br>
+                        <div class="custom-control custom-radio sub">
+                            <input type="radio" class="custom-control-input" id="sub-{{$sub->id}}" name="subtipo" value="{{$sub->id}}">
+                            <label class="custom-control-label" for="sub-{{$sub->id}}">{{$sub->descricao}}</label>
+                        </div>
+                       
                     @endforeach
                     </div>
                 @endforeach
                 
             </div>
 
-            <div class="form-group">
+            <div class="form-group" id="desc">
                 <label for="Descricao">Descrição:</label>
                 <textarea class="form-control rounded-0" id="descricao" rows="6" name="descricao"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg">Criar Requerimento</button>    
+            <button type="submit" class="btn btn-primary btn-lg btn-req">Criar Requerimento</button>    
         
         </form>
   
