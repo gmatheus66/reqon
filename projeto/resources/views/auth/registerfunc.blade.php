@@ -12,6 +12,14 @@
                         @csrf
 
                         <div class="form-group row">
+                            <label for="cpf" class="col-md-4 col-form-label text-md-right">CPF</label>
+
+                            <div class="col-md-6">
+                                <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required autocomplete="cpf" autofocus>
+                            </div>
+                        </div> 
+
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -22,6 +30,54 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="rg_num" class="col-md-4 col-form-label text-md-right">Registro Geral(RG)</label>
+
+                            <div class="col-md-6">
+                                <input id="rg_num" type="text" class="form-control" name="rg_num" value="{{ old('rg_num') }}" required autocomplete="rg_num" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="rg_esta" class="col-md-4 col-form-label text-md-right">Estado</label>
+
+                            <div class="col-md-6">
+                                <input id="rg_esta" type="text" class="form-control" name="rg_esta" value="{{ old('rg_esta') }}" required autocomplete="rg_esta" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="orgao_exp" class="col-md-4 col-form-label text-md-right">Órgão Expedidor</label>
+
+                            <div class="col-md-6">
+                                <input id="orgao_exp" type="text" class="form-control" name="orgao_exp" value="{{ old('orgao_exp') }}" required autocomplete="orgao_exp" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="cargo" class="col-md-4 col-form-label text-md-right">Cargo</label>
+
+                            <div class="col-md-6">
+                                <input id="cargo" type="text" class="form-control" name="cargo" value="{{ old('cargo') }}" required autocomplete="cargo" autofocus>
+                            </div>
+                        </div> 
+
+                        <div class="form-group row">
+                            <label for="telefone" class="col-md-4 col-form-label text-md-right">Telefone</label>
+
+                            <div class="col-md-6">
+                                <input id="telefone" type="text" class="form-control" name="telefone" value="{{ old('telefone') }}" required autocomplete="telefone" autofocus>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="matricula" class="col-md-4 col-form-label text-md-right">Matrícula</label>
+
+                            <div class="col-md-6">
+                                <input id="matricula" type="text" class="form-control" name="matricula" value="{{ old('matricula') }}" required autocomplete="matricula" autofocus>
                             </div>
                         </div>
 
