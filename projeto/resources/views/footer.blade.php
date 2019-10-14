@@ -1,1 +1,1 @@
-<div class="footeer">Desenvolvido pelos alunos do IFPE Igarassu - 2019</div>
+<div class="footer">Desenvolvido pelos alunos do IFPE Igarassu - 2019</div>

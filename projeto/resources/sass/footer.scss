@@ -1,0 +1,14 @@
+.footerClass{
+  background-color: #00061a;
+  color: white;
+  position: fixed;
+  width: 100%;
+  height: 10vh;
+  bottom:0;
+}
+.footer{
+  position: absolute;               
+  top: 50%;                         
+  left: 50%;
+  transform: translate(-50%, -50%);
+} 
