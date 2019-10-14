@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'alunos',
     ],
 
     /*
@@ -38,12 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'alunos',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'alunos',
             'hash' => false,
         ],
     ],
@@ -66,15 +66,20 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
+        //'users' => [
+        //    'driver' => 'eloquent',
+        //    'model' => App\User::class,
+        //],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'alunos' => [
+            'driver' => 'eloquent',
+            'model' => App\Aluno::class,
+        ],
     ],
 
     /*
@@ -93,8 +98,13 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        //'users' => [
+        //    'provider' => 'users',
+        //    'table' => 'password_resets',
+        //    'expire' => 60,
+        //],
+        'alunos' => [
+            'provider' => 'alunos',
             'table' => 'password_resets',
             'expire' => 60,
         ],
