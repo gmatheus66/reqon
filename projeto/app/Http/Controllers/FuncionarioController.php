@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Funcionario;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
-class Funcionario extends Controller
+class FuncionarioController extends Controller
 {
     use RegistersUsers;
 
@@ -13,7 +15,7 @@ class Funcionario extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -23,6 +25,11 @@ class Funcionario extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function create()
+    {
+        return view('funcionario.registerfunc');
     }
 
     /**
@@ -40,13 +47,16 @@ class Funcionario extends Controller
             'rg_num' => ['required', 'string', 'max:8'],
             'rg_esta' => ['required', 'string', 'max:2'],
             'orgao_exp' => ['required', 'string', 'max:3'],
-            'cargo' => ['required', 'string', 'max:100'],
-            'telefone' => ['required', 'string', 'max:9'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'senha' => ['required', 'string', 'min:8', 'confirmed'],
+            'telefone' => ['required', 'string', 'max:9'],
+            'cargo' => ['required', 'string', 'max:100'],
+            'matricula' => ['required', 'string', 'max:10'],
         ]);
 
-        // $req = new Funcionario();
+        $req = new Funcionario($validator);
+
+        $reqsave->save();
 
     }
 
