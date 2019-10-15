@@ -13,7 +13,7 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
+                color: #00061a;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -49,7 +49,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #00061a;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -80,7 +80,7 @@
             @endif
             <div class="content">
                 <div class="title m-b-md">
-                    ReqOn
+                    Req<strong>On</strong>
                 </div>
             </div>
         </div>
