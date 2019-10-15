@@ -10,12 +10,18 @@ class FuncionarioController extends Controller
 {
     use RegistersUsers;
 
+    public function index(){
+
+        return view('funcionario.registerfunc');
+        
+    }
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    // protected $redirectTo = '/home';
+    protected $redirectTo = 'funcionario/registerfunc';
 
     /**
      * Create a new controller instance.
@@ -41,23 +47,23 @@ class FuncionarioController extends Controller
 
     protected function store(Request $request){
 
-        $validator = Validator::make($request->all(), [
-            'cpf' => ['required', 'string', 'max:11'],
-            'name' => ['required', 'string', 'max:255'],
-            'rg_num' => ['required', 'string', 'max:8'],
-            'rg_esta' => ['required', 'string', 'max:2'],
-            'orgao_exp' => ['required', 'string', 'max:3'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'senha' => ['required', 'string', 'min:8', 'confirmed'],
-            'telefone' => ['required', 'string', 'max:9'],
-            'cargo' => ['required', 'string', 'max:100'],
-            'matricula' => ['required', 'string', 'max:10'],
+        $req = new Funcionario([
+
+            'cpf' => $request->get('cpf'),
+            'nome' => $request->get('name'),
+            'rg_numero' => $request->get('rg_num'),
+            'rg_estado' => $request->get('rg_esta'),
+            'rg_orgao_exp' => $request->get('orgao_exp'),
+            'email' => $request->get('email'),
+            'senha' => $request->get('senha'),
+            'telefone' => $request->get('telefone'),
+            'cargo' => $request->get('cargo'),
+            'matricula' => $request->get('matricula'),
         ]);
 
-        $req = new Funcionario($validator);
+        $req->save();
 
-        $reqsave->save();
-
+        return view('home');    
     }
 
 }
