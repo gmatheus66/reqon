@@ -18,7 +18,7 @@ class CreateAlunosTable extends Migration
             $table->string('nome',50);
             $table->string('email',50);
             $table->date('data_nasc');
-            $table->string('senha',8);
+            $table->string('password');
             $table->string('cpf',11);
             $table->char('glg_token',255)->nullable();
             $table->char('fcb_token',255)->nullable();
