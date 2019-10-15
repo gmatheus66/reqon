@@ -66,19 +66,19 @@ return [
     */
 
     'providers' => [
-        //'users' => [
-        //    'driver' => 'eloquent',
-        //    'model' => App\User::class,
-        //],
+        'alunos' => [
+            'driver' => 'eloquent',
+            'model' => App\Aluno::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
 
-        'alunos' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Aluno::class,
+            'model' => App\User::class,
         ],
     ],
 
@@ -98,12 +98,12 @@ return [
     */
 
     'passwords' => [
-        //'users' => [
-        //    'provider' => 'users',
-        //    'table' => 'password_resets',
-        //    'expire' => 60,
-        //],
-        'alunos' => [
+        'users' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'users' => [
             'provider' => 'alunos',
             'table' => 'password_resets',
             'expire' => 60,
