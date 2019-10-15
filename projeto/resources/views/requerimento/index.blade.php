@@ -8,7 +8,7 @@
 
     @if(session()->get('sucesso'))
         <div class="alert alert-info" role="alert">
-            {{ session()->get('sucesso') }}  
+            {{ session()->get('sucesso') }}
         </div>
     @endif
     </div>

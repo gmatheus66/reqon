@@ -8,32 +8,43 @@ use App\Subtipo;
 use App\Tipo;
 use App\Aluno;
 use App\Matricula;
+use Illuminate\Support\Facades\Auth;
 
 
 class RequerimentoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
-        
+
         $requerimento = Requerimento::all();
 
         return view('requerimento.index',compact('requerimento'));
-        
+
     }
 
 
     public function create(){
 
         $tipo = Tipo::all();
-               
+
+
         return view('requerimento.create', compact('tipo'));
     }
 
     public function store(Request $request){
+
+        $matricula = Matricula::where('aluno_id', Auth::user()->id)->first();
+        $mtr = $matricula->id;
+
         $request->validate([
             'descricao'=>'required',
             'subtipo'=>'required'
         ]);
-        
+
         $req = new Requerimento([
             'protocolo' => mt_rand(1,999999999),
             'descricao' => $request->get('descricao'),
@@ -42,13 +53,13 @@ class RequerimentoController extends Controller
             'req_pai_id' => null,
             'funcionario_id' => null,
             'setor_id' => null,
-            'matricula_id' => null
+            'matricula_id' => $mtr
         ]);
 
         $req->save();
 
         return view('requerimento.index')->with('sucesso', 'Requerimento Criado');
-        
+
     }
 
 }
