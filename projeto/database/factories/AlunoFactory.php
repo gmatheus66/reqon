@@ -4,13 +4,14 @@
 
 use App\Aluno;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Hash;
 
 $factory->define(Aluno::class, function (Faker $faker) {
-    return [ 
+    return [
         'nome' => $faker->name,
         'data_nasc' => $faker->date(),
         'email' => $faker->email,
         'cpf' => $faker->unique()->numerify('###########'),
-        'senha' => $faker->lexify('????')
+        'password' => Hash::make($faker->lexify('ipi2019'))
     ];
 });
