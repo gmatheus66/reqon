@@ -5,7 +5,6 @@
     <div class="contanier">
 
     <a href="{{ route('requerimento.create')}}">Criar Requerimento</a>
-    <a href="{{ route('funcionario.create') }}">Criar Funcionario</a>
 
     @if(session()->get('sucesso'))
         <div class="alert alert-info" role="alert">
