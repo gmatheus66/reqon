@@ -19,7 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/registerfunc', 'FuncionarioController@create')->name('registerfunc');
+Route::resource('registerfunc', 'FuncionarioController');
+
+Route::apiResource('registerfunc','FuncionarioController');
 
 Route::resource('requerimento', 'RequerimentoController');
 
