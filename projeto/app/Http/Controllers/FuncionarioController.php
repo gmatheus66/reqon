@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Funcionario;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
 
 class FuncionarioController extends Controller
 {
@@ -55,7 +56,7 @@ class FuncionarioController extends Controller
             'rg_estado' => $request->get('rg_esta'),
             'rg_orgao_exp' => $request->get('orgao_exp'),
             'email' => $request->get('email'),
-            'senha' => $request->get('senha'),
+            'password' => Hash::make($request->get('senha')),
             'telefone' => $request->get('telefone'),
             'cargo' => $request->get('cargo'),
             'matricula' => $request->get('matricula'),

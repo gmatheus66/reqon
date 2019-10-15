@@ -22,7 +22,7 @@ class CreateFuncionariosTable extends Migration
             $table->string('rg_orgao_exp',3);
             $table->string('cargo',20);
             $table->string('email',20);
-            $table->string('senha',8);
+            $table->string('password');
             $table->string('telefone',9);
             $table->string('matricula',10);
             $table->char('glg_token',255)->nullable();
