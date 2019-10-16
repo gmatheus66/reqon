@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm navClass">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm navClass">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('','ReqOn') }}
