@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="col-sm-8 offset-sm-2">
-			<h1 class="display-6">Adicione um Requerimento</h1>
+			<h1 class="display-6">Criar um requerimento</h1>
 	    <div>
         <form action="{{ route('requerimento.store') }}" method="post">
             @csrf
