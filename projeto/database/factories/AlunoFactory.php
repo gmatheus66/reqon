@@ -17,6 +17,7 @@ $factory->define(Aluno::class, function (Faker $faker) {
         'data_nasc' => $faker->date(),
         'email' => $faker->email,
         'cpf' => $faker->unique()->numerify('###########'),
+        'password' => Hash::make($faker->lexify('ipi2019'))
         //'password' => Hash::make($faker->lexify('ipi2019'))
         //'password' => Hash::make('ipi2019'),
         //'password' => crypt('ipi2019')
