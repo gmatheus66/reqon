@@ -8,6 +8,7 @@
 	    <div>
         <form action="{{ route('requerimento.store') }}" method="post">
             @csrf
+            <span class="msgInfo"> Escolha uma categoria para seu requerimento</span>
             <ul class="nav nav-tabs abas" id="myTab" role="tablist">
                 @foreach($tipo as $tp)
                     <li class="nav-item">
