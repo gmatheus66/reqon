@@ -11,14 +11,24 @@
             <span class="msgInfo"> Escolha uma categoria para seu requerimento</span>
             <ul class="nav nav-tabs abas" id="myTab" role="tablist">
                 @foreach($tipo as $tp)
+                    @if($tp->id == 1)
                     <li class="nav-item">
-                        <a class="nav-link abas" id="{{$tp->descricao}}-tab" data-toggle="tab" href="#{{$tp->descricao}}" role="tab" aria-controls="{{$tp->descricao}}" aria-selected="false">{{$tp->descricao}}</a>
+                        <a class="nav-link abas active" id="{{$tp->descricao}}-tab" data-toggle="tab" href="#{{$tp->descricao}}" role="tab" aria-controls="{{$tp->descricao}}" aria-selected="true">{{$tp->descricao}} </a>
                     </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link abas" id="{{$tp->descricao}}-tab" data-toggle="tab" href="#{{$tp->descricao}}" role="tab" aria-controls="{{$tp->descricao}}" aria-selected="false">{{$tp->descricao}} </a>
+                    </li>   
+                    @endif
                 @endforeach
             </ul>
             <div class="tab-content" id="myTabContent">
                 @foreach($tipo as $tp)
+                    @if($tp->id == 1)
+                    <div class="tab-pane fade active show" id="{{$tp->descricao}}" role="tabpanel" aria-label="{{$tp->descricao}}-tab">
+                @else
                     <div class="tab-pane fade" id="{{$tp->descricao}}" role="tabpanel" aria-label="{{$tp->descricao}}-tab">
+                @endif 
                         
                     @foreach($tp->subtipos as $sub)
                         <div class="custom-control custom-radio sub">
