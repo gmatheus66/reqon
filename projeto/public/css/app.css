@@ -10660,6 +10660,26 @@ a.text-dark:focus {
   margin-bottom: 10%;
 }
 
+.container .abas {
+  color: #000;
+}
+
+.navClass {
+  background-color: #00061a;
+}
+
+.navbar-brand {
+  color: white !important;
+}
+
+#navbarDropdown {
+  color: white;
+}
+
+.nav-link {
+  color: #000;
+}
+
 .footerClass {
   background-color: #00061a;
   color: white;
@@ -10676,12 +10696,7 @@ a.text-dark:focus {
   transform: translate(-50%, -50%);
 }
 
-.navClass {
-  background-color: #00061a !important;
-}
-
-.navbar-brand,
-.nav-link {
-  color: white !important;
+.msgInfo {
+  color: red;
 }
 
