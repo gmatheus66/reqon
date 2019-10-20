@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             SubtiposTableSeeder::class,
             CursosTableSeeder::class,
             MatriculasTableSeeder::class,
-            SetorsTableSeeder::class
+            SetorsTableSeeder::class,
+            FuncionarioTableSeeder::class
         ]);
 
     }
