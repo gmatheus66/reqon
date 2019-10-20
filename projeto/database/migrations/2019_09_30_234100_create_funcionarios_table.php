@@ -19,9 +19,9 @@ class CreateFuncionariosTable extends Migration
             $table->string('nome',45);
             $table->string('rg_numero',8);
             $table->string('rg_estado',2);
-            $table->string('rg_orgao_exp',3);
+            $table->string('rg_orgao_exp',10);
             $table->string('cargo',20);
-            $table->string('email',20);
+            $table->string('email',50);
             $table->string('password');
             $table->string('telefone',9);
             $table->string('matricula',10);
