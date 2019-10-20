@@ -8,6 +8,7 @@ use App\Subtipo;
 use App\Tipo;
 use App\Aluno;
 use App\Matricula;
+use App\Curso;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -21,8 +22,20 @@ class RequerimentoController extends Controller
     public function index(){
 
         $requerimento = Requerimento::all();
+        $i = 0;
+        $matricula = Matricula::where('aluno_id', Auth::user()->id)->get();
+        $curso = Curso::all();
+        foreach($matricula as $id => $mtr){
+            if($id > 1 ){
+                $i = $i + $id;
+            }
+        }
 
-        return view('requerimento.index',compact('requerimento'));
+        if($i > 1){
+            return view('requerimento.index',compact('requerimento','matricula', 'curso'));
+        } else{
+            return view('requerimento.index',compact('requerimento'));
+        }
 
     }
 
