@@ -12,7 +12,7 @@
             <ul class="nav nav-tabs abas" id="myTab" role="tablist">
                 @foreach($tipo as $tp)
                     @if($tp->id == 1)
-                    <li class="nav-item">
+                    <li class="nav-item nav-Style">
                         <a class="nav-link abas active" id="{{$tp->descricao}}-tab" data-toggle="tab" href="#{{$tp->descricao}}" role="tab" aria-controls="{{$tp->descricao}}" aria-selected="true">{{$tp->descricao}} </a>
                     </li>
                     @else

@@ -10700,3 +10700,8 @@ a.text-dark:focus {
   color: red;
 }
 
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  background-color: #bdd1ff;
+}
+
