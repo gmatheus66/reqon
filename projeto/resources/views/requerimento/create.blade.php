@@ -29,14 +29,14 @@
                 @else
                     <div class="tab-pane fade" id="{{$tp->descricao}}" role="tabpanel" aria-label="{{$tp->descricao}}-tab">
                 @endif 
-                        
+                    <div class="grupoSubT">
                     @foreach($tp->subtipos as $sub)
-                        <div class="custom-control custom-radio sub">
+                        <div class="custom-control custom-radio sub mar">
                             <input type="radio" class="custom-control-input" id="sub-{{$sub->id}}" name="subtipo" value="{{$sub->id}}">
                             <label class="custom-control-label" for="sub-{{$sub->id}}">{{$sub->descricao}}</label>
-                        </div>
-                       
+                    </div>   
                     @endforeach
+                    </div>
                     </div>
                 @endforeach
                 
