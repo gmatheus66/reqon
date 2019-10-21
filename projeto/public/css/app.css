@@ -11163,12 +11163,13 @@ a.text-dark:focus {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  background-color: #bdd1ff;
+  background-color: #e2f0fb;
+  color: #385d7a;
 }
 
 .grupoSubT {
-  background-color: #bdd1ff;
-  border: 2px solid #b3c5f2;
+  background-color: #e2f0fb;
+  border: 2px solid #e2f0fb;
   border-radius: 5px;
   padding: 10px;
 }
@@ -11179,5 +11180,13 @@ a.text-dark:focus {
 
 .nav-Style {
   border: 0px !important;
+}
+
+.alert {
+  text-align: center;
+}
+
+.alert-danger {
+  margin-top: 20px;
 }
 
