@@ -2,14 +2,14 @@
 
 
 @section('content')
-    <div class="contanier">
 
-    <a href="{{ route('requerimento.create')}}">Criar Requerimento</a>
+	    <div class="container" id="cont">
+			<div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 100px;">
+			  @if(session('success'))
+			  	<div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
+			  @endif
+			 <div class="alert alert-success" role="alert" id="criarReq"><a class="reqTxt" href="{{ route('requerimento.create')}}">Criar Requerimento</a></div>
+			</div>
+		</div>
 
-    @if(session()->get('sucesso'))
-        <div class="alert alert-info" role="alert">
-            {{ session()->get('sucesso') }}
-        </div>
-    @endif
-    </div>
 @endsection

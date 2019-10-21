@@ -23,3 +23,20 @@
 .alert-danger{
 	margin-top:20px;
 }
+#criarReq{
+	width: 400px;
+	background-color:#3490dc;
+}
+#cont{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	min-height:80vh;
+}
+#sucessoReq{
+	width: 400px;
+	background-color:#30ff7c;
+}
+.reqTxt{
+	color:#fff!important;
+}

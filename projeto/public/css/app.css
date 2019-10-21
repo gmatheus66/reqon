@@ -11104,10 +11104,6 @@ a.text-dark:focus {
   margin-top: 1%;
 }
 
-.container a {
-  color: #000;
-}
-
 .container #desc {
   margin-top: 5%;
 }
@@ -11116,7 +11112,7 @@ a.text-dark:focus {
   margin-bottom: 10%;
 }
 
-.container .abas {
+.container .air {
   color: #000;
 }
 
@@ -11188,5 +11184,29 @@ a.text-dark:focus {
 
 .alert-danger {
   margin-top: 20px;
+}
+
+#criarReq {
+  width: 400px;
+  background-color: #3490dc;
+}
+
+#cont {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  min-height: 80vh;
+}
+
+#sucessoReq {
+  width: 400px;
+  background-color: #30ff7c;
+}
+
+.reqTxt {
+  color: #fff !important;
 }
 
