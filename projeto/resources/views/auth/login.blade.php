@@ -5,8 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Entrar Como Aluno') }}</div>
-
+            <ul class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <li class=" btn btn-secondary active">
+                    <input type="radio" id="option1" autocomplete="off" checked> {{ __('Entrar como Aluno') }}
+                  </li>
+                  <li class=" btn btn-secondary">
+                    <input type="radio" id="option2" autocomplete="off"> {{ __('Entrar como Funcionário') }}
+                  </li>
+            </ul>
+                
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
