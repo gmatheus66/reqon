@@ -18,12 +18,16 @@ class Funcionario extends Model
         'email',
         'senha',
         'telefone',
-        'matricula'  
+        'matricula'
     ];
 
     protected $guarded = [
         'id',
         'created_at',
         'update_at'
-    ]; 
+    ];
+
+    public function requerimento(){
+        return $this->hasOne('App\Requerimento');
+   }
 }
