@@ -29,4 +29,9 @@ class Aluno extends Authenticatable
     ];
 
 
+    public function matricula(){
+        return $this->hasMany('App\Matricula');
+    }
+
+
 }
