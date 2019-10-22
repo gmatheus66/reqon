@@ -15,17 +15,20 @@ class Matricula extends Model
     	'status'
     ];
 
-    public function cursos() {
-        return $this->hasMany('App\Curso');
-    }
-
-    public function alunos() {
-        return $this->hasMany('App\Aluno');
-    }
-
     protected $guarded = [
         'id',
         'created_at',
         'update_at'
     ];
+
+
+    public function curso(){
+        return $this->hasOne('App\Curso');
+    }
+
+    public function alunos() {
+        return $this->hasOne('App\Aluno');
+    }
+
+
 }
