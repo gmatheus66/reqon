@@ -7,7 +7,22 @@
 			<div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 100px;">
 			  @if(session('success'))
 			  	<div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
-			  @endif
+              @endif
+
+
+              @if($mtsize > 1)
+              <form action="{{route('requerimento.create')}}" method="post">
+                      <select class="browser-default custom-select custom-select-lg mb-3" name="curso_id">
+                              <option selected>Open this select menu</option>
+                              @foreach ($crs as $i => $curso)
+                                  <option value=""></option>
+                              @endforeach
+
+                      </select>
+
+              </form>
+             @endif
+
 			 <div class="alert alert-success" role="alert" id="criarReq"><a class="reqTxt" href="{{ route('requerimento.create')}}">Criar Requerimento</a></div>
 			</div>
 		</div>
