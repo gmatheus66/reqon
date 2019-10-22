@@ -22,19 +22,29 @@ class RequerimentoController extends Controller
     public function index(){
 
         $requerimento = Requerimento::all();
-        $i = 0;
+        $cont = 0;
         $matricula = Matricula::where('aluno_id', Auth::user()->id)->get();
         $curso = Curso::all();
-        foreach($matricula as $id => $mtr){
-            if($id > 1 ){
-                $i = $i + $id;
-            }
+        $matr = Matricula::find(1)->where('aluno_id', Auth::user()->id)->first();
+        $mtr = Matricula::find(1)->where('aluno_id', Auth::user()->id)->get();
+
+        $mtsize = sizeof($mtr);
+        //var_dump($mtsize);
+
+        $crs = [];
+
+        foreach($mtr as  $m){
+            array_push($crs,Curso::find(1)->where('id', $m->curso_id)->get() );
+            //var_dump($crs);
         }
 
-        if($i > 1){
-            return view('requerimento.index',compact('requerimento','matricula', 'curso'));
+
+
+          return view('requerimento.index',compact('requerimento', 'crs','matricula','mtsize'));
+
+        if($mtsize > 1){
         } else{
-            return view('requerimento.index',compact('requerimento'));
+            return view('requerimento.index',compact('requerimento','cont'));
         }
 
     }
