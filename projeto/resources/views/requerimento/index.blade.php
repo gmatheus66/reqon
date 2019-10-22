@@ -11,11 +11,14 @@
 
 
               @if($mtsize > 1)
+
               <form action="{{route('requerimento.create')}}" method="post">
                       <select class="browser-default custom-select custom-select-lg mb-3" name="curso_id">
-                              <option selected>Open this select menu</option>
+                              <option selected>Selecione Um curso</option>
                               @foreach ($crs as $i => $curso)
-                                  <option value=""></option>
+                                    @foreach ($curso as $c)
+                                        <option value="{{$c->id}}">{{$c->nome}}</option>
+                                    @endforeach
                               @endforeach
 
                       </select>
