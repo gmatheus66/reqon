@@ -8,9 +8,7 @@
 	    <div>
         <form action="{{ route('requerimento.store') }}" method="post">
             @csrf
-            <div class="alert alert-danger" role="alert">
-              Escolha uma categoria para seu requerimento
-            </div>
+            <p class="infoP">Escolha uma categoria para seu requerimento</p>
             
             <ul class="nav nav-tabs abas" id="myTab" role="tablist">
                 @foreach($tipo as $tp)
@@ -44,9 +42,7 @@
                 @endforeach
                 
             </div>
-            <div class="alert alert-danger" role="alert">
-              Insira uma descrição
-            </div>
+            <p class="infoP">Insira uma descrição</p>
             <div class="form-group" id="desc">
                 <label for="Descricao">Descrição:</label>
                 <textarea class="form-control rounded-0" id="descricao" rows="6" name="descricao"></textarea>
