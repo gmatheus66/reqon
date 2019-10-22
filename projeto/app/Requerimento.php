@@ -25,4 +25,8 @@ class Requerimento extends Model
         'update_at'
     ];
 
+    public function funcionario(){
+        return $this->hasMany('App\Funcionario');
+    }
+
 }
