@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Requerimento;
 use App\Funcionario;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -12,9 +13,9 @@ class FuncionarioController extends Controller
     use RegistersUsers;
 
     public function index(){
+        $reqs = Requerimento::all();
 
-        return view('funcionario.logfunc');
-
+        return view('funcionario.indexfunc',compact('reqs'));
     }
 
     /**
@@ -64,8 +65,7 @@ class FuncionarioController extends Controller
 
         $req->save();
 
-        return view('home');    
+        return view('home');
     }
 
 }
- 
