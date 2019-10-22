@@ -76,9 +76,9 @@ return [
             'model' => App\Aluno::class,
         ],
 
-        'funcs' => [
+        'funcionarios' => [
             'driver' => 'eloquent',
-            'nodel' => App\Funccionario::class,
+            'model' => App\Funccionario::class,
         ],
 
         // 'users' => [
