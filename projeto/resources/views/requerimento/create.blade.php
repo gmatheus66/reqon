@@ -3,13 +3,21 @@
 @section('content')
     <div class="container">
 
+    
+
         <div class="col-sm-8 offset-sm-2">
 			<h1 class="display-6">Criar um requerimento</h1>
 	    <div>
         <form action="{{ route('requerimento.store') }}" method="post">
             @csrf
             <p class="infoP">Escolha uma categoria para seu requerimento</p>
-            
+                @if($errors->any())
+                     @foreach($errors->get('subtipo') as $message)
+                     <div class="alert alert-danger" role="alert">
+                      {{ $message }}
+                    </div>
+                     @endforeach 
+                @endif
             <ul class="nav nav-tabs abas" id="myTab" role="tablist">
                 @foreach($tipo as $tp)
                     @if($tp->id == 1)
@@ -22,7 +30,9 @@
                     </li>   
                     @endif
                 @endforeach
+
             </ul>
+                
             <div class="tab-content" id="myTabContent">
                 @foreach($tipo as $tp)
                     @if($tp->id == 1)
@@ -43,6 +53,13 @@
                 
             </div>
             <p class="infoP">Insira uma descrição</p>
+            @if($errors->any())
+                     @foreach($errors->get('descricao') as $message)
+                     <div class="alert alert-danger" role="alert">
+                      {{ $message }}
+                    </div>
+                     @endforeach 
+                @endif
             <div class="form-group" id="desc">
                 <label for="Descricao">Descrição:</label>
                 <textarea class="form-control rounded-0" id="descricao" rows="6" name="descricao"></textarea>
