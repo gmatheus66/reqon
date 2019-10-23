@@ -23,11 +23,15 @@ class Matricula extends Model
 
 
     public function curso(){
-        return $this->hasOne('App\Curso');
+        return $this->belongsTo('App\Curso');
     }
 
-    public function alunos() {
-        return $this->hasOne('App\Aluno');
+    public function aluno() {
+        return $this->belongsTo('App\Aluno');
+    }
+
+    public function requerimentos(){
+        return $this->hasMany('App\Requerimento');
     }
 
 
