@@ -21,46 +21,36 @@ class RequerimentoController extends Controller
 
     public function index(){
 
-        $requerimento = Requerimento::all();
-        $cont = 0;
-        $matricula = Matricula::where('aluno_id', Auth::user()->id)->get();
-        $curso = Curso::all();
-        $matr = Matricula::find(1)->where('aluno_id', Auth::user()->id)->first();
-        $mtr = Matricula::find(1)->where('aluno_id', Auth::user()->id)->get();
+        $matriculas = Auth::user()->matriculas->sort(function($m1, $m2) {
+            //return strcmp($m2->curso->nome, $m1->curso->nome);
+            return strcmp($m1->curso->nome, $m2->curso->nome);
+        });
+        /*$matriculas = usort($matriculas, function($m1, $m2) {
+            return strcmp($m1->curso->nome, $m2->curso->nome);
+        });*/
 
-        $mtsize = sizeof($mtr);
-        //var_dump($mtsize);
-
-        $crs = [];
-
-        foreach($mtr as  $m){
-            array_push($crs,Curso::find(1)->where('id', $m->curso_id)->get() );
-            //var_dump($crs);
-        }
+        //dd($crs[0][0]->id);
 
 
 
-          return view('requerimento.index',compact('requerimento', 'crs','matricula','mtsize'));
 
-        if($mtsize > 1){
-        } else{
-            return view('requerimento.index',compact('requerimento','cont'));
-        }
+        return view('requerimento.index',compact('matriculas'));
+
 
     }
 
 
-    public function create(){
+    public function create(Request $request){
 
         $tipo = Tipo::all();
+        $curso = $request->get('curso');
 
-
-        return view('requerimento.create', compact('tipo'));
+        return view('requerimento.create', compact('tipo','curso') );
     }
 
     public function store(Request $request){
 
-        $matricula = Matricula::where('aluno_id', Auth::user()->id)->first();
+        $matricula = Matricula::where('aluno_id', Auth::user()->id)->where('curso_id',$request->get('curso') )->first();
         $mtr = $matricula->id;
 
         $request->validate([
