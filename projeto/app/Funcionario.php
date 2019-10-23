@@ -8,6 +8,8 @@ class Funcionario extends Model
 {
     protected $table = 'funcionarios';
 
+    protected $guard = 'funcionario';
+
     protected $fillabel = [
         'cpf',
         'nome',
@@ -16,7 +18,7 @@ class Funcionario extends Model
         'rg_orgao_exp',
         'cargo',
         'email',
-        'senha',
+        'password',
         'telefone',
         'matricula'
     ];
@@ -26,8 +28,4 @@ class Funcionario extends Model
         'created_at',
         'update_at'
     ];
-
-    public function requerimento(){
-        return $this->hasOne('App\Requerimento');
-   }
 }
