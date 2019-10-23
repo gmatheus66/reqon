@@ -9,25 +9,39 @@
 			  	<div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
               @endif
 
-
-              @if($mtsize > 1)
-
-              <form action="{{route('requerimento.create')}}" method="post">
-                      <select class="browser-default custom-select custom-select-lg mb-3" name="curso_id">
+            @if(sizeof($matriculas) > 1)
+            <div class="div-req">
+              <form action="{{route('requerimento.create')}}" method="get">
+                      <select class="browser-default custom-select custom-select-lg mb-3" name="curso">
                               <option selected>Selecione Um curso</option>
-                              @foreach ($crs as $i => $curso)
-                                    @foreach ($curso as $c)
-                                        <option value="{{$c->id}}">{{$c->nome}}</option>
-                                    @endforeach
-                              @endforeach
+                                @foreach ($matriculas as $matricula)
+                                    <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
+                                @endforeach
 
                       </select>
 
+                    <button class="btn-cr" type="submit"><div class="alert alert-success" role="alert" id="criarReq"><a class="reqTxt" href="{{ route('requerimento.create')}}">Criar Requerimento</a></div></button>
               </form>
-             @endif
+            </div>
+            @endif
 
-			 <div class="alert alert-success" role="alert" id="criarReq"><a class="reqTxt" href="{{ route('requerimento.create')}}">Criar Requerimento</a></div>
-			</div>
+            @foreach($matriculas as $matricula)
+                <h3>Requerimentos do curso {{$matricula->curso->nome}}</h3>
+                @foreach($matricula->requerimentos as $requerimento)
+                    <div class="card">
+                        <h5 class="card-header">Featured</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                @endforeach
+            @endforeach
+
+
+            </div>
+
 		</div>
 
 @endsection
