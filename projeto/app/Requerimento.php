@@ -25,8 +25,11 @@ class Requerimento extends Model
         'update_at'
     ];
 
+    public function matricula(){
+        return $this->belongsTo('App\Matricula');
+    }
     public function funcionario(){
-        return $this->hasMany('App\Funcionario');
+        return $this->belongsTo('App\Funcionario');
     }
 
 }
