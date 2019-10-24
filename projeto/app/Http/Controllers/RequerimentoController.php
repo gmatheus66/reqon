@@ -11,6 +11,7 @@ use App\Aluno;
 use App\Matricula;
 use App\Curso;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class RequerimentoController extends Controller
@@ -56,10 +57,16 @@ class RequerimentoController extends Controller
         $str = $setor->id;
         $mtr = $matricula->id;
 
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'descricao'=>'required',
             'subtipo'=>'required'
         ]);
+
+        if ($validator->fails()) {
+            return redirect('/requerimento/create?curso=Selecione+Um+curso')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
 
         $req = new Requerimento([
             'protocolo' => mt_rand(1,999999999),

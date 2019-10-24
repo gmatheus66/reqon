@@ -59,7 +59,7 @@
                 @endif
             <div class="form-group" id="desc">
                 <label for="Descricao">Descrição:</label>
-                <textarea class="form-control rounded-0" id="descricao" rows="6" name="descricao" maxlength="1000"></textarea>
+                <textarea class="form-control rounded-0" id="descricao" value="{{ old('descricao') }}" rows="6" name="descricao" maxlength="1000">{{old('descricao')}}</textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg btn-req">Criar Requerimento</button>    
