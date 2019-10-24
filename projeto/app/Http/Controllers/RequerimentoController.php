@@ -51,8 +51,8 @@ class RequerimentoController extends Controller
 
     public function store(Request $request){
 
-        $matricula = Matricula::where('aluno_id', Auth::user()->id)->where('curso_id',$request->get('curso') )->first();
-        $setor = Setor::where('id', '=', 1);
+        $matricula = Matricula::where('aluno_id', Auth::user()->id)->first();
+        $setor = Setor::find(1);
         $str = $setor->id;
         $mtr = $matricula->id;
 
@@ -66,10 +66,9 @@ class RequerimentoController extends Controller
             'descricao' => $request->get('descricao'),
             'subtipo_id' => $request->get('subtipo'),
             'status_id' => 1,
-            'setor' => $str,
             'req_pai_id' => null,
             'funcionario_id' => null,
-            'setor_id' => null,
+            'setor_id' => $str,
             'matricula_id' => $mtr
         ]);
 
