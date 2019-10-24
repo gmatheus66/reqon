@@ -8,7 +8,9 @@ class Setor extends Model
 {
     protected $table = 'setors';
 
-    protected $fillable = ['nome'];
+    protected $fillable = [
+    	'nome'
+    ];
 
     protected $guarded = [
         'created_at',
