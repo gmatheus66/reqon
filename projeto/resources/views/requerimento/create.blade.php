@@ -7,7 +7,7 @@
 	    <div>
         <form action="{{ route('requerimento.store') }}" method="post">
             @csrf
-            <p class="infoP">Escolha uma categoria para seu requerimento</p>
+            <p class="infoP">Escolha um tipo de requerimento</p>
                 @if($errors->any())
                      @foreach($errors->get('subtipo') as $message)
                      <div class="alert alert-danger" role="alert">
