@@ -7,6 +7,7 @@ use App\Requerimento;
 use App\Funcionario;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class FuncionarioController extends Controller
 {
@@ -14,6 +15,7 @@ class FuncionarioController extends Controller
 
     public function index(){
         $reqs = Requerimento::all();
+        $teste = DB::table('requerimento');
 
         return view('funcionario.indexfunc',compact('reqs'));
     }
