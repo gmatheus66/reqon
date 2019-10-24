@@ -13,7 +13,6 @@ class Requerimento extends Model
             'descricao',
             'subtipo_id',
             'status_id',
-            'setor',
             'req_pai_id',
             'funcionario_id',
             'setor_id',
