@@ -11,7 +11,6 @@ class Setor extends Model
     protected $fillable = ['nome'];
 
     protected $guarded = [
-        'id',
         'created_at',
         'update_at'
     ];
