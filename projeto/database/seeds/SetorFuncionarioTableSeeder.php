@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class FuncionarioTableSeeder extends Seeder
+class SetorFuncionarioTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class FuncionarioTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Funcionario', 10)->create();
+        factory('App\SetorFuncionario', 10)->create();
     }
 }
