@@ -33,10 +33,10 @@ class RequerimentoController extends Controller
 
         //dd($crs[0][0]->id);
 
+        // dd($matriculas[0]['matricula']);
+        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->get();
 
-
-
-        return view('requerimento.index',compact('matriculas'));
+        return view('requerimento.index',compact('matriculas','dados'));
 
 
     }
