@@ -31,5 +31,7 @@ class Requerimento extends Model
     public function funcionario(){
         return $this->belongsTo('App\Funcionario');
     }
-
+    public function subtipo(){
+        return $this->belongsTo('App\Subtipo');
+    }
 }
