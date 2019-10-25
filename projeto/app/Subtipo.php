@@ -12,5 +12,7 @@ class Subtipo extends Model
         'descricao',
         'tipo_id'
     ];
-
+    public function requerimento(){
+        return $this->hasMany('App\Requerimento');
+    }
 }
