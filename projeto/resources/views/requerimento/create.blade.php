@@ -54,12 +54,13 @@
                      @foreach($errors->get('descricao') as $message)
                      <div class="alert alert-danger" role="alert">
                       {{ $message }}
+                      <?php $cor='red'; ?>
                     </div>
                      @endforeach 
                 @endif
             <div class="form-group" id="desc">
                 <label for="Descricao">Descrição:</label>
-                <textarea class="form-control rounded-0" id="descricao" value="{{ old('descricao') }}" rows="6" name="descricao" maxlength="1000">{{old('descricao')}}</textarea>
+                <textarea class="form-control rounded-0 " id="descricao" value="{{ old('descricao') }}" rows="6" name="descricao" maxlength="1000" style="border-color: {{$cor ?? 'black'}};">{{old('descricao')}}</textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg btn-req">Criar Requerimento</button>    
