@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticable;
 
-class Funcionario extends Model
+class Funcionario extends Authenticable
 {
     protected $table = 'funcionarios';
 
