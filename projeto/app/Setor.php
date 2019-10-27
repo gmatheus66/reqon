@@ -16,4 +16,8 @@ class Setor extends Model
         'created_at',
         'update_at'
     ];
+
+    public function funcionario(){
+        return $this->belongsToMany('App\Funcionario');
+    }
 }
