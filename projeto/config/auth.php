@@ -41,15 +41,20 @@ return [
             'provider' => 'alunos',
         ],
 
-        'func' => [
+        'funcionario' => [
             'driver' => 'session',
-            'provider' => 'funcionarios',
+            'provider' => 'funcionario',
         ],
 
         'api' => [
             'driver' => 'token',
             'provider' => 'alunos',
             'hash' => false,
+        ],
+        'api-funcionario' => [
+            'driver' => 'token',
+            'provider' => 'funcionario',
+            'hash '=> false,
         ],
     ],
 
@@ -76,9 +81,9 @@ return [
             'model' => App\Aluno::class,
         ],
 
-        'funcionarios' => [
+        'funcionario' => [
             'driver' => 'eloquent',
-            'model' => App\Funccionario::class,
+            'model' => App\Funcionario::class,
         ],
 
         // 'users' => [
@@ -109,8 +114,8 @@ return [
 
     'passwords' => [
 
-        'funcs' => [
-            'provider' => 'funcs',
+        'funcionario' => [
+            'provider' => 'funcionario',
             'table' => 'password_resets',
             'expire' => 60,
         ],
