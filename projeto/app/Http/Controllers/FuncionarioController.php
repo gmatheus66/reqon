@@ -14,8 +14,8 @@ class FuncionarioController extends Controller
     use RegistersUsers;
 
     public function index(){
-        $reqs = Requerimento::all();
-        $teste = DB::table('requerimento');
+        $reqs = Requerimento::where('setor_id', 1)->get();
+        // $teste = DB::table('requerimento');
 
         return view('funcionario.indexfunc',compact('reqs'));
     }
