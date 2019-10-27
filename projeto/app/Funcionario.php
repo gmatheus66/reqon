@@ -28,4 +28,8 @@ class Funcionario extends Model
         'created_at',
         'update_at'
     ];
+
+    public function setor(){
+        return $this->belongsToMany('App\Setor');
+    }
 }
