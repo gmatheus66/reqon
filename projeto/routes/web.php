@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::post('func-login', ['as'=>'funcionario', 'use'=>'Auth\LoginController@loginFunc']);
+Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin');
 
 Route::get('/indexfunc', 'FuncionarioController@index');
 
