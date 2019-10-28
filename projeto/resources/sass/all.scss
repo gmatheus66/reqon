@@ -23,6 +23,13 @@
 .alert-danger{
 	margin-top:20px;
 }
+.btn-cr{
+    border: 90px;
+    padding: unset;
+    background: white;
+    display: block;
+}
+
 #criarReq{
 	width: 400px;
 	background-color:#3490dc;
@@ -31,7 +38,6 @@
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	min-height:80vh;
 }
 #sucessoReq{
 	width: 400px;
