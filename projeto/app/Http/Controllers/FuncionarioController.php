@@ -16,8 +16,12 @@ class FuncionarioController extends Controller
     public function index(){
         $reqs = Requerimento::where('setor_id', 1)->get();
         // $teste = DB::table('requerimento');
-
-        return view('funcionario.indexfunc',compact('reqs'));
+        // dd(session('success'));
+        if(session('success')){
+            return view('funcionario.indexfunc',compact('reqs'));
+        }else{
+            return view('auth.login');
+        }
     }
 
     /**
