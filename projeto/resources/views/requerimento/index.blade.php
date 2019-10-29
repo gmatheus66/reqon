@@ -20,11 +20,11 @@
 
                       </select>
 
-                    <button class="btn-cr" type="submit"><div class="alert alert-success" role="alert" id="criarReq"><a class="reqTxt" href="{{ route('requerimento.create')}}">Criar Requerimento</a></div></button>
+                    <center><button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button></center>
               </form>
             </div>
             @else
-                <button class="btn-cr" type="submit"><div class="alert alert-success" role="alert" id="criarReq"><a class="reqTxt" href="{{ route('requerimento.create')}}">Criar Requerimento</a></div></button>
+                <button class="btn-cr alert alert-success" role="alert" id="criarReq" type="submit"><a class="reqTxt" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button>
             @endif
 
             @foreach($matriculas as $matricula)
