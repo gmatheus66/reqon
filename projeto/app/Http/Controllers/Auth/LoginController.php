@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -61,12 +62,28 @@ class LoginController extends Controller
 
     public function adminLogin(Request $request){
 
-        //$this->validateLogin($request);
+        $this->validateLogin($request);
 
         if(auth()->guard('funcionario')->attempt($this->credentials($request), $request->filled('remember'))){
             //return sendLoginResponseFunc($request);
-            dd(auth()->guard('funcionario')->user());
-            //return view();
+            //dd(auth()->guard('funcionario')->user()->id);
+
+            $nome = auth()->guard('funcionario')->user()->nome;
+            $email = auth()->guard('funcionario')->user()->email;
+            $id = auth()->guard('funcionario')->user()->id;
+
+            /*Para poder pegar esses dados da sessão é so usar as linhas de comando abaixo
+
+            para pegar na view -> {{ session->get('func.nome') }}
+            */
+            $request->session()->flash('success', true);
+            $request->session()->put('func', [
+                'id' => $id,
+                'nome' => $nome,
+                'email' => $email,
+            ]);
+
+            return redirect()->route('func');
         }
 
         return back()->withErrors(['email' => 'Email ou senhas estão errados']);
