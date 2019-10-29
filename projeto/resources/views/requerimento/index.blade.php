@@ -11,6 +11,7 @@
 
             @if(sizeof($matriculas) > 1)
             <div class="div-req">
+            <center>
               <form action="{{route('requerimento.create')}}" method="get">
                       <select class="browser-default custom-select custom-select-lg mb-3" name="curso" required>
                               <option selected>Selecione Um curso</option>
@@ -20,11 +21,12 @@
 
                       </select>
 
-                    <center><button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button></center>
+                    <button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button>
               </form>
+            </center>
             </div>
             @else
-                <button class="btn-cr alert alert-success" role="alert" id="criarReq" type="submit"><a class="reqTxt" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button>
+                <center><button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button></center>
             @endif
 
             @foreach($matriculas as $matricula)
