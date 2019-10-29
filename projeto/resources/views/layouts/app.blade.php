@@ -10,7 +10,9 @@
     <title>{{ config('', 'ReqOn') }}</title>
 
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/script.js')}}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,7 +20,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
-<link rel="stylesheet" href="{{ URL::asset('/css/my-styles.css') }}">
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
