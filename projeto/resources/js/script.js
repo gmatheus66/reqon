@@ -13,9 +13,11 @@ $(document).ready(function(){
         evt.preventDefault();
         $('#form').attr('action','/login/admin');
     });
-
-
-
 })
 
-
+$('document').ready(function(){
+    setTimeout(function(){
+        let msg = $("#sucessoReq");
+        $( "#sucessoReq" ).fadeOut(500);
+    },2000);
+})
