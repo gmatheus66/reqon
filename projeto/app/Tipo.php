@@ -11,6 +11,6 @@ class Tipo extends Model
     protected $fillable = ['descricao'];
 
     public function subtipos() {
-        return $this->hasMany('App\Subtipo');
+       return $this->hasMany('App\Subtipo');
     }
 }
