@@ -34,4 +34,8 @@ class Requerimento extends Model
     public function subtipo(){
         return $this->belongsTo('App\Subtipo');
     }
+
+    public function status() {
+        return $this->belongsTo('App\Status');
+     }
 }
