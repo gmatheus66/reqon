@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Requerimento;
 use App\Funcionario;
+use App\Subtipo;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -15,10 +16,23 @@ class FuncionarioController extends Controller
 
     public function index(){
         $reqs = Requerimento::where('setor_id', 1)->get();
-        // $teste = DB::table('requerimento');
-        // dd(session('success'));
+        $reqs->all();
+        $subtp_ids = [];
+        foreach($reqs as $req){
+            array_push($subtp_ids, $req->subtipo_id);
+        }
+
+        $subtp_txt =[];
+        foreach($subtp_ids as $sub){
+            $subtipo = Subtipo::where('id', $sub)->get('descricao');
+            foreach ($subtipo as $subt) {
+                # code...
+                array_push($subtp_txt, $subt->descricao);
+            }
+        }
+
         if(session('success')){
-            return view('funcionario.indexfunc',compact('reqs'));
+            return view('funcionario.indexfunc',compact('reqs', 'subtp_txt'));
         }else{
             return view('auth.login');
         }
