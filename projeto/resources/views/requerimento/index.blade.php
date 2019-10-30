@@ -13,7 +13,7 @@
             <div class="div-req">
             <center>
               <form action="{{route('requerimento.create')}}" method="get">
-                      <select class="browser-default custom-select custom-select-lg mb-3" name="curso" required>
+                      <select class="browser-default custom-select custom-select-lg mb-3 selectClass" name="curso" required>
                               <option selected>Selecione Um curso</option>
                                 @foreach ($matriculas as $matricula)
                                     <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
