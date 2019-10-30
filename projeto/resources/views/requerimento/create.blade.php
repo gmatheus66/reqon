@@ -63,7 +63,7 @@
                 <textarea class="form-control rounded-0 " id="descricao" value="{{ old('descricao') }}" rows="6" name="descricao" maxlength="1000" style="border-color: {{$cor ?? 'black'}};">{{old('descricao')}}</textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg btn-req">Criar Requerimento</button>    
+            <button type="submit" class="btn btn-primary btn-lg btn-req">Criar requerimento</button>    
         
         </form>
   
