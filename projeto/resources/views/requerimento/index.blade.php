@@ -4,7 +4,7 @@
 @section('content')
 
 	    <div class="container" id="cont">
-			<div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 100px;">
+			<div class="d-flex align-items-center flex-column bd-highlight mb-3" style="height: 100px;">
 			  @if(session('success'))
 			  	<div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
               @endif
@@ -20,13 +20,12 @@
                                 @endforeach
 
                       </select>
-
-                    <button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button>
+                        <button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button>
               </form>
             </center>
             </div>
-            @else
-                <center><button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button></center>
+            @else     
+                <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>        
             @endif
 
             @foreach($matriculas as $matricula)
