@@ -30,23 +30,18 @@ class RequerimentoController extends Controller
         /*$matriculas = usort($matriculas, function($m1, $m2) {
             return strcmp($m1->curso->nome, $m2->curso->nome);
         });*/
-
-        //dd($crs[0][0]->id);
-
-        // dd($matriculas[0]['matricula']);
         $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->get();
-
+        //dd($dados);
+        $test = Tipo::with('subtipos')->get();
         return view('requerimento.index',compact('matriculas','dados'));
-
-
     }
 
 
     public function create(Request $request){
 
-        $tipo = Tipo::all();
+        $tipo= Tipo::all();
         $curso = $request->get('curso');
-
+        //dd($tipo);
         return view('requerimento.create', compact('tipo','curso') );
     }
 
