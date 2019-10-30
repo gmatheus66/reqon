@@ -21,3 +21,13 @@ $('document').ready(function(){
         $( "#sucessoReq" ).fadeOut(500);
     },2000);
 })
+
+
+$(document).ready(function(){
+    let aba = $(".abas");
+
+    aba.on("click", function(evt){
+        evt.preventDefault();
+            $('input:radio').prop("checked", false);
+    });
+})
