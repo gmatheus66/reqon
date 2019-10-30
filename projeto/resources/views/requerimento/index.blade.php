@@ -4,7 +4,7 @@
 @section('content')
 
 	    <div class="container" id="cont">
-			<div class="d-flex justify-content-center flex-column bd-highlight mb-3" style="height: 100px;">
+			<div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 100px;">
 			  @if(session('success'))
 			  	<div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
               @endif
@@ -13,7 +13,7 @@
             <div class="div-req">
             <center>
               <form action="{{route('requerimento.create')}}" method="get">
-                      <select class="browser-default custom-select custom-select-lg mb-3 selectClass" name="curso" required>
+                      <select class="browser-default custom-select custom-select-lg mb-3" name="curso" required>
                               <option selected>Selecione Um curso</option>
                                 @foreach ($matriculas as $matricula)
                                     <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
@@ -21,22 +21,18 @@
 
                       </select>
 
+                    <button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button>
               </form>
-            </div>
-                    <div class="d-flex justify-content-center">
-                        <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>
-                    </div>
             </center>
-            @else
-            <div class="d-flex justify-content-center">
-            <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>
             </div>
+            @else
+                <center><button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button></center>
             @endif
 
             @foreach($matriculas as $matricula)
                 <h3>Requerimentos do curso {{$matricula->curso->nome}}</h3>
                 @foreach($matricula->requerimentos as $requerimento)
-                    <div class="card">
+                    <div class="card cardRequerimento">
                         <h5 class="card-header">{{$requerimento->subtipo->descricao}}</h5>
                         <div class="card-body">
                             <h5 class="card-title">Matricula: {{$requerimento->matricula->matricula}}</h5>
