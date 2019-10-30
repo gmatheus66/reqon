@@ -15,4 +15,7 @@ class Subtipo extends Model
     public function requerimento(){
         return $this->hasMany('App\Requerimento');
     }
+    public function tipo(){
+        return $this->hasMany('App\Tipo');
+    }
 }
