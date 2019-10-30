@@ -33,10 +33,11 @@
                 <h3>Requerimentos do curso {{$matricula->curso->nome}}</h3>
                 @foreach($matricula->requerimentos as $requerimento)
                     <div class="card">
-                        <h5 class="card-header">Featured</h5>
+                        <h5 class="card-header">{{$requerimento->subtipo->descricao}}</h5>
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <h5 class="card-title">Matricula: {{$requerimento->matricula->matricula}}</h5>
+                            <p class="card-text">Status: {{$requerimento->status->situacao}}</p>
+                            <p class="card-text">Data: {{date('d-m-Y', strtotime($requerimento->created_at))}}</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
