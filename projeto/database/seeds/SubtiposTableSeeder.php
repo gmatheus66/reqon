@@ -13,95 +13,95 @@ class SubtiposTableSeeder extends Seeder
     {
         DB::table('subtipos')->insert([
             [
-                'descricao'=> 'Ajuste de Matrícula',
+                'descricao'=> 'Ajuste de matrícula',
                 'tipo_id' => 1
             ],
             [
-                'descricao' => 'Cancelamento de Matrícula',
+                'descricao' => 'Cancelamento de matrícula',
                 'tipo_id' => 1
             ],
             [
-                'descricao' => 'Complementação de Matrícula',
+                'descricao' => 'Complementação de matrícula',
                 'tipo_id' => 1
             ],
             [
-                'descricao' => 'Declaração de Matrícula ou Matrícula Vinculo',
+                'descricao' => 'Declaração de matrícula ou matrícula vinculo',
                 'tipo_id' => 1
             ],
             [
-                'descricao' => 'Reabertura de Matrícula',
+                'descricao' => 'Reabertura de matrícula',
                 'tipo_id' => 1
             ],
             [
-                'descricao' => 'Trancamento de Matrícula',
+                'descricao' => 'Trancamento de matrícula',
                 'tipo_id' => 1
             ],
             [
-                'descricao' => 'Cancelamento de Disciplina',
+                'descricao' => 'Cancelamento de disciplina',
                 'tipo_id' => 2
             ],
             [
-                'descricao' => 'Dispensa da prática de Educação Física',
+                'descricao' => 'Dispensa da prática de educação física',
                 'tipo_id' => 2
             ],
             [
-                'descricao' => 'Declaração Tramitação de Diploma',
+                'descricao' => 'Declaração tramitação de diploma',
                 'tipo_id' => 2
             ],
             [
-                'descricao' => 'Historico Escolar',
+                'descricao' => 'Histórico escolar',
                 'tipo_id' => 2
             ],
             [
-                'descricao' => 'Inseção de Disciplinas Cursadas',
+                'descricao' => 'Isenção de disciplinas cursadas',
                 'tipo_id' => 2
             ],
             [
-                'descricao' => 'Matriz Curricular',
+                'descricao' => 'Matriz curricular',
                 'tipo_id' => 2
             ],
             [
-                'descricao' => 'Admissão por Transferência e Análise Curricular',
+                'descricao' => 'Admissão por transferência e análise curricular',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Autorização para cursar disciplinas em outras Instituições de Ensino Superior',
+                'descricao' => 'Autorização para cursar disciplinas em outras instituições de ensino superior',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Certificado de Conclusão',
+                'descricao' => 'Certificado de conclusão',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Certidão Autenticidade',
+                'descricao' => 'Certidão autenticidade',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Cópia Xerox de Documentos',
+                'descricao' => 'Cópia xerox de documentos',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Declaração de Colação de grau e Tramitação de Diploma',
+                'descricao' => 'Declaração de colação de grau e tramitação de diploma',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Declaração de Monitoria',
+                'descricao' => 'Declaração de monitoria',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Declaração de Estágio',
+                'descricao' => 'Declaração de estágio',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Ementa de Disciplina',
+                'descricao' => 'Ementa de disciplina',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Guia de Transferencia',
+                'descricao' => 'Guia de transferência',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Justificativa de Falta(s) ou Prova 2º chamada',
+                'descricao' => 'Justificativa de falta(s) ou prova 2º chamada',
                 'tipo_id' => 3
             ],
             [
@@ -109,11 +109,11 @@ class SubtiposTableSeeder extends Seeder
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Reintegração para Cursar',
+                'descricao' => 'Reintegração para cursar',
                 'tipo_id' => 3
             ],
             [
-                'descricao' => 'Solicitação de Conselho de Classe',
+                'descricao' => 'Solicitação de conselho de classe',
                 'tipo_id' => 3
             ]
             
