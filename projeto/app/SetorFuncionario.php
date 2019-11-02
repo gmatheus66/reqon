@@ -8,7 +8,7 @@ class SetorFuncionario extends Model
 {
     protected $table = 'setor_funcionarios';
 
-    protected $fillabel = [
+    protected $fillable = [
         'setor_id',
         'funcionario_id'
     ];
