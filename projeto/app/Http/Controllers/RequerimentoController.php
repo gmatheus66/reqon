@@ -84,4 +84,13 @@ class RequerimentoController extends Controller
         return redirect()->route('requerimento.index')->withSuccess('Requerimento Criado');
     }
 
+    public function show($id){
+
+        $requerimento =  Requerimento::find($id)->get();
+        dd($requerimento);
+        return view('requerimento.show');
+    }
+
+
+
 }
