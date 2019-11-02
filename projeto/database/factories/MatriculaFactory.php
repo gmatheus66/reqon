@@ -12,7 +12,6 @@ $factory->define(Matricula::class, function (Faker $faker) {
     $numero_matri = $faker->regexify('[0-9]{4}');
     $matricula = $ano . $campus . $numero_matri; 
 
-
     return [
        
         'matricula' => $matricula,
@@ -20,7 +19,7 @@ $factory->define(Matricula::class, function (Faker $faker) {
         'semestre' => $faker->randomElement(['1 Periodo', '2 Periodo', '3 Periodo', '4 Periodo']),
         'status' => $faker->randomElement(['Cursando','Trancado','Concluido']),
         'curso_id'=> $faker->numberBetween(1,3),
-        'aluno_id' => $faker->numberBetween(1,10)
+        'aluno_id' => $faker->unique()->numberBetween(1,10)
      
     ];
 });
