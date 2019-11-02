@@ -18,12 +18,20 @@ class AlunosTableSeeder extends Seeder
     {
         $faker = Faker::create();
         Aluno::create([
-            'nome'      => 'Nome do aluno',
+            'nome'      => 'Aluno1',
             'email'     => 'aluno@login',
             'password'  => bcrypt('ipi2019'),
             'data_nasc' => $faker->date(),
             'cpf' => $faker->unique()->numerify('###########'),
+        ],
+    );
+        Aluno::create([
+            'nome'      => 'Aluno2',
+            'email'     => 'aluno2@login',
+            'password'  => bcrypt('ipi2019'),
+            'data_nasc' => $faker->date(),
+            'cpf' => $faker->unique()->numerify('###########'),
         ]);
-        factory('App\Aluno',10)->create();
+        factory('App\Aluno',8)->create();
     }
 }
