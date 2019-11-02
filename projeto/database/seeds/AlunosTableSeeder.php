@@ -17,6 +17,13 @@ class AlunosTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        Aluno::create([
+            'nome'      => 'Nome do aluno',
+            'email'     => 'aluno@login',
+            'password'  => bcrypt('ipi2019'),
+            'data_nasc' => $faker->date(),
+            'cpf' => $faker->unique()->numerify('###########'),
+        ]);
         factory('App\Aluno',10)->create();
     }
 }
