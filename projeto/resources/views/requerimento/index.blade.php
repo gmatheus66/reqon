@@ -24,8 +24,8 @@
               </form>
             </center>
             </div>
-            @else     
-                <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>        
+            @else
+                <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>
             @endif
 
             @foreach($matriculas as $matricula)
@@ -37,7 +37,7 @@
                             <h5 class="card-title">Matricula: {{$requerimento->matricula->matricula}}</h5>
                             <p class="card-text">Status: {{$requerimento->status->situacao}}</p>
                             <p class="card-text">Data: {{date('d-m-Y', strtotime($requerimento->created_at))}}</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="{{route('requerimento.show', $requerimento->id)}}" class="btn btn-primary">Detalhes</a>
                         </div>
                     </div>
                 @endforeach
