@@ -86,11 +86,14 @@ class RequerimentoController extends Controller
 
     public function show($id){
 
-        $requerimento =  Requerimento::find(1)->where('id',$id)->get();
-        //dd($requerimento);
+        $requerimento =  Requerimento::find(1)->where('id',$id)->where('matricula_id', Auth::user()->matriculas[0]->id)->get();
+        //dd(Auth::user()->matriculas[0]->id);
         return view('requerimento.show', compact('requerimento'));
     }
 
+    public function update(Request $request){
+
+    }
 
 
 }
