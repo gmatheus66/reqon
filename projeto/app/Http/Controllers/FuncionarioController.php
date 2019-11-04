@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Requerimento;
 use App\Funcionario;
+use App\Setor;
 use App\Subtipo;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -86,6 +87,13 @@ class FuncionarioController extends Controller
         $req->save();
 
         return view('home');
+    }
+
+    public function show($id){
+        $setor = Setor::all();
+        $requerimento = Requerimento::find(1)->where('id', $id)->get();
+        //dd($requerimento);
+        return view('funcionario.show', compact('requerimento', 'setor'));
     }
 
 }
