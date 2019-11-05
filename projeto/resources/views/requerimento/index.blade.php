@@ -36,33 +36,48 @@
             @else
                 <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>
             @endif
-
-            @foreach($matriculas as $matricula)
-            <div class="accordion" id="accordionExample">
-              <div class="card">
-                <div class="card-header cardRequerimento row justify-content-center" id="headingOne">
-                    <button class="btn btn-link btn-Req " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      <h3>Requerimentos do curso {{$matricula->curso->nome}}</h3>
-                    </button>
-                </div>
-                
-                    @foreach ($dados as $req)
-                    
-                        <div class="card cardRequerimento">
-                            <h5 class="card-header">{{$req['subtipo']['descricao']}}</h5>
-                            <div class="card-body">
-                                <h5 class="card-title">Matricula: {{$req['matricula']['matricula']}}</h5>
-                                <p class="card-text">Status: {{$req['status']['situacao']}}</p>
-                                <p class="card-text">Data: {{date('d-m-Y', strtotime($req['created_at']))}}</p>
-                                <p class="card-text">Descrição: {{$req['descricao']}}</p>
-                                <a href="{{route('requerimento.show', $req['id'])}}" class="btn btn-primary">Detalhes</a>
-                            </div>
+            <div class="container">
+              <div class="row">
+                    <div class="col-sm">
+                      Protocolo
+                    </div>
+                    <div class="col-sm">
+                      Matrícula
+                    </div>
+                    <div class="col-sm">
+                      Tipo
+                    </div>
+                    <div class="col-sm">
+                      Data
+                    </div>
+                    <div class="col-sm">
+                      Situação
+                    </div>
+                    <div class="col-sm">
+                      Ação
+                    </div>
+                <div class="w-100"></div>
+                @foreach ($dados as $req)
+                        <div class="col-sm">
+                          {{$req['protocolo']}}
                         </div>
-                    @endforeach
-            @endforeach
-            </div>
+                        <div class="col-sm">
+                          {{$req['matricula']['matricula']}}
+                        </div>
+                        <div class="col-sm">
+                            {{$req['subtipo']['descricao']}}
+                        </div>
+                        <div class="col-sm">
+                          {{date('d-m-Y', strtotime($req['created_at']))}}
+                        </div>
+                        <div class="col-sm">
+                          {{$req['status']['situacao']}}
+                        </div>
+                        <div class="col-sm">
+                          <a href="{{route('requerimento.show', $req['id'])}}" class="btn btn-primary">Detalhes</a>
+                        </div>
+                        <div class="w-100"></div>
+                    @endforeach     
         </div>
     </div>
-
-  
 @endsection
