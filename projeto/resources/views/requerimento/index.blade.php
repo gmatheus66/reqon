@@ -3,10 +3,10 @@
 
 @section('content')
 
-	    <div class="container" id="cont">
-			<div class="d-flex align-items-center flex-column bd-highlight mb-3" style="height: 100px;">
-			  @if(session('success'))
-			  	<div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
+        <div class="container" id="cont">
+            <div class="d-flex align-items-center flex-column bd-highlight mb-3">
+              @if(session('success'))
+                <div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
               @endif
 
             @if(sizeof($matriculas) > 1)
@@ -46,6 +46,6 @@
 
             </div>
 
-		</div>
+        </div>
 
 @endsection

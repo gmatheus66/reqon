@@ -1,1 +1,1 @@
-<div class="footer">Desenvolvido pelos alunos do IFPE Igarassu - 2019</div>
+<div class="footer-copyright text-center py-3 footerClass">Desenvolvido pelos alunos do IFPE Igarassu</div>

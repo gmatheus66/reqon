@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -79,9 +80,9 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer class="footerClass">
+    </div>
+        <footer>
             @include('footer')
         </footer>
-    </div>
 </body>
 </html>

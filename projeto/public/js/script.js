@@ -129,7 +129,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/reni/github/reqon/projeto/resources/js/script.js */"./resources/js/script.js");
+module.exports = __webpack_require__(/*! /home/reni/github/a/reqon/projeto/resources/js/script.js */"./resources/js/script.js");
 
 
 /***/ })
