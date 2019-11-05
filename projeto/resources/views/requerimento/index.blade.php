@@ -10,6 +10,15 @@
               @endif
 
             @if(sizeof($matriculas) > 1)
+
+            @if($errors->any())
+                @foreach($errors->get('curso') as $message)
+                    <div class="alert alert-danger" role="alert">
+                        {{ $_GET['curso'] }}
+                    </div>
+                @endforeach
+            @endif
+
             <div class="div-req">
             <center>
               <form action="{{route('requerimento.create')}}" method="get">
