@@ -12,6 +12,7 @@ use App\Matricula;
 use App\Curso;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 
 class RequerimentoController extends Controller
@@ -41,14 +42,26 @@ class RequerimentoController extends Controller
 
         $tipo= Tipo::all();
         $curso = $request->get('curso');
-        //dd($tipo);
+
         return view('requerimento.create', compact('tipo','curso') );
     }
 
     public function store(Request $request){
 
+        //dd($request->get("curso"));
         if($request->get('curso')){
-            $matricula = Auth::user()->matriculas->where('curso_id', $request->get('curso'))->where('id', Auth::user()->id)->first();
+            $validator = Validator::make($request->all(), [
+                'curso'=>'required|numeric|min:1'
+            ]);
+            if ($validator->fails()) {
+                //dd($validator);
+                return redirect('/requerimento?curso=Selecione+Um+curso')
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+
+            $matricula = Auth::user()->matriculas->where('curso_id', $request->get('curso'))->where('aluno_id', Auth::user()->id)->first();
+            //dd($matricula);
         }
         else{
             $matricula = Auth::user()->matriculas->first();
@@ -86,7 +99,7 @@ class RequerimentoController extends Controller
 
     public function show($id){
 
-        $requerimento =  Requerimento::find(1)->where('id',$id)->where('matricula_id', Auth::user()->matriculas[0]->id)->get();
+        $requerimento =  Requerimento::find(1)->where('id',$id)->get();
         //dd(Auth::user()->matriculas[0]->id);
         return view('requerimento.show', compact('requerimento'));
     }
