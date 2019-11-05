@@ -22,7 +22,7 @@
             <div class="div-req">
             <center>
               <form action="{{route('requerimento.create')}}" method="get">
-                      <select class="browser-default custom-select custom-select-lg mb-3" name="curso" required>
+                      <select class="browser-default custom-select custom-select-lg" name="curso" required>
                               <option selected>Selecione Um curso</option>
                                 @foreach ($matriculas as $matricula)
                                     <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
@@ -38,9 +38,17 @@
             @endif
 
             @foreach($matriculas as $matricula)
-                <h3>Requerimentos do curso {{$matricula->curso->nome}}</h3>
+            <div class="accordion" id="accordionExample">
+              <div class="card">
+                <div class="card-header cardRequerimento row justify-content-center" id="headingOne">
+                    <button class="btn btn-link btn-Req " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <h3>Requerimentos do curso {{$matricula->curso->nome}}</h3>
+                    </button>
+                </div>
+                
                 @foreach($matricula->requerimentos as $requerimento)
-                    <div class="card cardRequerimento">
+                <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="cardRequerimento">
                         <h5 class="card-header">{{$requerimento->subtipo->descricao}}</h5>
                         <div class="card-body">
                             <h5 class="card-title">Matricula: {{$requerimento->matricula->matricula}}</h5>
@@ -51,10 +59,9 @@
                     </div>
                 @endforeach
             @endforeach
-
-
             </div>
-
         </div>
+    </div>
 
+  
 @endsection
