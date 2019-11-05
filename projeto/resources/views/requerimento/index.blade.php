@@ -46,18 +46,19 @@
                     </button>
                 </div>
                 
-                @foreach($matricula->requerimentos as $requerimento)
-                <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="cardRequerimento">
-                        <h5 class="card-header">{{$requerimento->subtipo->descricao}}</h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Matricula: {{$requerimento->matricula->matricula}}</h5>
-                            <p class="card-text">Status: {{$requerimento->status->situacao}}</p>
-                            <p class="card-text">Data: {{date('d-m-Y', strtotime($requerimento->created_at))}}</p>
-                        <a href="{{route('requerimento.show', $requerimento->id)}}" class="btn btn-primary">Detalhes</a>
+                    @foreach ($dados as $req)
+                    
+                        <div class="card cardRequerimento">
+                            <h5 class="card-header">{{$req['subtipo']['descricao']}}</h5>
+                            <div class="card-body">
+                                <h5 class="card-title">Matricula: {{$req['matricula']['matricula']}}</h5>
+                                <p class="card-text">Status: {{$req['status']['situacao']}}</p>
+                                <p class="card-text">Data: {{date('d-m-Y', strtotime($req['created_at']))}}</p>
+                                <p class="card-text">Descrição: {{$req['descricao']}}</p>
+                                <a href="{{route('requerimento.show', $req['id'])}}" class="btn btn-primary">Detalhes</a>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
             @endforeach
             </div>
         </div>
