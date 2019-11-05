@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if(session('success')=='foi')
+@if(session('success')==true)
 <div class="container">
     @foreach ($reqs as $req)
     <div class="card  bg-light mb-3">
