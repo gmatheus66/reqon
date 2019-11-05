@@ -23,15 +23,14 @@ class RequerimentoController extends Controller
     }
 
     public function index(){
-
         $matriculas = Auth::user()->matriculas->sort(function($m1, $m2) {
-            //return strcmp($m2->curso->nome, $m1->curso->nome);
             return strcmp($m1->curso->nome, $m2->curso->nome);
         });
+
         /*$matriculas = usort($matriculas, function($m1, $m2) {
             return strcmp($m1->curso->nome, $m2->curso->nome);
         });*/
-        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->get();
+        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
         //dd($dados);
         $test = Tipo::with('subtipos')->get();
         return view('requerimento.index',compact('matriculas','dados'));
