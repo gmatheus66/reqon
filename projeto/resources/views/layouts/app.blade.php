@@ -20,7 +20,6 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
