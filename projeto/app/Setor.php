@@ -20,4 +20,7 @@ class Setor extends Model
     public function funcionario(){
         return $this->belongsToMany('App\Funcionario');
     }
+    public function requerimento(){
+        return $this->belongsTo('App\Requerimento');
+    }
 }
