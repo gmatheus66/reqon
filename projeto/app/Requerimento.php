@@ -37,5 +37,8 @@ class Requerimento extends Model
 
     public function status() {
         return $this->belongsTo('App\Status');
+    }
+    public function setor() {
+        return $this->belongsTo('App\Setor');
      }
 }
