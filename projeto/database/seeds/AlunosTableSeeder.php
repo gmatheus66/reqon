@@ -23,8 +23,8 @@ class AlunosTableSeeder extends Seeder
             'password'  => bcrypt('ipi2019'),
             'data_nasc' => $faker->date(),
             'cpf' => $faker->unique()->numerify('###########'),
-        ],
-    );
+        ]);
+        
         Aluno::create([
             'nome'      => 'Aluno2',
             'email'     => 'aluno2@login',
