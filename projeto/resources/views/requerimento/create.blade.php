@@ -1,10 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+<div class="container">
+
+    <nav aria-label ="breadcrumb">
+            <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/requerimento">Requerimento</a></li>
+            </ol>
+        </nav>
+
         <div class="col-sm-8 offset-sm-2">
 			<h1 class="display-6">Criar um requerimento</h1>
 	    <div>
+
         <form action="{{ route('requerimento.store') }}" method="post">
             @csrf
             <p class="infoP">Escolha um tipo de requerimento</p>
@@ -68,9 +77,6 @@
             <button type="submit" class="btn btn-primary btn-lg btn-req">Criar requerimento</button>
 
         </form>
-
-
-
 
     </div>
 @endsection
