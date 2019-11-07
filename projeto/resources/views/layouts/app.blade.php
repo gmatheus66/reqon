@@ -26,9 +26,11 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm navClass">
+
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('','ReqOn') }}
+
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -75,6 +77,12 @@
                 </div>
             </div>
         </nav>
+        <nav aria-label ="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            </ol>
+        </nav>
+
 
         <main class="py-4">
             @yield('content')
