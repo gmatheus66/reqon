@@ -47,6 +47,9 @@
                         <div class="col-sm">
                           Setor
                         </div>
+                        <div class="col-sm">
+                          Descrição
+                        </div>
                         <div class="w-100"></div>
 
                         <div class="col-sm">
@@ -78,6 +81,9 @@
                         </div>
                         <div class="col-sm">
                             {{$req['setor']['nome']}}
+                        </div>
+                        <div class="col-sm">
+                            {{$req['descricao']}}
                         </div>
                     </div>
                     @endforeach
