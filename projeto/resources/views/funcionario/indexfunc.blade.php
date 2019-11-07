@@ -9,20 +9,41 @@
               <li class="breadcrumb-item active" aria-current="page">Requerimento</li>
           </ol>
     </nav>
+    <div class="container">
+              <div class="row">
+                    <div class="col-sm">
+                      Protocolo
+                    </div>
+                    <div class="col-sm">
+                      Matrícula
+                    </div>
+                    <div class="col-sm">
+                      Status
+                    </div>
+                    <div class="col-sm">
+                      Data
+                    </div>
+                    <div class="col-sm">
+                      Ação
+                    </div>
+                    <div class="w-100"></div>
     @foreach ($reqs as $req)
-    <div class="card  bg-light mb-3">
-        <h5 class="card-header">{{ $req['subtipo']->descricao }}</h5>
-            <div class="card-body">
-                <div class="style">
-                    <p>Protocolo: {{ $req["protocolo"] }}</p>
-                    <p>Matricula: {{ $req["matricula"]->matricula }}</p>
-                    <p>Status: {{ $req["status"]->situacao }}</p>
-                    <p>Data: {{date('d-m-Y', strtotime($req->created_at))}}</p>
-                <a href="{{ route('showreqfunc',$req->id)}}" class="btn btn-primary">Detalhes</a>
-                </div>
-            </div>
-    </div>
-
+                    <div class="col-sm">
+                          {{$req['protocolo']}}
+                        </div>
+                        <div class="col-sm">
+                          {{$req['matricula']['matricula']}}
+                        </div>
+                        <div class="col-sm">
+                            {{$req['matricula']['status']}}
+                        </div>
+                        <div class="col-sm">
+                          {{date('d-m-Y', strtotime($req['created_at']))}}
+                        </div>
+                        <div class="col-sm">
+                          <a href="{{route('showreqfunc', $req['id'])}}" class="btn btn-primary">Detalhes</a>
+                        </div>
+                        <div class="w-100"></div>
         @endforeach
     @else
         @php
