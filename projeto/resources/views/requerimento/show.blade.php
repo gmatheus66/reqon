@@ -5,13 +5,15 @@
       <div class="container">
         <nav aria-label ="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Início</a></li>
+              <li class="breadcrumb-item"><a href="/">Início</a></li>
+              <li class="breadcrumb-item"><a href="/requerimento">Requerimento</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Detalhes</li>
           </ol>
         </nav>
       </div>
 
 	    <div class="container" id="cont">
-			<div class="container-fluid">
+			 <div class="container-fluid">
                 @if($requerimento)
                     @foreach ($requerimento as $req)
 
