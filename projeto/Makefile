@@ -1,6 +1,7 @@
 server:
 	composer update
 	php artisan migrate:fresh --seed
+	npm install
 	php artisan serve
 
 conf-git-reni:
