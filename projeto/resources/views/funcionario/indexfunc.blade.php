@@ -3,6 +3,12 @@
 @section('content')
 @if(session('success')==true)
 <div class="container">
+    <nav aria-label ="breadcrumb">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Início</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Requerimento</li>
+          </ol>
+    </nav>
     @foreach ($reqs as $req)
     <div class="card  bg-light mb-3">
         <h5 class="card-header">{{ $req['subtipo']->descricao }}</h5>
