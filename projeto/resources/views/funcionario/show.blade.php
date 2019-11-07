@@ -10,33 +10,76 @@
         </nav>
     </div>
 	    <div class="container" id="cont">
-			<div class="container-fluid">
+             <div class="container-fluid">
                 @if($requerimento)
                     @foreach ($requerimento as $req)
 
                     <div class="row">
-                        <div class="col-lg-12 mb-4">
-                            <!-- Card -->
-                            <div class="card ex8-card">
-                            <!-- Card content -->
-
-                            <div class="card-body">
-                                <!-- Title -->
-                                <h4 class="card-title"><a>{{$req->subtipo->descricao}}</a></h4>
-                                <h6 class="card-title">Protocolo: {{$req->protocolo}}</h6>
-                                <h6 class="card-title">Data: {{date('d-m-Y', strtotime($req->created_at))}}</h6>
-                                <!-- Text -->
-                                <p class="card-text">Descricao: {{$req->descricao}}</p>
-                                <p class="card-text">Status: {{$req->status->situacao}}</p>
-                            </div>
-                            </div>
-                            <!-- Card -->
+                        <div class="col-sm">
+                          Protocolo
                         </div>
+                        <div class="col-sm">
+                          Matrícula
+                        </div>
+                        <div class="col-sm">
+                          Nome do Aluno
+                        </div>
+                        <div class="col-sm">
+                          Curso
+                        </div>
+                        <div class="col-sm">
+                          Tipo
+                        </div>
+                        <div class="col-sm">
+                          Data
+                        </div>
+                        <div class="col-sm">
+                          Situação
+                        </div>
+                        <div class="col-sm">
+                          Semestre
+                        </div>
+                        <div class="col-sm">
+                          Status da matrícula
+                        </div>
+                        <div class="col-sm">
+                          Setor
+                        </div>
+                        <div class="w-100"></div>
+
+                        <div class="col-sm">
+                          {{$req['protocolo']}}
+                        </div>
+                        <div class="col-sm">
+                          {{$req['matricula']['matricula']}}
+                        </div>
+                        <div class="col-sm">
+                          {{$req->matricula->aluno->nome}}
+                        </div>
+                        <div class="col-sm">
+                          {{$req->matricula->curso->nome}}
+                        </div>
+                        <div class="col-sm">
+                          {{$req['subtipo']['descricao']}}
+                        </div>
+                        <div class="col-sm">
+                          {{date('d-m-Y', strtotime($req['created_at']))}}
+                        </div>
+                        <div class="col-sm">
+                            {{$req['status']['situacao']}}
+                        </div>
+                        <div class="col-sm">
+                            {{$req['matricula']['semestre']}}
+                        </div>
+                        <div class="col-sm">
+                            {{$req['matricula']['status']}}
+                        </div>
+                        <div class="col-sm">
+                            {{$req['setor']['nome']}}
+                        </div> 
                     </div>
-                        @endforeach
-                 @endif
+                    @endforeach
+                @endif
             </div>
-
-		</div>
-
+        </div>
 @endsection
