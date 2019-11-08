@@ -15,6 +15,16 @@
 			<h1 class="display-6">Criar um requerimento</h1>
 	    <div>
 
+
+
+            @if($errors->any())
+                @foreach($errors->get('crs') as $message)
+                    <div class="alert alert-danger" role="alert">
+                        {{ $_GET['crs'] }}
+                    </div>
+                @endforeach
+            @endif
+
         <form action="{{ route('requerimento.store') }}" method="post">
             @csrf
             <p class="infoP">Escolha um tipo de requerimento</p>
@@ -24,6 +34,17 @@
                       {{ $message }}
                     </div>
                      @endforeach
+                @endif
+                @if(sizeof($matriculas) > 1)
+                    <div class="select">
+                    <select class="browser-default custom-select custom-select-lg" name="crs" required>
+                        <option selected>Selecione Um curso</option>
+                          @foreach ($matriculas as $matricula)
+                              <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
+                          @endforeach
+
+                    </select>
+                    </div>
                 @endif
             <ul class="nav nav-tabs abas" id="myTab" role="tablist">
                 @foreach($tipo as $tp)
