@@ -17,33 +17,10 @@
                 <div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
               @endif
 
-            @if(sizeof($matriculas) > 1)
-
-            @if($errors->any())
-                @foreach($errors->get('curso') as $message)
-                    <div class="alert alert-danger" role="alert">
-                        {{ $_GET['curso'] }}
-                    </div>
-                @endforeach
-            @endif
-
             <div class="div-req">
-            <center>
-              <form action="{{route('requerimento.create')}}" method="get">
-                      <select class="browser-default custom-select custom-select-lg" name="curso" required>
-                              <option selected>Selecione Um curso</option>
-                                @foreach ($matriculas as $matricula)
-                                    <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
-                                @endforeach
 
-                      </select>
-                        <button class="btn btn-outline-primary" id="criarReq"><a class="linkBtn" href="{{ route('requerimento.create')}}">Criar Requerimento</a></button>
-              </form>
-            </center>
-            </div>
-            @else
                 <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>
-            @endif
+            </div>
             <div class="container">
               <div class="row">
                     <div class="col-sm">
@@ -85,7 +62,7 @@
                           <a href="{{route('requerimento.show', $req['id'])}}" class="btn btn-primary">Detalhes</a>
                         </div>
                         <div class="w-100"></div>
-                    @endforeach     
+                    @endforeach
         </div>
     </div>
 @endsection
