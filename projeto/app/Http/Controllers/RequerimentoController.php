@@ -42,24 +42,28 @@ class RequerimentoController extends Controller
         $tipo= Tipo::all();
         $curso = $request->get('curso');
 
-        return view('requerimento.create', compact('tipo','curso') );
+        $matriculas = Auth::user()->matriculas->sort(function($m1, $m2) {
+            return strcmp($m1->curso->nome, $m2->curso->nome);
+        });
+        //dd($matriculas);
+        return view('requerimento.create', compact('tipo','curso','matriculas') );
     }
 
     public function store(Request $request){
 
-        //dd($request->get("curso"));
-        if($request->get('curso')){
+        //dd($request->get('crs'));
+        if($request->get('crs')){
             $validator = Validator::make($request->all(), [
-                'curso'=>'required|numeric|min:1'
+                'crs'=>'required|numeric|min:1'
             ]);
             if ($validator->fails()) {
                 //dd($validator);
-                return redirect('/requerimento?curso=Selecione+Um+curso')
+                return redirect('/requerimento/create?crs=Selecione+Um+curso')
                             ->withErrors($validator)
                             ->withInput();
             }
 
-            $matricula = Auth::user()->matriculas->where('curso_id', $request->get('curso'))->where('aluno_id', Auth::user()->id)->first();
+            $matricula = Auth::user()->matriculas->where('curso_id', $request->get('crs'))->where('aluno_id', Auth::user()->id)->first();
             //dd($matricula);
         }
         else{
@@ -68,6 +72,7 @@ class RequerimentoController extends Controller
         $setor = Setor::find(1);
         $str = $setor->id;
         $mtr = $matricula->id;
+
 
         $validator = Validator::make($request->all(), [
             'descricao'=>'required',
