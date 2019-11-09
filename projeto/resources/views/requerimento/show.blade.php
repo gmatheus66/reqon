@@ -11,6 +11,12 @@
           </ol>
         </nav>
       </div>
+          <center>
+            <div class="div-req">
+                <a href="{{ route('requerimento.create')}}"><button class="btnReq linkBtn btn btn-outline-primary">Criar requerimento</button></a>
+                <a href="{{ route('requerimento.index')}}"><button class="btnReq linkBtn btn btn-outline-primary">Meus requerimentos</button></a>
+            </div>
+          </center>
 
 	    <div class="container" id="cont">
 			 <div class="container-fluid">

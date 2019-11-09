@@ -11116,6 +11116,10 @@ a.text-dark:focus {
   color: #000;
 }
 
+.container .select {
+  margin-bottom: 3%;
+}
+
 .navClass {
   background-color: #00061a;
 }
@@ -11193,6 +11197,11 @@ body {
 
 #criarReq {
   width: 400px;
+  background-color: #3490dc;
+  margin: 3%;
+}
+
+.btnReq {
   background-color: #3490dc;
   margin: 3%;
 }
