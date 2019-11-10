@@ -36,6 +36,19 @@ class RequerimentoController extends Controller
         return view('requerimento.index',compact('matriculas','dados'));
     }
 
+    public function search(Request $request){
+        $input = $request->all();
+        $val = $input['tipo'];
+
+        // $data = DB::select('select * from requerimentos where descrição = ?', $val);
+        $dados = Requerimento::where('descricao', $val)->get();
+        foreach ($dados as $key) {
+            // dd($key->descricao);
+            # code...
+        }
+
+        return view('requerimento.index', compact('dados'));
+    }
 
     public function create(Request $request){
 
