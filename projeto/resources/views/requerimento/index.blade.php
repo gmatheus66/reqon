@@ -2,6 +2,10 @@
 
 
 @section('content')
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
       <div class="container">
         <nav aria-label ="breadcrumb">
           <ol class="breadcrumb">
@@ -19,6 +23,30 @@
             <div>
 
                 <form action="{{route('pesquisar')}}" method="post">
+                    <script>
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-Token': $('input[name="_token"]').val()
+                            }
+                        });
+
+                        $('#criarReq').click( (el) => {
+                            el.preventDefault();
+
+                            var nome = jQuery('#tipo').val();
+
+                            $.ajax({
+                                type: 'post',
+                                data: {
+                                    nome: nome
+                                },
+                                success: (data) => {
+                                    alert(data.success);
+                                }
+                            })
+                        });
+
+                    </script>
                     @csrf
                         <div class="form-group">
                             <label for="tipo">Filtro</label>
@@ -26,6 +54,7 @@
                         </div>
                         <button type="submit" class="linkBtn btn btn-outline-primary" id="criarReq">Filtrar</button>
                 </form>
+
             </div>
                     <div class="div-req">
 
