@@ -16,8 +16,18 @@
               @if(session('success'))
                 <div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
               @endif
+            <div>
 
-            <div class="div-req">
+                <form action="{{route('pesquisar')}}" method="post">
+                    @csrf
+                        <div class="form-group">
+                            <label for="tipo">Filtro</label>
+                            <input type="text" name="tipo" class="form-control" id="tipo" placeholder="Filtrar por Tipo">
+                        </div>
+                        <button type="submit" class="linkBtn btn btn-outline-primary" id="criarReq">Filtrar</button>
+                </form>
+            </div>
+                    <div class="div-req">
 
                 <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>
             </div>
