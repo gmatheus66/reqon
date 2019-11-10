@@ -18,17 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('func-login', ['as'=>'funcionario', 'use'=>'Auth\LoginController@loginFunc']);
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin');
-Route::get('requerimento/func/show/{id}', 'FuncionarioController@show')->name('showreqfunc');
 
+Route::get('requerimento/func/show/{id}', 'FuncionarioController@show')->name('showreqfunc');
+Route::resource('registerfunc', 'FuncionarioController');
+Route::apiResource('registerfunc','FuncionarioController');
 Route::get('/indexfunc', 'FuncionarioController@index')->name('func');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('registerfunc', 'FuncionarioController');
-
-Route::apiResource('registerfunc','FuncionarioController');
-
 Route::resource('requerimento', 'RequerimentoController');
-
 Route::apiResource('requerimento','RequerimentoController');
-
+Route::post('/pesquisar', 'RequerimentoController@search')->name('pesquisar');
