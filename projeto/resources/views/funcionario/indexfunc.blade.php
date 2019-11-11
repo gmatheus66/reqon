@@ -9,6 +9,18 @@
               <li class="breadcrumb-item active" aria-current="page">Requerimento</li>
           </ol>
     </nav>
+    <div>
+
+        <form action="{{route('pesquisarfunc')}}" method="post">
+            @csrf
+                <div class="form-group">
+                    <label for="tipo">Filtro</label>
+                    <input type="text" name="tipo" class="form-control" id="tipo" placeholder="Filtrar por Tipo">
+                </div>
+                <button type="submit" class="linkBtn btn btn-outline-primary" id="criarReq">Filtrar</button>
+        </form>
+
+    </div>
     <div class="container">
               <div class="row">
                     <div class="col-sm">
