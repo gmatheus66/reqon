@@ -23,30 +23,6 @@
             <div>
 
                 <form action="{{route('pesquisar')}}" method="post">
-                    <script>
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-Token': $('input[name="_token"]').val()
-                            }
-                        });
-
-                        $('#criarReq').click( (el) => {
-                            el.preventDefault();
-
-                            var nome = jQuery('#tipo').val();
-
-                            $.ajax({
-                                type: 'post',
-                                data: {
-                                    nome: nome
-                                },
-                                success: (data) => {
-                                    alert(data.success);
-                                }
-                            })
-                        });
-
-                    </script>
                     @csrf
                         <div class="form-group">
                             <label for="tipo">Filtro</label>
