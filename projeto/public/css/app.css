@@ -11276,3 +11276,17 @@ body {
   text-decoration: none;
 }
 
+#breadcrumb {
+  background-color: #f8fafc;
+  width: 50em;
+}
+
+#breadcrumb > span {
+  font-size: 1.3em;
+  font-family: "Arial";
+}
+
+#breadcrumb > span > a {
+  color: #000;
+}
+
