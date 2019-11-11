@@ -70,6 +70,7 @@ class FuncionarioController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
+
     protected function store(Request $request){
 
         $req = new Funcionario([
@@ -84,11 +85,21 @@ class FuncionarioController extends Controller
             'telefone' => $request->get('telefone'),
             'cargo' => $request->get('cargo'),
             'matricula' => $request->get('matricula'),
-        ]);
+            ]);
 
-        $req->save();
+            $req->save();
 
-        return view('home');
+            return view('home');
+    }
+
+    public function search(Request $request){
+        $req = $request->all();
+        $setor = Setor::all();
+        $tipo = $req['tipo'];
+        // dd($setor);
+        $reqs = Requerimento::where('descricao', $tipo)->get();
+        // echo "teste";
+        return view('funcionario.indexfunc',compact('reqs','setor'));
     }
 
     public function show($id){
