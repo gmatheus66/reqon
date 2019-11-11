@@ -38,15 +38,15 @@ class RequerimentoController extends Controller
 
     public function search(Request $request){
         $input = $request->all();
-        $val = $input['tipo'];
+        $tipo = $input['tipo'];
+        // $data = DB::select('select * from requerimentos where descrição = ?', $tipo);
 
-        // $data = DB::select('select * from requerimentos where descrição = ?', $val);
-        $dados = Requerimento::where('descricao', $val)->get();
-        foreach ($dados as $key) {
-            // dd($key->descricao);
-            # code...
-        }
-
+        $dados = Requerimento::where('descricao', $tipo)->get();
+        // foreach ($dados as $data) {
+        //     # code...
+        //     echo "teste";
+        // }
+        // exit();
         return view('requerimento.index', compact('dados'));
     }
 
