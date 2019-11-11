@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-light shadow-sm navClass">
 
-            <div class="container">
+            <div class="container"> 
+                <img id="logoSite" src="{{ asset('img/logoSite.png') }}">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('','ReqOn') }}
-
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

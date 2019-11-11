@@ -11121,16 +11121,21 @@ a.text-dark:focus {
 }
 
 .navClass {
-  background-color: #00c08e;
+  background-color: #37bf8f;
   height: 10vh;
+  border-bottom: 5px solid #269970;
 }
 
 .navbar-brand {
   color: white !important;
+  font-family: "Open Sans", sans-serif;
+  font-size: 4vh;
 }
 
 #navbarDropdown {
   color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.8vh;
 }
 
 .nav-link {
@@ -11139,6 +11144,10 @@ a.text-dark:focus {
 
 .nav-tabs .nav-link {
   border: 0px;
+}
+
+#logoSite {
+  width: 10vh;
 }
 
 html,
