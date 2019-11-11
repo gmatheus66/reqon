@@ -23,7 +23,7 @@ Route::get('requerimento/func/show/{id}', 'FuncionarioController@show')->name('s
 Route::resource('registerfunc', 'FuncionarioController');
 Route::apiResource('registerfunc','FuncionarioController');
 Route::get('/indexfunc', 'FuncionarioController@index')->name('func');
-Route::post('/pesquisarFunc', 'FuncionarioController@search')->name('pesquisarfunc');
+Route::post('/pesquisarfunc', 'FuncionarioController@search')->name('pesquisarfunc');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
