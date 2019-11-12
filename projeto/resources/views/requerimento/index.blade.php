@@ -17,14 +17,54 @@
                 <div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
               @endif
             <div>
+                <div class="div-req">
+
+                    <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>
+                </div>
 
                 <form action="{{route('pesquisar')}}" method="post">
                     @csrf
-                        <div class="form-group">
-                            <label for="tipo">Filtro</label>
-                            <input type="text" name="tipo" class="form-control" id="tipo" placeholder="Filtrar por Tipo">
+                    <div class="form-row">
+                        @if(sizeof($matriculas) > 1)
+                        <div class="form-group col-md-4 mb-3">
+                              <label for="Curso">Curso</label>
+                              <select class="form-control" id="Curso">
+                                  <option selected>Selecione um Curso</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                              </select>
                         </div>
-                        <button type="submit" class="linkBtn btn btn-outline-primary" id="criarReq">Filtrar</button>
+                        @endif
+                        <div class="form-group col-md-4 mb-3">
+                            <label for="situacao">Situção</label>
+                            <select class="form-control" id="situacao">
+                                <option selected>Selecione uma Situação</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-md-4 mb-3">
+                              <label for="procotolo">Protocolo</label>
+                              <input type="number" class="form-control" id="procotolo" placeholder="Data Final">
+                          </div>
+                        <div class="form-group col-md-4 mb-3">
+                            <label for="dateini">Data Inicial</label>
+                            <input type="date" class="form-control" id="dateini" placeholder="Data Inicial">
+                        </div>
+                        <div class="form-group col-md-4 mb-3">
+                            <label for="datend">Data Final</label>
+                            <input type="date" class="form-control" id="datend" placeholder="Data Final">
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary col-md-3 mb-3" id="criarReq">Filtrar</button>
+                    <button type="submit" class="btn btn-primary col-md-3 mb-3" id="criarReq">Limpar Filtro</button>
                 </form>
 
             </div>
