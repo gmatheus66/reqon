@@ -9,28 +9,33 @@
       <div class="container" id="breadcrumb">
               <span class="itemBread"><a href="/">Início</a> ></span>
               <span class="breadcrumb-item active itemBread" aria-current="page">Requerimento</span>
+
+                  <h1 class="titleReq">Meus requerimentos<a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary btnNewReq" id="criarReq"><img class="plus" src="/icon/plus.png" alt="icon name">Novo requerimento</button>
+                   </a></h1>
+                  
+
+               
+        <form action="{{route('pesquisar')}}" method="post">
+                    @csrf
+                        <div class="form-group">
+                            <h1 class="subTitleReq">Filtrar</h1>
+                            <input type="text" name="tipo" class="form-control" id="tipo" placeholder="Filtrar pela descrição">
+                        </div>
+                        <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
+                        <a href="#" class="linkFilter">Limpar filtro</a>
+                </form>
       </div>
 
         <div class="container" id="cont">
+
+
             <div class="d-flex align-items-center flex-column bd-highlight mb-3">
               @if(session('success'))
                 <div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
               @endif
-            <div>
-
-                <form action="{{route('pesquisar')}}" method="post">
-                    @csrf
-                        <div class="form-group">
-                            <label for="tipo">Filtro</label>
-                            <input type="text" name="tipo" class="form-control" id="tipo" placeholder="Filtrar por Tipo">
-                        </div>
-                        <button type="submit" class="linkBtn btn btn-outline-primary" id="criarReq">Filtrar</button>
-                </form>
-
-            </div>
                     <div class="div-req">
 
-                <a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary" id="criarReq">Criar Requerimento</button></a>
+                
             </div>
             <div class="container">
               <div class="row">

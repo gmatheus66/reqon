@@ -11208,7 +11208,6 @@ body {
 #criarReq {
   width: 400px;
   background-color: #3490dc;
-  margin: 3%;
 }
 
 .btnReq {
@@ -11251,6 +11250,7 @@ body {
 .linkBtn {
   color: white;
   text-decoration: none;
+  background-color: #37bf8f !important;
 }
 
 .linkBtn:hover {
@@ -11278,7 +11278,7 @@ body {
 
 #breadcrumb {
   background-color: #f8fafc;
-  width: 50em;
+  width: 65em;
 }
 
 #breadcrumb > span {
@@ -11288,5 +11288,56 @@ body {
 
 #breadcrumb > span > a {
   color: #000;
+}
+
+.titleReq {
+  color: #37bf8f;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  padding-top: 0.3em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid #37bf8f;
+}
+
+.subTitleReq {
+  color: #37bf8f;
+  font-family: "Open Sans", sans-serif;
+  padding-top: 1.5em;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+#tipo {
+  width: 50%;
+}
+
+.btnFilter {
+  width: 13em !important;
+  background-color: #2bb7df !important;
+  margin-left: 50% !important;
+  margin: 3%;
+}
+
+.linkFilter {
+  color: #2bb7df;
+  font-size: 1.2em;
+  padding-left: 1.5em;
+  font-family: "Arial", sans-serif;
+  margin: 3%;
+}
+
+.btnNewReq {
+  width: 17em !important;
+  height: 3em;
+  float: right;
+  margin: 0 !important;
+  font-size: 0.45em;
+  font-family: "Arial", sans-serif;
+}
+
+.plus {
+  width: 1.8em;
+  color: #fff;
+  float: left;
 }
 
