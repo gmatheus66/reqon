@@ -12,6 +12,16 @@ class StatusesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Status::class,50)->create();
+        DB::table('statuses')->insert([
+            [
+                'situacao' => 'Deferido'
+            ],
+            [
+                'situacao' => 'Indeferido'
+            ],
+            [
+                'situacao' => 'Parcialmente deferido'
+            ]
+        ]);
     }
 }
