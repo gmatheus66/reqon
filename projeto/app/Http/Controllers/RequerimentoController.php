@@ -35,40 +35,77 @@ class RequerimentoController extends Controller
         //dd($dados);
         $test = Tipo::with('subtipos')->get();
         $status = Status::all();
-        // dd($status);
+        //dd($status);
         return view('requerimento.index',compact('matriculas','dados', 'status'));
     }
 
     public function search(Request $request){
-        $input = $request->all();
-        // dd($input);
-        $situacao = $input['situacao'];
-        $protocolo = $input['protocolo'];
-        $data_ini = $input['data_ini'];
-
-        $dt = Requerimento::whereDate('created_at', '=', date($data_ini))->get();
-        // dd($dt);
-
-        $status = Status::where('id', )->get();
-
-        $exemplo = Requerimento::where('protocolo', '-1')->get();
-        $dados = Requerimento::where('protocolo', $protocolo)
-                                ->orWhereDate('created_at', '=', date($data_ini))
-                                ->get();
 
         $matriculas = Auth::user()->matriculas->sort(function($m1, $m2) {
             return strcmp($m1->curso->nome, $m2->curso->nome);
         });
 
-        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
         $status = Status::all();
 
+        $input = $request->all();
+        $situacao = $input['situacao'];
+        $protocolo = $input['protocolo'];
+        $data_ini = $input['data_ini'];
+
+        if($request->get('data_ini')){
+            $validator = Validator::make($request->all(), [
+                'data_ini' => 'date',
+            ]);
+            $dados = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
+            ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+            //dd($dados);
+        }
+        if($request->get('data_fin')){
+            $validator = Validator::make($request->all(), [
+                'data_fin' => 'date',
+            ]);
+            $dados = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
+            ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+           //dd($dados);
+        }
+        if($request->get('situacao') != "Selecione uma Situação"){
+            $validator = Validator::make($request->all(), [
+                'situacao'=>'numeric|min:1',
+            ]);
+            $dados = Requerimento::where('status_id', $request->get('situacao'))
+            ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+            //dd($dados);
+        }
+        if($request->get('protocolo')){
+            $validator = Validator::make($request->all(), [
+                'protocolo'=>'required|numeric|min:1'
+            ]);
+            $dados = Requerimento::where('protocolo', $protocolo)
+            ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+            //dd($dados);
+        }
+
+        if ($validator->fails()) {
+            //dd($validator);
+            return redirect('/requerimento?src=Selecione+um+filtro')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        //$status = Status::where('id', )->get();
+
+        $exemplo = Requerimento::where('protocolo', '-1')->get();
+        //dd($dados);
+
+
+        //$dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+
+        //dd($dados);
         if ($dados == $exemplo) {
             $msg = "Não foi possivel encontrar seu requerimento";
             return view('requerimento.index', compact('msg'));
             exit();
         }else{
-            return view('requerimento.index', compact('dados', 'matriculas', 'dados', 'status'));
+            return view('requerimento.index', compact('dados', 'matriculas', 'status'));
         }
 
         // dd($teste);
@@ -129,7 +166,7 @@ class RequerimentoController extends Controller
             'protocolo' => mt_rand(1,999999999),
             'descricao' => $request->get('descricao'),
             'subtipo_id' => $request->get('subtipo'),
-            'status_id' => 1,
+            'status_id' => 2,
             'req_pai_id' => null,
             'funcionario_id' => null,
             'setor_id' => $str,
@@ -144,8 +181,9 @@ class RequerimentoController extends Controller
     public function show($id){
 
         $requerimento =  Requerimento::find(1)->where('id',$id)->get();
-        //dd(Auth::user()->matriculas[0]->id);
-        return view('requerimento.show', compact('requerimento'));
+        $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento[0]->id)->get();
+        //dd($reqpai);
+        return view('funcionario.show', compact('requerimento', 'setor','reqpai'));
     }
 
     public function update(Request $request){
