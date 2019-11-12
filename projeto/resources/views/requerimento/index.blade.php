@@ -77,58 +77,30 @@
       </div>
 
         <div class="container" id="cont">
-
-
-            <div class="d-flex align-items-center flex-column bd-highlight mb-3">
-              @if(session('success'))
-                <div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
-              @endif
-                    <div class="div-req">
-
-
-            </div>
-            <div class="container">
-              <div class="row">
-                    <div class="col-sm">
-                      Protocolo
-                    </div>
-                    <div class="col-sm">
-                      Matrícula
-                    </div>
-                    <div class="col-sm">
-                      Tipo
-                    </div>
-                    <div class="col-sm">
-                      Data
-                    </div>
-                    <div class="col-sm">
-                      Situação
-                    </div>
-                    <div class="col-sm">
-                      Ação
-                    </div>
-                <div class="w-100"></div>
-                @foreach ($dados as $req)
-                        <div class="col-sm">
-                          {{$req['protocolo']}}
-                        </div>
-                        <div class="col-sm">
-                          {{$req['matricula']['matricula']}}
-                        </div>
-                        <div class="col-sm">
-                            {{$req['subtipo']['descricao']}}
-                        </div>
-                        <div class="col-sm">
-                          {{date('d-m-Y', strtotime($req['created_at']))}}
-                        </div>
-                        <div class="col-sm">
-                          {{$req['status']['situacao']}}
-                        </div>
-                        <div class="col-sm">
-                          <a href="{{route('requerimento.show', $req['id'])}}" class="btn btn-primary">Detalhes</a>
-                        </div>
-                        <div class="w-100"></div>
+            <table class="table tableA">
+              <thead class="table-active tableHead">
+                <tr>
+                  <th scope="col-6">Nº do protocolo</th>
+                  <th scope="col">Matrícula</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Situação</th>
+                  <th scope="col">Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                  @foreach ($dados as $req)
+                    <tr>
+                      <th scope="row">{{$req['protocolo']}}</th>
+                      <td>{{$req['matricula']['matricula']}}</td>
+                      <td>{{$req['subtipo']['descricao']}}</td>
+                      <td>{{date('d-m-Y', strtotime($req['created_at']))}}</td>
+                      <td>{{$req['status']['situacao']}}</td>
+                      <td><a href="{{route('requerimento.show', $req['id'])}}" class="btn btn-primary btnDetalhes">Detalhes</a></td>
+                    </tr>  
                     @endforeach
+                    </tbody>
+                  </table>
         </div>
     </div>
 @endsection

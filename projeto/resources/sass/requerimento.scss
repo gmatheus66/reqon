@@ -4,6 +4,10 @@
 	background-color: #37bf8f!important;
 }
 .linkBtn:hover{
+	background-color: #299972!important;
+}
+
+.linkBtn:hover{
 	color:white;
 	text-decoration:none;
 }
@@ -57,6 +61,9 @@
 	margin-left:50%!important;
 	margin:3%;
 }
+.btnFilter:hover{
+	background-color: #2196b8!important;
+}
 .linkFilter{
 	color:#2bb7df;
 	font-size:1.2em;
@@ -76,4 +83,15 @@
 	width:1.8em;
 	color:#fff;
 	float:left;
+}
+.tableHead{
+	border-top:2px solid $verde;
+	background-color: #f0f0f0;
+}
+.btnDetalhes{
+	width:14vh;
+	background-color:$verde;
+}
+.btnDetalhes:hover{
+	background-color:#299972;
 }
