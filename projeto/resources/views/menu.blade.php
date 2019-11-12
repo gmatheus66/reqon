@@ -34,7 +34,7 @@
 
                         @if(Route::is('requerimento.create'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('requerimento.index') }}">{{ __('Meus Requerimentos') }}</a>
+                            <a class="nav-link" id="navbarDropdown" href="{{ route('requerimento.index') }}">{{ __('Meus Requerimentos') }}</a>
                         </li>
                         @endif
 
