@@ -6,6 +6,32 @@ html, body {
   min-height:100%;
 }
 .footerClass{
-  background-color: #00061a;
+  background-color: $verde;
   color:#fff;
+}
+.a{
+	width:100%!important;
+}
+.desc{
+	font-size:1.2em;
+	margin-top:10%;
+}
+.footerL{
+	margin-top:10%;
+	margin-left:40%;
+	width:14vh;
+}
+.titleFooter{
+	color:#b2ffe4;
+}
+.linkFooter a{
+	font-size:1.3em;
+	color:#fff;
+}
+.linkFooter:hover{
+	color:#fff;
+}
+#logoIF{
+	width:20em;
+	margin-top:10%;
 }
