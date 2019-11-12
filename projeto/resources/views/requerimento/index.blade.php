@@ -36,13 +36,11 @@
                                 <label for="Curso">Curso</label>
                                 <select class="form-control" id="Curso">
                                     <option selected>Selecione um Curso</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    @foreach ($matriculas as $matricula)
+                                    <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
+                                    @endforeach
                                 </select>
-                            </div>
+                            </div> 
 
                         @endif
 
