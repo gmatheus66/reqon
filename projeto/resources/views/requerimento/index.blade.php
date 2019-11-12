@@ -2,10 +2,6 @@
 
 
 @section('content')
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous">
-    </script>
       <div class="container" id="breadcrumb">
               <span class="itemBread"><a href="/">Início</a> ></span>
               <span class="breadcrumb-item active itemBread" aria-current="page">Requerimento</span>
@@ -14,7 +10,11 @@
                   <h1 class="titleReq">Meus requerimentos<a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary btnNewReq" id="criarReq"><img class="plus" src="/icon/plus.png" alt="icon name">Novo requerimento</button>
                    </a></h1>
 
-
+                   @if($errors->any())
+                   <div class="alert alert-danger" role="alert">
+                        {{$_GET['src']}}
+                    </div>
+                    @endif
         <div class="container" id="cont">
             <div class="d-flex align-items-center flex-column bd-highlight mb-3">
               @if(session('success'))
@@ -51,7 +51,7 @@
                             <select name="situacao" class="form-control" id="situacao">
                                 <option selected>Selecione uma Situação</option>
                                 @foreach ($status as $stt)
-                                    <option selected><?= $stt['situacao'] ?></option>
+                            <option value="{{$stt->id}}" >{{$stt->situacao}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -73,7 +73,7 @@
 
                     </div>
                     <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
-                    <a href="#" class="linkFilter">Limpar filtro</a>
+                <a href="{{ route('requerimento.index')}}" class="linkFilter">Limpar filtro</a>
 
                 </form>
       </div>
