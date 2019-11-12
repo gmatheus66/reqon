@@ -76,5 +76,51 @@
                     @endforeach
                 @endif
             </div>
+            <hr class="my-4">
+            <div class="" id="cont">
+                 <div class="container-fluid">
+                     @if($reqpai)
+                        @foreach ($reqpai as $req)
+
+                        <div class="row">
+
+                            <div class="col-sm">
+                              {{$req['protocolo']}}
+                            </div>
+                            <div class="col-sm">
+                              {{$req['matricula']['matricula']}}
+                            </div>
+                            <div class="col-sm">
+                                {{$req->matricula->aluno->nome}}
+                            </div>
+                            <div class="col-sm">
+                              {{$req->matricula->curso->nome}}
+                            </div>
+                            <div class="col-sm">
+                              {{$req['subtipo']['descricao']}}
+                            </div>
+                            <div class="col-sm">
+                                {{date('d-m-Y', strtotime($req['created_at']))}}
+                            </div>
+                            <div class="col-sm">
+                                {{$req['status']['situacao']}}
+                            </div>
+                            <div class="col-sm">
+                                {{$req['matricula']['semestre']}}
+                            </div>
+                            <div class="col-sm">
+                                {{$req['matricula']['status']}}
+                            </div>
+                            <div class="col-sm">
+                                {{$req['setor']['nome']}}
+                            </div>
+                            <div class="col-sm">
+                                {{$req['descricao']}}
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
+                </div>
+
         </div>
 @endsection
