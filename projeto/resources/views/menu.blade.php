@@ -28,6 +28,16 @@
                                 </li>
                             @endif
                         @else
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{{ route('requerimento.create') }}">{{ __('Novo requerimento') }}</a>
+                        </li> -->
+
+                        @if(Route::is('requerimento.create'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('requerimento.index') }}">{{ __('Meus Requerimentos') }}</a>
+                        </li>
+                        @endif
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nome }} <span class="caret"></span>
@@ -35,8 +45,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
                                         {{ __('Sair') }}
                                     </a>
 
