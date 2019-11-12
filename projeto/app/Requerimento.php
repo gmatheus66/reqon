@@ -22,7 +22,7 @@ class Requerimento extends Model
     protected $guarded = [
         'id',
         'created_at',
-        'update_at'
+        'updated_at'
     ];
 
     public function matricula(){
