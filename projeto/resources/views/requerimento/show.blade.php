@@ -3,12 +3,10 @@
 
 @section('content')
       <div class="container">
-        <nav aria-label ="breadcrumb">
-          <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Início</a></li>
-              <li class="breadcrumb-item"><a href="/requerimento">Requerimento</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Detalhes</li>
-          </ol>
+          <div class="container" id="breadcrumb">
+            <span class="itemBread"><a href="/">Início</a> ></span>
+            <span class="itemBread"><a href="/">Requimentos</a> ></span>
+            <span class="breadcrumb-item active itemBread" aria-current="page">Detalhes </span>
         </nav>
       </div>
           <center>
@@ -73,7 +71,7 @@
                         </div>
                         <div class="col-sm">
                             {{$req['setor']['nome']}}
-                        </div> 
+                        </div>
                     </div>
                     @endforeach
                 @endif
