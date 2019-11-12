@@ -10,10 +10,11 @@ use App\Tipo;
 use App\Aluno;
 use App\Matricula;
 use App\Curso;
+use App\Status;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-
+use SebastianBergmann\CodeCoverage\Node\Builder;
 
 class RequerimentoController extends Controller
 {
@@ -33,20 +34,46 @@ class RequerimentoController extends Controller
         $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
         //dd($dados);
         $test = Tipo::with('subtipos')->get();
-        return view('requerimento.index',compact('matriculas','dados'));
+        $status = Status::all();
+        // dd($status);
+        return view('requerimento.index',compact('matriculas','dados', 'status'));
     }
 
     public function search(Request $request){
         $input = $request->all();
-        $tipo = $input['tipo'];
-        // $data = DB::select('select * from requerimentos where descrição = ?', $tipo);
+        // dd($input);
+        $situacao = $input['situacao'];
+        $protocolo = $input['protocolo'];
+        $data_ini = $input['data_ini'];
+
+        $dt = Requerimento::whereDate('created_at', '=', date($data_ini))->get();
+        // dd($dt);
+
+        $status = Status::where('id', )->get();
+
+        $exemplo = Requerimento::where('protocolo', '-1')->get();
+        $dados = Requerimento::where('protocolo', $protocolo)
+                                ->orWhereDate('created_at', '=', date($data_ini))
+                                ->get();
+
+        $matriculas = Auth::user()->matriculas->sort(function($m1, $m2) {
+            return strcmp($m1->curso->nome, $m2->curso->nome);
+        });
+
+        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+        $status = Status::all();
+
+        if ($dados == $exemplo) {
+            $msg = "Não foi possivel encontrar seu requerimento";
+            return view('requerimento.index', compact('msg'));
+            exit();
+        }else{
+            return view('requerimento.index', compact('dados', 'matriculas', 'dados', 'status'));
+        }
+
+        // dd($teste);
 
         $dados = Requerimento::where('descricao', $tipo)->get();
-        // foreach ($dados as $data) {
-        //     # code...
-        //     echo "teste";
-        // }
-        // exit();
         return view('requerimento.index', compact('dados'));
     }
 
