@@ -3,13 +3,10 @@
 @section('content')
 <div class="container">
 
-    <nav aria-label ="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Início</a></li>
-            <li class="breadcrumb-item"><a href="/requerimento">Requerimento</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Criação do requerimento</li>
-        </ol>
-    </nav>
+<div class="container" id="breadcrumb">
+            <span class="itemBread"><a href="/">Início</a> ></span>
+            <span class="itemBread"><a href="/requerimento">Requimentos</a> ></span>
+            <span class="breadcrumb-item active itemBread" aria-current="page">Criação de Requerimento</span>
 
         <div class="col-sm-8 offset-sm-2">
 			<h1 class="display-6">Criar um requerimento</h1>
