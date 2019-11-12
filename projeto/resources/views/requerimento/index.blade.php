@@ -13,7 +13,7 @@
 
                   <h1 class="titleReq">Meus requerimentos<a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary btnNewReq" id="criarReq"><img class="plus" src="/icon/plus.png" alt="icon name">Novo requerimento</button>
                    </a></h1>
-                  
+
 
         <div class="container" id="cont">
             <div class="d-flex align-items-center flex-column bd-highlight mb-3">
@@ -23,16 +23,13 @@
             <div>
 
 
-               
+
         <form action="{{route('pesquisar')}}" method="post">
                     @csrf
 
                         <div class="form-group">
                             <h1 class="subTitleReq">Filtrar</h1>
-                            <input type="text" name="tipo" class="form-control" id="tipo" placeholder="Filtrar pela descrição">
                         </div>
-                        <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
-                        <a href="#" class="linkFilter">Limpar filtro</a>
 
                     <div class="form-row">
                         @if(sizeof($matriculas) > 1)
@@ -61,7 +58,7 @@
                           </div>
                           <div class="form-group col-md-4 mb-3">
                               <label for="procotolo">Protocolo</label>
-                              <input type="number" class="form-control" id="procotolo" placeholder="Data Final">
+                              <input type="number" class="form-control" id="procotolo" placeholder="Protocolo">
                           </div>
                         <div class="form-group col-md-4 mb-3">
                             <label for="dateini">Data Inicial</label>
@@ -73,8 +70,9 @@
                         </div>
 
                     </div>
-                    <button type="submit" class="btn btn-primary col-md-3 mb-3" id="criarReq">Filtrar</button>
-                    <button type="submit" class="btn btn-primary col-md-3 mb-3" id="criarReq">Limpar Filtro</button>
+                    <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
+                        <a href="#" class="linkFilter">Limpar filtro</a>
+
                 </form>
       </div>
 
@@ -87,7 +85,7 @@
               @endif
                     <div class="div-req">
 
-                
+
             </div>
             <div class="container">
               <div class="row">
