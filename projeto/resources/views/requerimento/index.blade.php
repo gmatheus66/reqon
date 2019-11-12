@@ -22,9 +22,7 @@
               @endif
             <div>
 
-
-
-        <form action="{{route('pesquisar')}}" method="post">
+                <form action="{{route('pesquisar')}}" method="post">
                     @csrf
 
                         <div class="form-group">
@@ -33,45 +31,49 @@
 
                     <div class="form-row">
                         @if(sizeof($matriculas) > 1)
-                        <div class="form-group col-md-4 mb-3">
-                              <label for="Curso">Curso</label>
-                              <select class="form-control" id="Curso">
-                                  <option selected>Selecione um Curso</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                              </select>
-                        </div>
+
+                            <div class="form-group col-md-4 mb-3">
+                                <label for="Curso">Curso</label>
+                                <select class="form-control" id="Curso">
+                                    <option selected>Selecione um Curso</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
                         @endif
+
                         <div class="form-group col-md-4 mb-3">
                             <label for="situacao">Situção</label>
-                            <select class="form-control" id="situacao">
+                            <select name="situacao" class="form-control" id="situacao">
                                 <option selected>Selecione uma Situação</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
+                                @foreach ($status as $stt)
+                                    <option selected><?= $stt['situacao'] ?></option>
+                                @endforeach
                             </select>
-                          </div>
-                          <div class="form-group col-md-4 mb-3">
-                              <label for="procotolo">Protocolo</label>
-                              <input type="number" class="form-control" id="procotolo" placeholder="Protocolo">
-                          </div>
+                        </div>
+
+                        <div class="form-group col-md-4 mb-3">
+                            <label for="procotolo">Protocolo</label>
+                            <input type="number" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo">
+                        </div>
+
                         <div class="form-group col-md-4 mb-3">
                             <label for="dateini">Data Inicial</label>
-                            <input type="date" class="form-control" id="dateini" placeholder="Data Inicial">
+                            <input type="date" name="data_ini" class="form-control" id="dateini" placeholder="Data Inicial">
                         </div>
+
                         <div class="form-group col-md-4 mb-3">
                             <label for="datend">Data Final</label>
-                            <input type="date" class="form-control" id="datend" placeholder="Data Final">
+                            <input type="date" name="data_fin" class="form-control" id="datend" placeholder="Data Final">
                         </div>
 
                     </div>
                     <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
-                        <a href="#" class="linkFilter">Limpar filtro</a>
+                    <a href="#" class="linkFilter">Limpar filtro</a>
 
                 </form>
       </div>
@@ -97,7 +99,7 @@
                       <td>{{date('d-m-Y', strtotime($req['created_at']))}}</td>
                       <td>{{$req['status']['situacao']}}</td>
                       <td><a href="{{route('requerimento.show', $req['id'])}}" class="btn btn-primary btnDetalhes">Detalhes</a></td>
-                    </tr>  
+                    </tr>
                     @endforeach
                     </tbody>
                   </table>
