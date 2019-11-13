@@ -11259,7 +11259,8 @@ body {
 
 #sucessoReq {
   width: 400px;
-  background-color: #30ff7c;
+  background-color: #35d49c;
+  color: #fff;
 }
 
 .reqTxt {
@@ -11389,11 +11390,11 @@ body {
 
 .btnDetalhes {
   width: 14vh;
-  background-color: #37bf8f;
+  background-color: #2bb7df;
 }
 
 .btnDetalhes:hover {
-  background-color: #299972;
+  background-color: #269bbd;
 }
 
 .showreq {
@@ -11404,5 +11405,13 @@ body {
 
 .colReq > th {
   text-align: center;
+}
+
+.page-item.active .page-link {
+  background-color: #2bb7df !important;
+}
+
+.msgSucesso {
+  position: absolute;
 }
 
