@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@if(session('success')==true)
 <div class="container">
 <div class="container" id="breadcrumb">
             <span class="itemBread"><a href="/">Início</a> ></span>
@@ -55,11 +54,6 @@
                         </div>
                         <div class="w-100"></div>
         @endforeach
-    @else
-        @php
-            return redirect()->back()->withErrors('Você não está logado');
-        @endphp
-    @endif
 </div>
     {{$reqs->links()}}
 @endsection

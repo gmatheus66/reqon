@@ -7,6 +7,7 @@ use App\Requerimento;
 use App\Funcionario;
 use App\Setor;
 use App\Subtipo;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -34,11 +35,7 @@ class FuncionarioController extends Controller
             }
         }
 
-        if(session('success')){
-            return view('funcionario.indexfunc',compact('reqs', 'subtp_txt'));
-        }else{
-            return view('auth.login');
-        }
+        return view('funcionario.indexfunc',compact('reqs', 'subtp_txt'));
     }
 
     /**
@@ -55,7 +52,7 @@ class FuncionarioController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth:funcionario');
     }
 
     public function create()
