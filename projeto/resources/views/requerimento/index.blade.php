@@ -44,7 +44,7 @@
 
                         @endif
 
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-6 mb-3">
                             <label for="situacao">Situação</label>
                             <select name="situacao" class="form-control" id="situacao">
                                 <option selected>Selecione uma Situação</option>
@@ -54,17 +54,17 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-6 mb-3">
                             <label for="procotolo">Protocolo</label>
                             <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo">
                         </div>
 
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-6 mb-3">
                             <label for="dateini">Data Inicial</label>
                             <input type="date" name="data_ini" class="form-control" id="dateini" placeholder="Data Inicial">
                         </div>
 
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-6 mb-3">
                             <label for="datend">Data Final</label>
                             <input type="date" name="data_fin" class="form-control" id="datend" placeholder="Data Final">
                         </div>
