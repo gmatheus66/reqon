@@ -17,8 +17,9 @@
                     @endif
         <div class="container" id="cont">
             <div class="d-flex align-items-center flex-column bd-highlight mb-3">
+
               @if(session('success'))
-                <div class="alert alert-success" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
+                <div class="alert alert-success msgSucesso" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
               @endif
             <div>
 
