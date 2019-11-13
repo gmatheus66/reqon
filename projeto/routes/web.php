@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::post('func-login', ['as'=>'funcionario', 'use'=>'Auth\LoginController@loginFunc']);
-Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin');
+Route::post('/login/admin', 'Auth\FuncController@login')->name('admin');
 
 Route::get('requerimento/func/show/{id}', 'FuncionarioController@show')->name('showreqfunc');
 Route::resource('registerfunc', 'FuncionarioController');
