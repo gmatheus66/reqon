@@ -61,4 +61,5 @@
         @endphp
     @endif
 </div>
+    {{$reqs->links()}}
 @endsection

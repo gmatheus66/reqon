@@ -16,7 +16,7 @@ class FuncionarioController extends Controller
     use RegistersUsers;
 
     public function index(){
-        $reqs = Requerimento::where('setor_id', 1)->orderby('id', 'desc')->get();
+        $reqs = Requerimento::where('setor_id', 1)->orderby('id', 'desc')->paginate(8);
         // $reqs->all();
         // $reqs = DB::select('SELECT * FROM requerimentos ORDER BY DATE_FORMAT(created_at, "%y-%m-%d %H:%i:%S")DESC');
 
