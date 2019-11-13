@@ -45,7 +45,7 @@
                         @endif
 
                         <div class="form-group col-md-4 mb-3">
-                            <label for="situacao">Situção</label>
+                            <label for="situacao">Situação</label>
                             <select name="situacao" class="form-control" id="situacao">
                                 <option selected>Selecione uma Situação</option>
                                 @foreach ($status as $stt)
@@ -56,7 +56,7 @@
 
                         <div class="form-group col-md-4 mb-3">
                             <label for="procotolo">Protocolo</label>
-                            <input type="number" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo">
+                            <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo">
                         </div>
 
                         <div class="form-group col-md-4 mb-3">
@@ -79,8 +79,8 @@
         <div class="container" id="cont">
             <table class="table tableA">
               <thead class="table-active tableHead">
-                <tr>
-                  <th scope="col-6">Nº do protocolo</th>
+                <tr class="colReq">
+                  <th scope="col">Nº do protocolo</th>
                   <th scope="col">Matrícula</th>
                   <th scope="col">Tipo</th>
                   <th scope="col">Data</th>
