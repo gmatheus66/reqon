@@ -31,7 +31,7 @@ class RequerimentoController extends Controller
         /*$matriculas = usort($matriculas, function($m1, $m2) {
             return strcmp($m1->curso->nome, $m2->curso->nome);
         });*/
-        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
         //dd($dados);
         $test = Tipo::with('subtipos')->get();
         $status = Status::all();

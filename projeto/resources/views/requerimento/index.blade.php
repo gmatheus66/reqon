@@ -48,7 +48,7 @@
                             <label for="situacao">Situação</label>
                             <select name="situacao" class="form-control" id="situacao">
                                 <option selected>Selecione uma Situação</option>
-                                @foreach ($status as $stt)
+                                @foreach ($status ?? '' as $stt)
                             <option value="{{$stt->id}}" >{{$stt->situacao}}</option>
                                 @endforeach
                             </select>
@@ -102,5 +102,6 @@
                     </tbody>
                   </table>
         </div>
+                  {{$dados->links()}}
     </div>
 @endsection
