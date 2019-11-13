@@ -23,6 +23,7 @@ html, body {
 }
 .titleFooter{
 	color:#b2ffe4;
+	margin-top:15%!important;
 }
 .linkFooter a{
 	font-size:1.3em;
@@ -32,6 +33,10 @@ html, body {
 	color:#fff;
 }
 #logoIF{
-	width:20em;
-	margin-top:10%;
+	width:10vw;
+	position:absolute;
+	margin-left:7%;
+}
+.pt-4, .py-4 {
+    padding-top: 0 !important;
 }
