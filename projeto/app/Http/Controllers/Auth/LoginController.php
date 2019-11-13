@@ -32,8 +32,6 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/requerimento';
 
-    protected $redirectAfterLogout = '/';
-
     /**
      * Create a new controller instance.
      *
@@ -42,67 +40,11 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        //$this->middleware('guest:funcionario')->except('logout');
     }
 
-    public function logout(){
-
-        $user = Auth::user();
-        Log::info('Usuario Saiu. ', [$user]);
-        Auth::logout();
-        Session::flush();
-
-        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout: '/');
-
-    }
-
-    public function loginFunc($request) {
-
-    }
-
-    public function adminLogin(Request $request){
-
-        $this->validateLogin($request);
-
-        if(auth()->guard('funcionario')->attempt($this->credentials($request), $request->filled('remember'))){
-            //return sendLoginResponseFunc($request);
-            //dd(auth()->guard('funcionario')->user()->id);
-
-            $nome = auth()->guard('funcionario')->user()->nome;
-            $email = auth()->guard('funcionario')->user()->email;
-            $id = auth()->guard('funcionario')->user()->id;
-
-            /*Para poder pegar esses dados da sessão é so usar as linhas de comando abaixo
-
-            para pegar na view -> {{ session->get('func.nome') }}
-            */
-            $request->session()->flash('success', true);
-            $request->session()->put('func', [
-                'id' => $id,
-                'nome' => $nome,
-                'email' => $email,
-            ]);
-
-            return redirect()->route('func');
-        }
-
-        return back()->withErrors(['email' => 'Email ou senhas estão errados']);
-    }
-
-    public function attemptLoginFunc(Request $request) {
-        return $this->guard('funcionario')->attempt(
-            $this->credentials($request), $request->filled('remember')
-        );
-    }
-
-    protected function sendLoginResponseFunc(Request $request)
+    /*protected function guard()
     {
-        $request->session()->regenerate();
-
-        $this->clearLoginAttempts($request);
-
-        return $this->authenticated($request, $this->guard('funcionario')->user())
-                ?: redirect()->intended($this->redirectPath());
-    }
+        return auth()->guard('funcionario');
+    }*/
 
 }
