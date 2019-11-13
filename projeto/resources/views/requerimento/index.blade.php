@@ -84,7 +84,7 @@
                   <th scope="col">Nº do protocolo</th>
                   <th scope="col">Matrícula</th>
                   <th scope="col">Tipo</th>
-                  <th scope="col">Data</th>
+                  <th class="colData" scope="col">Data</th>
                   <th scope="col">Situação</th>
                   <th scope="col">Ação</th>
                 </tr>
