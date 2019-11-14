@@ -18,6 +18,48 @@
         </form>
 
     </div>
+    <div>
+
+            <form action="{{route('pesquisarfunc')}}" method="post">
+                @csrf
+
+                    <div class="form-group">
+                        <h1 class="subTitleReq">Filtrar</h1>
+                    </div>
+
+                <div class="form-row">
+
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="situacao">Situação</label>
+                        <select name="situacao" class="form-control" id="situacao">
+                            <option selected>Selecione uma Situação</option>
+                            @foreach ($status ?? '' as $stt)
+                        <option value="{{$stt->id}}" >{{$stt->situacao}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="procotolo">Protocolo</label>
+                        <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo">
+                    </div>
+
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="dateini">Data Inicial</label>
+                        <input type="date" name="data_ini" class="form-control" id="dateini" placeholder="Data Inicial">
+                    </div>
+
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="datend">Data Final</label>
+                        <input type="date" name="data_fin" class="form-control" id="datend" placeholder="Data Final">
+                    </div>
+
+                </div>
+                <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
+            <a href="{{ route('requerimento.index')}}" class="linkFilter">Limpar filtro</a>
+
+            </form>
+    </div>
     <div class="container">
               <div class="row">
                     <div class="col-sm">
