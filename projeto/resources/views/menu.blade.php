@@ -28,6 +28,13 @@
                                 </li>
                             @endif
                         @else
+
+                        @if(Auth::guard('funcionario')->check())
+                        <li class="nav-item">
+                            <a class="nav-link" id="navbarDropdown" href="{{ route('func') }}">{{ __('Requerimentos') }}</a>
+                        </li>
+                        @endif
+                        
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('requerimento.create') }}">{{ __('Novo requerimento') }}</a>
                         </li> -->
