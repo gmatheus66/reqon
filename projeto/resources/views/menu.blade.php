@@ -34,12 +34,12 @@
                             <a class="nav-link" id="navbarDropdown" href="{{ route('func') }}">{{ __('Requerimentos') }}</a>
                         </li>
                         @endif
-                        
+
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('requerimento.create') }}">{{ __('Novo requerimento') }}</a>
                         </li> -->
 
-                        @if(Route::is('requerimento.create'))
+                        @if(!Route::is('requerimento.index'))
                         <li class="nav-item">
                             <a class="nav-link" id="navbarDropdown" href="{{ route('requerimento.index') }}">{{ __('Meus Requerimentos') }}</a>
                         </li>
