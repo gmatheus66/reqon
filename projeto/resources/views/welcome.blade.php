@@ -6,12 +6,15 @@
 
         <title>ReqOn</title>
 
-        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/script.js')}}"></script>
         <!-- Styles -->
+        <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
+                background-image: url("{{ asset('img/bg-welcome.jpg') }}");
                 background-color: #fff;
                 color: #00061a;
                 font-family: 'Nunito', sans-serif;
