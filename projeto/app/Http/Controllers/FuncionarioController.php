@@ -95,51 +95,91 @@ class FuncionarioController extends Controller
     public function search(Request $request){
 
         $input = $request->all();
-        $situacao = $input['situacao'];
+        $situacao_str = $input['situacao'];
         $protocolo = $input['protocolo'];
         $data_ini = $input['data_ini'];
+        $data_fin = $input['data_fin'];
+
         $status = Status::all();
 
-        if($request->get('data_ini')){
+        $exemplo = Requerimento::where('protocolo', $protocolo)->get();
+        $situ = Status::where('situacao', $situacao_str)->get();
+        foreach($situ as $st){
+            $situacao_id = $st['id'];
+        }
+
+        if($request->get('protocolo', 'situacao')){
+            $validator = Validator::make($request->all(), [
+                'protocolo'=>'required|numeric|min:1',
+                'situacao'=>'numeric|min:1'
+            ]);
+
+            $reqs = Requerimento::whereDate('protocolo', $protocolo)
+            ->where('status_id', $situacao_id)
+            ->get();
+
+            if($exemplo == $reqs){
+                // dd("teste");
+
+                if($request->get('situacao') != "Selecione uma Situação"){
+                    $validator = Validator::make($request->all(), [
+                        'situacao'=>'numeric|min:1',
+                    ]);
+
+                    $reqs = Requerimento::where('status_id', $situacao_str)
+                    ->orderby('id', 'desc')->get();
+                }
+
+                if($request->get('protocolo')){
+                    $validator = Validator::make($request->all(), [
+                        'protocolo'=>'required|numeric|min:1'
+                    ]);
+
+                    $reqs = Requerimento::where('protocolo', $protocolo)
+                    ->orderby('id', 'desc')->get();
+                    // dd($validator->fails());
+                }
+
+            }else{
+                return view('funcionario.indexfunc',compact('reqs', 'status'));
+                exit();
+            }
+        }
+
+        if ($request->get('data_ini', 'data_fin')) {
             $validator = Validator::make($request->all(), [
                 'data_ini' => 'date',
+                'data_fin' => 'date'
             ]);
+            $reqs = Requerimento::whereBetween('created_at', [date($data_ini), date($data_fin)])->get();
 
-            $reqs = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
-            ->orderby('id', 'desc')->get();
-            // dd($reqs);
+            if($exemplo == $reqs){
+
+                if($request->get('data_fin')){
+                    $validator = Validator::make($request->all(), [
+                        'data_fin' => 'date',
+                    ]);
+
+                    $reqs = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
+                    ->orderby('id', 'desc')->get();
+                //    dd($reqs);
+                }
+
+                if($request->get('data_ini')){
+                    $validator = Validator::make($request->all(), [
+                        'data_ini' => 'date',
+                    ]);
+
+                    $reqs = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
+                    ->orderby('id', 'desc')->get();
+                    // dd($reqs);
+                }
+
+            }else{
+                return view('funcionario.indexfunc',compact('reqs', 'status'));
+                exit();
+            }
         }
-
-        if($request->get('data_fin')){
-            $validator = Validator::make($request->all(), [
-                'data_fin' => 'date',
-            ]);
-
-            $reqs = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
-            ->orderby('id', 'desc')->get();
-        //    dd($reqs);
-        }
-
-        if($request->get('situacao') != "Selecione uma Situação"){
-            $validator = Validator::make($request->all(), [
-                'situacao'=>'numeric|min:1',
-            ]);
-
-            $reqs = Requerimento::where('status_id', $situacao)
-            ->orderby('id', 'desc')->get();
-            // dd($reqs);
-        }
-
-        if($request->get('protocolo')){
-            $validator = Validator::make($request->all(), [
-                'protocolo'=>'required|numeric|min:1'
-            ]);
-
-            $reqs = Requerimento::where('protocolo', $protocolo)
-            ->orderby('id', 'desc')->get();
-            // dd($validator->fails());
-        }
-
 
         if ($validator->fails()) {
             // dd($validator);
@@ -147,8 +187,6 @@ class FuncionarioController extends Controller
             ->withErrors($validator)
             ->withInput();
         }else{
-            // dd($status);
-            // dd($reqs);
             return view('funcionario.indexfunc',compact('reqs', 'status'));
         }
 
