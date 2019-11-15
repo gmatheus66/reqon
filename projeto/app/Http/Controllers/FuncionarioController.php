@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Requerimento;
 use App\Funcionario;
 use App\Setor;
+use App\Status;
 use App\Subtipo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 class FuncionarioController extends Controller
@@ -35,7 +37,8 @@ class FuncionarioController extends Controller
             }
         }
 
-        return view('funcionario.indexfunc',compact('reqs', 'subtp_txt'));
+        $status = Status::all();
+        return view('funcionario.indexfunc',compact('reqs', 'subtp_txt','status'));
     }
 
     /**
@@ -90,13 +93,66 @@ class FuncionarioController extends Controller
     }
 
     public function search(Request $request){
-        $req = $request->all();
-        $setor = Setor::all();
-        $tipo = $req['tipo'];
-        // dd($setor);
-        $reqs = Requerimento::where('descricao', $tipo)->get();
-        // echo "teste";
-        return view('funcionario.indexfunc',compact('reqs','setor'));
+
+        $input = $request->all();
+        $situacao = $input['situacao'];
+        $protocolo = $input['protocolo'];
+        $data_ini = $input['data_ini'];
+        $status = Status::all();
+
+        if($request->get('data_ini')){
+            $validator = Validator::make($request->all(), [
+                'data_ini' => 'date',
+            ]);
+
+            $reqs = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
+            ->orderby('id', 'desc')->get();
+            // dd($reqs);
+        }
+
+        if($request->get('data_fin')){
+            $validator = Validator::make($request->all(), [
+                'data_fin' => 'date',
+            ]);
+
+            $reqs = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
+            ->orderby('id', 'desc')->get();
+        //    dd($reqs);
+        }
+
+        if($request->get('situacao') != "Selecione uma Situação"){
+            $validator = Validator::make($request->all(), [
+                'situacao'=>'numeric|min:1',
+            ]);
+
+            $reqs = Requerimento::where('status_id', $situacao)
+            ->orderby('id', 'desc')->get();
+            // dd($reqs);
+        }
+
+        if($request->get('protocolo')){
+            $validator = Validator::make($request->all(), [
+                'protocolo'=>'required|numeric|min:1'
+            ]);
+
+            $reqs = Requerimento::where('protocolo', $protocolo)
+            ->orderby('id', 'desc')->get();
+            // dd($validator->fails());
+        }
+
+
+        if ($validator->fails()) {
+            // dd($validator);
+            return redirect('/requerimento?src=Selecione+um+filtro')
+            ->withErrors($validator)
+            ->withInput();
+        }else{
+            // dd($status);
+            // dd($reqs);
+            return view('funcionario.indexfunc',compact('reqs', 'status'));
+        }
+
+
     }
 
     public function show($id){
