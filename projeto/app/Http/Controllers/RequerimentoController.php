@@ -58,23 +58,22 @@ class RequerimentoController extends Controller
             ]);
             $dados = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
             ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
-            //dd($dados);
         }
+
         if($request->get('data_fin')){
             $validator = Validator::make($request->all(), [
                 'data_fin' => 'date',
             ]);
             $dados = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
             ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
-           //dd($dados);
         }
+
         if($request->get('situacao') != "Selecione uma Situação"){
             $validator = Validator::make($request->all(), [
                 'situacao'=>'numeric|min:1',
             ]);
             $dados = Requerimento::where('status_id', $request->get('situacao'))
             ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
-            //dd($dados);
         }
         if($request->get('protocolo')){
             $validator = Validator::make($request->all(), [
@@ -82,24 +81,18 @@ class RequerimentoController extends Controller
             ]);
             $dados = Requerimento::where('protocolo', $protocolo)
             ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
-            //dd($dados);
         }
 
         if ($validator->fails()) {
-            //dd($validator);
             return redirect('/requerimento?src=Selecione+um+filtro')
                         ->withErrors($validator)
                         ->withInput();
         }
         //$status = Status::where('id', )->get();
-
         $exemplo = Requerimento::where('protocolo', '-1')->get();
-        //dd($dados);
-
-
         //$dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+        // dd($dados);
 
-        //dd($dados);
         if ($dados == $exemplo) {
             $msg = "Não foi possivel encontrar seu requerimento";
             return view('requerimento.index', compact('msg'));
@@ -107,8 +100,6 @@ class RequerimentoController extends Controller
         }else{
             return view('requerimento.index', compact('dados', 'matriculas', 'status'));
         }
-
-        // dd($teste);
 
         $dados = Requerimento::where('descricao', $tipo)->get();
         return view('requerimento.index', compact('dados'));
