@@ -87,5 +87,8 @@
                 </div>
             </div>
         </div>
+        <footer>
+            @include('footer')
+        </footer>
     </body>
 </html>
