@@ -43,12 +43,14 @@ class FuncController extends Controller
         return auth()->guard('funcionario');
     }
 
+
     public  function username(){
-        $indetity = \request()->get('email');
+        $indetity = request()->get('email');
         $fieldName = filter_var($indetity, FILTER_VALIDATE_EMAIL) ? 'email' : 'matricula';
-        \request()->merge([$fieldName => $indetity]);
+        request()->merge([$fieldName => $indetity]);
         return $fieldName;
     }
+    
 
 
 }
