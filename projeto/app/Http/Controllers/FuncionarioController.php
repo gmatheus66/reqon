@@ -95,39 +95,43 @@ class FuncionarioController extends Controller
     public function search(Request $request){
 
         $input = $request->all();
-        $situacao_str = $input['situacao'];
-        $protocolo = $input['protocolo'];
-        $data_ini = $input['data_ini'];
-        $data_fin = $input['data_fin'];
+        $situacao_str = $input['situacao']?? '';
+        $protocolo = $input['protocolo']?? '';
+        $data_ini = $input['data_ini']?? '';
+        $data_fin = $input['data_fin']?? '';
 
         $status = Status::all();
 
-        $exemplo = Requerimento::where('protocolo', $protocolo)->get();
+        $exemplo = Requerimento::where('protocolo', '-1')->get();
         $situ = Status::where('situacao', $situacao_str)->get();
+
         foreach($situ as $st){
             $situacao_id = $st['id'];
         }
 
-        if($request->get('protocolo', 'situacao')){
+        if($request->get('protocolo') && $request->get('protocolo')){
             $validator = Validator::make($request->all(), [
                 'protocolo'=>'required|numeric|min:1',
                 'situacao'=>'numeric|min:1'
             ]);
-
-            $reqs = Requerimento::whereDate('protocolo', $protocolo)
-            ->where('status_id', $situacao_id)
-            ->get();
+            if($situacao_str != "Selecione uma Situação"){
+                $reqs = Requerimento::whereDate('protocolo', $protocolo)
+                ->where('status_id', $situacao_id)
+                ->get();
+            }else{
+                $reqs = $exemplo;
+            }
 
             if($exemplo == $reqs){
-                // dd("teste");
+                if ($situacao_str != "Selecione uma Situação") {
+                    if($request->get('situacao') != "Selecione uma Situação"){
+                        $validator = Validator::make($request->all(), [
+                            'situacao'=>'numeric|min:1',
+                        ]);
 
-                if($request->get('situacao') != "Selecione uma Situação"){
-                    $validator = Validator::make($request->all(), [
-                        'situacao'=>'numeric|min:1',
-                    ]);
-
-                    $reqs = Requerimento::where('status_id', $situacao_str)
-                    ->orderby('id', 'desc')->get();
+                        $reqs = Requerimento::where('status_id', $situacao_str)
+                        ->orderby('id', 'desc')->get();
+                    }
                 }
 
                 if($request->get('protocolo')){
@@ -146,12 +150,14 @@ class FuncionarioController extends Controller
             }
         }
 
-        if ($request->get('data_ini', 'data_fin')) {
+        if ($request->get('data_ini') && $request->get('data_ini')) {
             $validator = Validator::make($request->all(), [
                 'data_ini' => 'date',
                 'data_fin' => 'date'
             ]);
-            $reqs = Requerimento::whereBetween('created_at', [date($data_ini), date($data_fin)])->get();
+            $reqs = Requerimento::whereBetween('created_at', [date($data_ini), date($data_fin)])
+                                ->orderby('id', 'desc')
+                                ->get();
 
             if($exemplo == $reqs){
 
@@ -183,7 +189,7 @@ class FuncionarioController extends Controller
 
         if ($validator->fails()) {
             // dd($validator);
-            return redirect('/requerimento?src=Selecione+um+filtro')
+            return redirect('/indexfunc?src=Selecione+um+filtro')
             ->withErrors($validator)
             ->withInput();
         }else{
