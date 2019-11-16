@@ -18,33 +18,21 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastrar') }}</a>
-                                </li>
+                        @if (Route::has('login'))
+                            <div class="top-right links">
+
+                            @if(Auth::guard('funcionario')->check())
+                                <a class="nav-link" id="navbarDropdown" href="{{ url('/indexfunc') }}">{{ __('Requerimentos') }}</a>
+                            @elseif(Auth::guard()->check())
+                                <a class="nav-link" id="navbarDropdown" href="{{ url('/requerimento') }}">{{ __('Requerimentos') }}</a>
+                            @else
+                                <a class="nav-link" id="navbarDropdown" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                             @endif
-                        @else
 
-                        @if(Auth::guard('funcionario')->check())
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarDropdown" href="{{ route('func') }}">{{ __('Requerimentos') }}</a>
-                        </li>
+                            </div>
                         @endif
-
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('requerimento.create') }}">{{ __('Novo requerimento') }}</a>
-                        </li> -->
-
-                        @if(!Route::is('requerimento.index'))
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarDropdown" href="{{ route('requerimento.index') }}">{{ __('Meus Requerimentos') }}</a>
-                        </li>
-                        @endif
-
+                        @if (Auth::check())
+                            
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nome }} <span class="caret"></span>
@@ -62,7 +50,7 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endif
                     </ul>
                 </div>
             </div>
