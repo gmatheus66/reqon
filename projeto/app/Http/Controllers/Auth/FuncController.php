@@ -50,7 +50,7 @@ class FuncController extends Controller
         request()->merge([$fieldName => $indetity]);
         return $fieldName;
     }
-    /*
+    */
 
 
 }
