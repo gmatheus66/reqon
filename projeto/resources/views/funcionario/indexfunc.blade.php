@@ -7,6 +7,11 @@
             <span class="breadcrumb-item active itemBread" aria-current="page">Requerimento</span>
 
     <div>
+            @if($errors->any())
+            <div class="alert alert-danger" role="alert">
+                 {{$_GET['src']}}
+             </div>
+             @endif
 
             <form action="{{route('pesquisarfunc')}}" method="post">
                 @csrf
