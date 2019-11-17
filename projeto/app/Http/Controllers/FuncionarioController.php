@@ -18,8 +18,11 @@ class FuncionarioController extends Controller
 {
     use RegistersUsers;
 
-    public function index(){
-        $reqs = Requerimento::where('setor_id', 1)->orderby('id', 'desc')->paginate(8);
+    public function index(Request $request){
+        $nome_func = Auth::user()->nome;
+
+        $setor = Setor::where('nome', $nome_func)->get('id');
+        $reqs = Requerimento::where('setor_id', $setor[0]['id'])->orderby('id', 'desc')->paginate(8);
         // $reqs->all();
         // $reqs = DB::select('SELECT * FROM requerimentos ORDER BY DATE_FORMAT(created_at, "%y-%m-%d %H:%i:%S")DESC');
 
@@ -39,6 +42,7 @@ class FuncionarioController extends Controller
 
         $status = Status::all();
         return view('funcionario.indexfunc',compact('reqs', 'subtp_txt','status'));
+
     }
 
     /**
