@@ -11431,3 +11431,7 @@ body {
   text-align: center;
 }
 
+.bg-welcome {
+  background-size: cover;
+}
+

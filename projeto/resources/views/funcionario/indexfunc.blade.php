@@ -7,18 +7,11 @@
             <span class="breadcrumb-item active itemBread" aria-current="page">Requerimento</span>
 
     <div>
-
-        <form action="{{route('pesquisarfunc')}}" method="post">
-            @csrf
-                <div class="form-group">
-                    <label for="tipo">Filtro</label>
-                    <input type="text" name="tipo" class="form-control" id="tipo" placeholder="Filtrar por Tipo">
-                </div>
-                <button type="submit" class="linkBtn btn btn-outline-primary" id="criarReq">Filtrar</button>
-        </form>
-
-    </div>
-    <div>
+            @if($errors->any())
+            <div class="alert alert-danger" role="alert">
+                 {{$_GET['src']}}
+             </div>
+             @endif
 
             <form action="{{route('pesquisarfunc')}}" method="post">
                 @csrf
@@ -32,7 +25,10 @@
                     <div class="form-group col-md-6 mb-3">
                         <label for="situacao">Situação</label>
                         <select name="situacao" class="form-control" id="situacao">
-                            <option selected>Selecione uma Situação</option>
+                            <option>Selecione uma Situação</option>
+                            @foreach ($status as $stt)
+                                <option value="{{ $stt['situacao'] }}">{{ $stt['situacao'] }}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -75,7 +71,7 @@
                       Ação
                     </div>
                     <div class="w-100"></div>
-    @foreach ($reqs as $req)
+                @foreach ($reqs as $req)
                     <div class="col-sm">
                           {{$req['protocolo']}}
                         </div>
@@ -91,8 +87,8 @@
                         <div class="col-sm">
                           <a href="{{route('showreqfunc', $req['id'])}}" class="btn btn-primary">Detalhes</a>
                         </div>
-                        <div class="w-100"></div>
-        @endforeach
+                    <div class="w-100"></div>
+                @endforeach
 </div>
-    {{$reqs->links()}}
+
 @endsection

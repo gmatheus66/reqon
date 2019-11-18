@@ -51,67 +51,120 @@ class RequerimentoController extends Controller
         $situacao = $input['situacao'];
         $protocolo = $input['protocolo'];
         $data_ini = $input['data_ini'];
+        $data_fin = $input['data_fin'];
 
-        if($request->get('data_ini')){
-            $validator = Validator::make($request->all(), [
-                'data_ini' => 'date',
-            ]);
-            $dados = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
-            ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
-            //dd($dados);
+        $exemplo = Requerimento::where('protocolo', '-1')->get();
+        $situ = Status::where('id', $situacao)->get();
+        foreach($situ as $st){
+            $sit_id = $st['id'];
         }
-        if($request->get('data_fin')){
-            $validator = Validator::make($request->all(), [
-                'data_fin' => 'date',
-            ]);
-            $dados = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
-            ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
-           //dd($dados);
+
+        if($situacao == "Selecione uma Situação" && $protocolo == null){
+
+            if ($request->get('data_ini') && $request->get('data_ini')) {
+                $validator = Validator::make($request->all(), [
+                    'data_ini' => 'date',
+                    'data_fin' => 'date'
+                ]);
+
+                if(!($validator->fails())){
+                    $dados = Requerimento::whereBetween('created_at', [date($data_ini), date($data_fin)])
+                                        ->where('matricula_id',$matriculas[0]['id'])
+                                        ->orderby('id', 'desc')
+                                        ->get();
+                }else{
+                    $dados = $exemplo;
+                }
+
+                if($exemplo == $dados){
+                    if($request->get('data_ini')){
+                        $validator = Validator::make($request->all(), [
+                            'data_ini' => 'date',
+                        ]);
+                        $dados = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
+                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+                    }
+
+                    if($request->get('data_fin')){
+                        $validator = Validator::make($request->all(), [
+                            'data_fin' => 'date',
+                        ]);
+                        $dados = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
+                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+                    }
+
+                    if($validator->fails()){
+                        return redirect('/requerimento?src=Insira+a+data+corretamente')
+                                ->withErrors($validator)
+                                ->withInput();
+                    }
+
+                    return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+                }else{
+                    return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+                    exit();
+                }
+            }else{
+                return redirect('/requerimento?src=Escolha+duas+datas')
+                        ->withInput();
+            }
+        }else{
+
+            if($request->get('situacao') || $request->get('protocolo')){
+                $validator = Validator::make($request->all(), [
+                    'protocolo'=>'required|numeric|min:1',
+                    'situacao'=>'numeric|min:1'
+                    ]);
+
+                    if($situacao != "Selecione uma Situação"){
+                        $dados = Requerimento::whereDate('protocolo', $protocolo)
+                        ->where('status_id', $sit_id)
+                        ->where('matricula_id',$matriculas[0]['id'])
+                        ->get();
+                    }else{
+                        $dados = $exemplo;
+                    }
+
+                if($exemplo == $dados){
+                    if($request->get('situacao') != "Selecione uma Situação"){
+                        $validator = Validator::make($request->all(), [
+                            'situacao'=>'numeric|min:1',
+                        ]);
+                        $dados = Requerimento::where('status_id', $request->get('situacao'))
+                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+                    }
+                    if($request->get('protocolo')){
+                        $validator = Validator::make($request->all(), [
+                            'protocolo'=>'required|numeric|min:1'
+                        ]);
+                        $dados = Requerimento::where('protocolo', $protocolo)
+                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+                        // dd('deburguer');
+                    }
+
+                    return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+                }else{
+                    return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+                    exit();
+                }
+            }
+
         }
-        if($request->get('situacao') != "Selecione uma Situação"){
-            $validator = Validator::make($request->all(), [
-                'situacao'=>'numeric|min:1',
-            ]);
-            $dados = Requerimento::where('status_id', $request->get('situacao'))
-            ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
-            //dd($dados);
-        }
-        if($request->get('protocolo')){
-            $validator = Validator::make($request->all(), [
-                'protocolo'=>'required|numeric|min:1'
-            ]);
-            $dados = Requerimento::where('protocolo', $protocolo)
-            ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
-            //dd($dados);
-        }
+
+        $validator = Validator::make($request->all(), [
+            'data_fin' => 'date',
+        ]);
 
         if ($validator->fails()) {
-            //dd($validator);
             return redirect('/requerimento?src=Selecione+um+filtro')
                         ->withErrors($validator)
                         ->withInput();
         }
-        //$status = Status::where('id', )->get();
 
-        $exemplo = Requerimento::where('protocolo', '-1')->get();
-        //dd($dados);
-
-
-        //$dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
-
-        //dd($dados);
-        if ($dados == $exemplo) {
-            $msg = "Não foi possivel encontrar seu requerimento";
-            return view('requerimento.index', compact('msg'));
-            exit();
-        }else{
-            return view('requerimento.index', compact('dados', 'matriculas', 'status'));
-        }
-
-        // dd($teste);
+        /*return view('requerimento.index', compact('dados', 'matriculas', 'status'));
 
         $dados = Requerimento::where('descricao', $tipo)->get();
-        return view('requerimento.index', compact('dados'));
+        return view('requerimento.index', compact('dados'));*/
     }
 
     public function create(Request $request){

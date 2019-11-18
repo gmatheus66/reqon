@@ -41,7 +41,7 @@
                                     <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
                                     @endforeach
                                 </select>
-                            </div> 
+                            </div>
 
                         @endif
 
@@ -100,9 +100,8 @@
                       <td><a href="{{route('requerimento.show', $req['id'])}}" class="btn btn-primary btnDetalhes">Detalhes</a></td>
                     </tr>
                     @endforeach
-                    </tbody>
-                  </table>
+              </tbody>
+            </table>
         </div>
-                  {{$dados->links()}}
     </div>
 @endsection
