@@ -136,6 +136,19 @@
                     @endforeach
                     @endif
             </div>
+            <div class="row">  
+    <div class="form-group">
+      <select class="selectpicker form-control" >
+        <option>CRADT</option>
+        <option>COORDENAÇÃO</option>
+        <option>DAEECINFO</option>
+        <option>CINFO</option>
+      </select>
+    </div>
+  </div>
+</div>
 
+  </div>
+</div>
         </div>
 @endsection
