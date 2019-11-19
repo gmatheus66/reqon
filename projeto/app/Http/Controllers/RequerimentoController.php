@@ -23,6 +23,12 @@ class RequerimentoController extends Controller
         $this->middleware('auth');
     }
 
+
+    public function redirect(Request $request){
+        //var_dump('derasdad');
+        dd($request);
+    }
+
     public function index(){
         $matriculas = Auth::user()->matriculas->sort(function($m1, $m2) {
             return strcmp($m1->curso->nome, $m2->curso->nome);
@@ -242,6 +248,7 @@ class RequerimentoController extends Controller
     public function update(Request $request){
 
     }
+
 
 
 }
