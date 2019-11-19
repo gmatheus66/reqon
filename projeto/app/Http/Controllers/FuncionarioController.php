@@ -24,7 +24,6 @@ class FuncionarioController extends Controller
         $setor = Setor::where('nome', $nome_func)->get('id');
         $reqs = Requerimento::where('setor_id', $setor[0]['id'])->orderby('id', 'desc')->paginate(8);
         // $reqs->all();
-        // $reqs = DB::select('SELECT * FROM requerimentos ORDER BY DATE_FORMAT(created_at, "%y-%m-%d %H:%i:%S")DESC');
 
         $subtp_ids = [];
         foreach($reqs as $req){
@@ -172,7 +171,7 @@ class FuncionarioController extends Controller
                     'situacao'=>'numeric|min:1'
                 ]);
                 if($situacao_str != "Selecione uma Situação"){
-                    $reqs = Requerimento::whereDate('protocolo', $protocolo)
+                    $reqs = Requerimento::where('protocolo', $protocolo)
                     ->where('status_id', $situacao_id)
                     ->get();
                 }else{
