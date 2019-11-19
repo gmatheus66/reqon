@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+  @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -11135,7 +11135,7 @@ a.text-dark:focus {
 #navbarDropdown {
   color: white;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.8vh;
+  font-size: 2.5vh;
 }
 
 .nav-link {

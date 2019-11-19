@@ -17,7 +17,7 @@
         <hr class="clearfix w-100 d-md-none">
         <div class="col-md-4 mx-auto">
         
-        	<p class="desc">Bem vindo ao ReqOn, o lugar onde você pode solicitar e acompanhar requerimentos online , tudo de forma fácil de gratuita</p>
+        	<p class="desc">Bem vindo ao ReqOn, o lugar onde você pode solicitar e acompanhar requerimentos online , tudo de forma fácil e gratuita.</p>
         
       </div>
       <!-- Grid column -->
