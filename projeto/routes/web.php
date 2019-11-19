@@ -30,3 +30,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('requerimento', 'RequerimentoController');
 Route::apiResource('requerimento','RequerimentoController');
 Route::post('/pesquisar', 'RequerimentoController@search')->name('pesquisar');
+Route::post('/redirect', 'RequerimentoController@redirect')->middleware('auth:funcionario')->name('redirect');
