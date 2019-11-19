@@ -136,18 +136,22 @@
                     @endforeach
                     @endif
             </div>
-            <div class="row">  
-    <div class="form-group">
-      <select class="selectpicker form-control" >
-        <option>CRADT</option>
-        <option>COORDENAÇÃO</option>
-        <option>DAEECINFO</option>
-        <option>CINFO</option>
-      </select>
-    </div>
+            <div class="row">
+                <div class="form-group">
+                    <select name="teste" class="selectpicker form-control" >
+                        <option value="1">CRADT</option>
+                        <option value="2">COORDENAÇÃO</option>
+                        <option value="3">DAEECINFO</option>
+                        <option value="4">CINFO</option>
+                    </select>
+                </div>
   </div>
 </div>
-
+<form action="{{ route('redirect') }}" method="post">
+    @csrf
+    <input type="text" name="teste">
+    <button type="submit">Enviar</button>
+</form>
   </div>
 </div>
         </div>
