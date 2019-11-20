@@ -92,39 +92,42 @@
             </div>
         </div>
         <hr class="my-4">
-	    <div class="" id="cont">
-             <div class="container-fluid">
+        <div class="" id="cont">
+            <form action="{{ route('redirect') }}" method="post">
+            <div class="container-fluid">
                  @if($reqpai)
                     @foreach ($reqpai as $req)
-
-                    <div class="row">
-
-                        <div class="col-sm">
-                          {{$req['protocolo']}}
-                        </div>
-                        <div class="col-sm">
-                          {{$req['matricula']['matricula']}}
-                        </div>
-                        <div class="col-sm">
-                            {{$req->matricula->aluno->nome}}
-                        </div>
-                        <div class="col-sm">
-                          {{$req->matricula->curso->nome}}
-                        </div>
-                        <div class="col-sm">
-                          {{$req['subtipo']['descricao']}}
-                        </div>
-                        <div class="col-sm">
-                            {{date('d-m-Y', strtotime($req['created_at']))}}
-                        </div>
-                        <div class="col-sm">
+                    <div class="col-sm btn-secondary">
                             {{$req['status']['situacao']}}
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            Semestre
                         </div>
+                        <div class="col-sm">
+                            Setor
+                        </div>
+                        <div class="col-sm">
+                            Descrição
+                        </div>
+                        <div class="col-sm">
+                            Para o Setor...
+                        </div>
+                        <div class="col-sm">
+                            Comentário
+                        </div>
+                        {{-- <div class="col-sm btn-secondary">
+                            {{$req['status']['situacao']}}
+                        </div> --}}
+                        <div class="w-100"></div>
+
+                        <input type="hidden" name="matricula" value="{{$req['matricula']['matricula']}}">
+                        <input type="hidden" name="subtipo" value="{{$req['subtipo']['id']}}">
+                        <input type="hidden" name="status" value="{{$req['status']['id']}}">
+                        <input type="hidden" name="setor" value="{{$req['setor']['id']}}">
+                        <input type="hidden" name="descricao" value="{{$req['descricao']}}">
                         <div class="col-sm">
                             {{$req['matricula']['semestre']}}
-                        </div>
-                        <div class="col-sm">
-                            {{$req['matricula']['status']}}
                         </div>
                         <div class="col-sm">
                             {{$req['setor']['nome']}}
@@ -132,27 +135,23 @@
                         <div class="col-sm">
                             {{$req['descricao']}}
                         </div>
+                            <div class="form-group">
+                                <select name="teste" class="selectpicker form-control" >
+                                    <option value="1">CRADT</option>
+                                    <option value="2">COORDENAÇÃO</option>
+                                    <option value="3">DAEECINFO</option>
+                                    <option value="4">CINFO</option>
+                                </select>
+                            </div>
+                        @csrf
+                        <input type="text" name="teste">
                     </div>
-                    @endforeach
-                    @endif
+                    <button type="submit" class="btn-primary">Enviar</button>
+            </form>
             </div>
-            <div class="row">
-                <div class="form-group">
-                    <select name="teste" class="selectpicker form-control" >
-                        <option value="1">CRADT</option>
-                        <option value="2">COORDENAÇÃO</option>
-                        <option value="3">DAEECINFO</option>
-                        <option value="4">CINFO</option>
-                    </select>
-                </div>
-  </div>
-</div>
-<form action="{{ route('redirect') }}" method="post">
-    @csrf
-    <input type="text" name="teste">
-    <button type="submit">Enviar</button>
-</form>
-  </div>
-</div>
-        </div>
+                    @endforeach
+                @elseif(!$reqpai)
+                <p>teste</p>
+                @endif
+            </div>
 @endsection
