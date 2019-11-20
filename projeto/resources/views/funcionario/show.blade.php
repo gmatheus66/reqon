@@ -94,6 +94,7 @@
         <hr class="my-4">
         <div class="" id="cont">
             <form action="{{ route('redirect') }}" method="post">
+            @csrf
             <div class="container-fluid">
                  @if($reqpai)
                     @foreach ($reqpai as $req)
@@ -113,19 +114,18 @@
                         <div class="col-sm">
                             Para o Setor...
                         </div>
-                        <div class="col-sm">
-                            Comentário
-                        </div>
                         {{-- <div class="col-sm btn-secondary">
                             {{$req['status']['situacao']}}
                         </div> --}}
                         <div class="w-100"></div>
 
-                        <input type="hidden" name="matricula" value="{{$req['matricula']['matricula']}}">
+                        <input type="hidden" name="requerimento" value="{{$req['id']}}">
+                        <input type="hidden" name="matricula" value="{{$req['matricula']['id']}}">
                         <input type="hidden" name="subtipo" value="{{$req['subtipo']['id']}}">
                         <input type="hidden" name="status" value="{{$req['status']['id']}}">
                         <input type="hidden" name="setor" value="{{$req['setor']['id']}}">
                         <input type="hidden" name="descricao" value="{{$req['descricao']}}">
+
                         <div class="col-sm">
                             {{$req['matricula']['semestre']}}
                         </div>
@@ -143,10 +143,18 @@
                                     <option value="4">CINFO</option>
                                 </select>
                             </div>
-                        @csrf
-                        <input type="text" name="teste">
+
+
                     </div>
-                    <button type="submit" class="btn-primary">Enviar</button>
+                    <div class="row">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">Comentário</span>
+                            </div>
+                            <textarea class="form-control" name="comentario" aria-label="Comentario"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="coment-btn">Enviar</button>
             </form>
             </div>
                     @endforeach
