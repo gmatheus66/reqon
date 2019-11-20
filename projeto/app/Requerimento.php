@@ -40,5 +40,9 @@ class Requerimento extends Model
     }
     public function setor() {
         return $this->belongsTo('App\Setor');
-     }
+    }
+    public function children(){
+        return $this->hasMany('App\Requerimento', 'req_pai_id', 'id');
+    }
+
 }
