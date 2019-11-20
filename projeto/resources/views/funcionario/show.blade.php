@@ -98,7 +98,7 @@
             <div class="container-fluid">
                  @if($reqpai)
                     @foreach ($reqpai as $req)
-                    <div class="col-sm btn-secondary">
+                    <div class="col-sm btn-secondary status">
                             {{$req['status']['situacao']}}
                     </div>
                     <div class="row">
@@ -146,14 +146,14 @@
 
 
                     </div>
-                    <div class="row">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text">Comentário</span>
-                            </div>
-                            <textarea class="form-control" name="comentario" aria-label="Comentario"></textarea>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
                         </div>
+                        <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
                     </div>
+
                     <button type="submit" class="coment-btn">Enviar</button>
             </form>
             </div>
