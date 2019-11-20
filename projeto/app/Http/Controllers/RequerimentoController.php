@@ -38,7 +38,11 @@ class RequerimentoController extends Controller
             return strcmp($m1->curso->nome, $m2->curso->nome);
         });*/
         //dd($matriculas[0]['id']);
-        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orWhere('matricula_id', $matriculas[1]['id'])->orderby('id', 'desc')->paginate(5);
+        if(sizeof($matriculas) > 1){
+            $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orWhere('matricula_id', $matriculas[1]['id'])->orderby('id', 'desc')->paginate(5);
+        }else{
+            $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
+        }
         //dd($dados);
         $test = Tipo::with('subtipos')->get();
         $status = Status::all();
