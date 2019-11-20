@@ -25,9 +25,9 @@ Route::apiResource('registerfunc','FuncionarioController');
 Route::get('/indexfunc', 'FuncionarioController@index')->name('func');
 Route::post('/pesquisarfunc', 'FuncionarioController@search')->name('pesquisarfunc');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'RequerimentoController@index')->name('home');
 
 Route::resource('requerimento', 'RequerimentoController');
 Route::apiResource('requerimento','RequerimentoController');
 Route::post('/pesquisar', 'RequerimentoController@search')->name('pesquisar');
-Route::post('/redirect', 'RequerimentoController@redirect')->middleware('auth:funcionario')->name('redirect');
+Route::post('/redirecionar', 'RequerimentoController@redirecionar')->middleware('auth:funcionario')->name('redirecionar');
