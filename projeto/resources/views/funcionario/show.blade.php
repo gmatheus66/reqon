@@ -93,7 +93,7 @@
         </div>
         <hr class="my-4">
         <div class="" id="cont">
-            <form action="{{ route('redirect') }}" method="post">
+            <form action="{{ route('redirecionar') }}" method="post">
             @csrf
             <div class="container-fluid">
                  @if($reqpai)

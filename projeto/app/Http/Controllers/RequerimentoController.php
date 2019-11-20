@@ -24,9 +24,40 @@ class RequerimentoController extends Controller
     }
 
 
-    public function redirect(Request $request){
+    public function redirecionar(Request $request){
         //var_dump('derasdad');
-        dd($request);
+        //dd($request->all());
+
+        $validator = Validator::make($request->all(), [
+            'subtipo'=>'required',
+            'status' =>'required',
+            'setor' => 'required',
+            'requerimento' => 'required',
+            'matricula' => 'required'
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('showreqfunc'. $request->get('requerimento'))
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $req = new Requerimento([
+            'protocolo' => mt_rand(1,999999999),
+            'descricao' => $request->get('descricao'),
+            'subtipo_id' => $request->get('subtipo'),
+            'status_id' => $request->get('status'),
+            'req_pai_id' => $request->get('requerimento'),
+            'funcionario_id' => auth()->user()->id,
+            'setor_id' => $request->get('setor'),
+            'matricula_id' => $request->get('matricula'),
+            'comentario' =>  $request->get('comentario')
+        ]);
+
+        $req->save();
+
+        //return redirect()->route('showreqfunc')->withSuccess('Requerimento Criado');
     }
 
     public function index(){
@@ -254,7 +285,7 @@ class RequerimentoController extends Controller
         $requerimento =  Requerimento::find(1)->where('id',$id)->get();
         $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento[0]->id)->get();
         //dd($reqpai);
-        return view('funcionario.show', compact('requerimento', 'setor','reqpai'));
+        return view('requerimento.show', compact('requerimento', 'setor','reqpai'));
     }
 
     public function update(Request $request){
