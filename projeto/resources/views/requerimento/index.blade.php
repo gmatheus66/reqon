@@ -16,7 +16,7 @@
                     </div>
                     @endif
         <div class="container" id="cont">
-            <div class="d-flex align-items-center flex-column bd-highlight mb-3">
+            <div class="d-flex align-items-center flex-column bd-highlight mb-4">
 
               @if(session('success'))
                 <div class="alert alert-success msgSucesso" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
@@ -33,7 +33,7 @@
                     <div class="form-row">
                         @if(sizeof($matriculas) > 1)
 
-                            <div class="form-group col-md-4 mb-3">
+                            <div class="form-group col-md-5 mb-3">
                                 <label for="Curso">Curso</label>
                                 <select name="curso" class="form-control" id="Curso">
                                     <option selected>Selecione um Curso</option>
@@ -55,17 +55,17 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-6 mb-3">
+                        <div class="form-group col-md-5  mb-3">
                             <label for="procotolo">Protocolo</label>
                             <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo">
                         </div>
 
-                        <div class="form-group col-md-6 mb-3">
+                        <div class="form-group col-md-3 mb-2">
                             <label for="dateini">Data Inicial</label>
                             <input type="date" name="data_ini" class="form-control" id="dateini" placeholder="Data Inicial">
                         </div>
 
-                        <div class="form-group col-md-6 mb-3">
+                        <div class="form-group col-md-3 mb-2">
                             <label for="datend">Data Final</label>
                             <input type="date" name="data_fin" class="form-control" id="datend" placeholder="Data Final">
                         </div>
