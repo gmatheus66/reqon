@@ -147,9 +147,6 @@ class FuncionarioController extends Controller
                         // dd($reqs);
                     }
 
-                    dd(empty($req));
-                    foreach($reqs as $req){
-                    }
 
                     if($validator->fails()){
                         return redirect('/indexfunc?src=Insira+a+data+corretamente')
