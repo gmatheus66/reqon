@@ -14,8 +14,8 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
-                background-image: url("{{ asset('img/bg-welcome.jpg') }}");
-                background-color: #fff;
+                /* background-image: url("{{ asset('img/bg-welcome.jpg') }}"); */
+                background-color: #000;
                 color: #00061a;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -45,6 +45,9 @@
 
             .content {
                 text-align: center;
+                background-image: url("{{ asset('img/bg-welcome.jpg') }}");
+                opacity: 0.7;
+                min-height: 90%;
             }
 
             .title {
