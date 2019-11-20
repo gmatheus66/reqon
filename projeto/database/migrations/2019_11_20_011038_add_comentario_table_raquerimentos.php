@@ -14,7 +14,7 @@ class AddComentarioTableRaquerimentos extends Migration
     public function up()
     {
         Schema::table('requerimentos', function (Blueprint $table) {
-            $table->longText('cometario')->nullable();
+            $table->longText('comentario')->nullable();
         });
     }
 
