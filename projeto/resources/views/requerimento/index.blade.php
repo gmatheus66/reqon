@@ -1,4 +1,4 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 
 
 @section('content')
@@ -35,10 +35,10 @@
 
                             <div class="form-group col-md-4 mb-3">
                                 <label for="Curso">Curso</label>
-                                <select class="form-control" id="Curso">
+                                <select name="curso" class="form-control" id="Curso">
                                     <option selected>Selecione um Curso</option>
                                     @foreach ($matriculas as $matricula)
-                                    <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
+                                    <option value="{{$matricula->matricula}}">{{$matricula->curso->nome}}</option>
                                     @endforeach
                                 </select>
                             </div>
