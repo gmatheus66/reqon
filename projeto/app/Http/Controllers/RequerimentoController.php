@@ -37,7 +37,8 @@ class RequerimentoController extends Controller
         /*$matriculas = usort($matriculas, function($m1, $m2) {
             return strcmp($m1->curso->nome, $m2->curso->nome);
         });*/
-        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
+        //dd($matriculas[0]['id']);
+        $dados = Requerimento::with('subtipo')->where('matricula_id',$matriculas[0]['id'])->orWhere('matricula_id', $matriculas[1]['id'])->orderby('id', 'desc')->paginate(5);
         //dd($dados);
         $test = Tipo::with('subtipos')->get();
         $status = Status::all();
@@ -58,11 +59,18 @@ class RequerimentoController extends Controller
         $protocolo = $input['protocolo'];
         $data_ini = $input['data_ini'];
         $data_fin = $input['data_fin'];
+        $curso_id = $request->get('curso');
 
         $exemplo = Requerimento::where('protocolo', '-1')->get();
         $situ = Status::where('id', $situacao)->get();
         foreach($situ as $st){
             $sit_id = $st['id'];
+        }
+        if($curso_id){
+            //dd($curso_id);
+           $matricula = Matricula::find(1)->where('matricula',$curso_id)->get();
+           //dd($matricula[0]->id);
+           $dados = Requerimento::find(1)->where('matricula_id',$matricula[0]->id)->get();
         }
 
         if($situacao == "Selecione uma Situação" && $protocolo == null){
