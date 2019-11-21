@@ -103,5 +103,6 @@
               </tbody>
             </table>
         </div>
+        {{$dados->links()}}
     </div>
 @endsection

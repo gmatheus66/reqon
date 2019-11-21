@@ -90,5 +90,5 @@
                     <div class="w-100"></div>
                 @endforeach
 </div>
-
+{{$reqs->links()}}
 @endsection
