@@ -5,7 +5,7 @@
 
 <div class="container" id="breadcrumb">
             <span class="itemBread"><a href="/">Início</a> ></span>
-            <span class="itemBread"><a href="/requerimento">Requimentos</a> ></span>
+            <span class="itemBread"><a href="/requerimento">Requerimentos</a> ></span>
             <span class="breadcrumb-item active itemBread" aria-current="page">Criação de Requerimento</span>
 
         <div class="col-sm-8 offset-sm-2">
