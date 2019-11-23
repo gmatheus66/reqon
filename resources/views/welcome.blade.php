@@ -99,6 +99,22 @@
                 <div class="title m-b-md">
                     Req<strong>On</strong>
                 </div>
+
+                <div class="links">
+                    <a href="/">Inicío</a>
+                    <a href="#">Sobre</a>
+                    <a href="#">Contato</a>
+                    @if (Route::has('login'))
+
+                    @if(Auth::guard('funcionario')->check())
+                        <a href="{{ url('/indexfunc') }}">Requerimentos</a>
+                    @elseif(Auth::guard()->check())
+                        <a href="{{ url('/requerimento') }}">Requerimentos</a>
+                    @endif
+
+                    </div>
+                @endif
+                </div>
             </div>
         </div>
         <footer>
