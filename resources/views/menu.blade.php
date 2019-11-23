@@ -22,9 +22,9 @@
                             <div class="top-right links">
 
                             @if(Auth::guard('funcionario')->check())
-                                <a class="nav-link" id="navbarDropdown" href="{{ url('/indexfunc') }}">{{ __('Requerimentos') }}</a>
+                                <!-- <a class="nav-link" id="navbarDropdown" href="{{ url('/indexfunc') }}">{{ __('Requerimentos') }}</a> -->
                             @elseif(Auth::guard()->check())
-                                <a class="nav-link" id="navbarDropdown" href="{{ url('/requerimento') }}">{{ __('Requerimentos') }}</a>
+                                <!-- <a class="nav-link" id="navbarDropdown" href="{{ url('/requerimento') }}">{{ __('Requerimentos') }}</a> -->
                             @else
                                 <a class="nav-link" id="navbarDropdown" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                             @endif
