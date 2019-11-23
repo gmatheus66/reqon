@@ -46,22 +46,30 @@
             .content {
                 text-align: center;
                 background-image: url("{{ asset('img/bg-welcome.jpg') }}");
-                opacity: 0.7;
+                /* opacity: 0.7; */
                 min-height: 90%;
             }
 
-            .title {
+            .title, strong {
                 font-size: 84px;
             }
 
             .links > a {
                 color: #00061a;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 25px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+            }
+            
+            .links > a:hover{
+                box-shadow: 0px 5px 0px;
+            }
+            .links > a:active{
+                box-shadow: -5px 5px 0px ;
+;
             }
 
             .m-b-md {
