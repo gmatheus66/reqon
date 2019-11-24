@@ -74,6 +74,9 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            p{
+                padding:100px 200px 100px 200px;
+            }
         </style>
     </head>
     <body>
