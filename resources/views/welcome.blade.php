@@ -54,7 +54,7 @@
                 font-size: 84px;
             }
 
-            .links > a , p{
+            .links > a ,.carousel-item p{
                 color: #00061a;
                 padding: 0 25px;
                 font-size: 25px;
@@ -74,7 +74,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-            p{
+            .carousel-item p{
                 padding:100px 200px 100px 200px;
             }
         </style>
