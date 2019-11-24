@@ -8,6 +8,10 @@
             <span class="itemBread"><a href="/requerimento">Requerimentos</a> ></span>
             <span class="breadcrumb-item active itemBread" aria-current="page">Criação de Requerimento</span>
 
+            <div class="div-req">
+                <a href="{{ route('requerimento.index')}}"><button class="btnReq linkBtn btn btn-outline-primary">Voltar</button></a>
+            </div>
+
         <div class="col-sm-8 offset-sm-2">
 			<h1 class="display-6">Criar um requerimento</h1>
 	    <div>
