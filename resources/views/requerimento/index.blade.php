@@ -19,7 +19,7 @@
             <div class="d-flex align-items-center flex-column bd-highlight mb-4">
 
               @if(session('success'))
-                <div class="alert alert-success msgSucesso" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong></div>
+                <div class="alert alert-success msgSucesso" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong><button type="button" class="close" data-dismiss="alert">x</button></div>
               @endif
             <div>
 
