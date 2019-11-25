@@ -277,7 +277,7 @@ class RequerimentoController extends Controller
 
         $req->save();
 
-        return redirect()->route('requerimento.index')->withSuccess('Requerimento Criado');
+        return redirect()->route('requerimento.index')->withSuccess('Requerimento criado com sucesso!');
     }
 
     public function show($id){
