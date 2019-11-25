@@ -109,6 +109,8 @@
                         <a href="{{ url('/indexfunc') }}">Requerimentos</a>
                     @elseif(Auth::guard()->check())
                         <a href="{{ url('/requerimento') }}">Requerimentos</a>
+                    @else
+                        <a href="{{ route('login') }}">Entrar</a>
                     @endif
                     @endif
                 </div>
