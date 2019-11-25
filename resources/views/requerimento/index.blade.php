@@ -90,6 +90,9 @@
                 </tr>
               </thead>
               <tbody>
+                  @if(sizeof($dados) < 1)
+                    <th colspan="6" class="msgReqVazio">Não encontramos nenhum requerimento :(</th>
+                  @endif
                   @foreach ($dados as $req)
                     <tr>
                       <th scope="row">{{$req['protocolo']}}</th>
@@ -103,6 +106,5 @@
               </tbody>
             </table>
         </div>
-        {{$dados->links()}}
     </div>
 @endsection
