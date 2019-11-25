@@ -94,7 +94,7 @@
 
                 </div>
             @endif -->
-            <div class="content">
+            <div class="content contentWelcome">
                 <div class="title m-b-md">
                     Req<strong>On</strong>
                 </div>
