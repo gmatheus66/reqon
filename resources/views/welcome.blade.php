@@ -80,9 +80,6 @@
         </style>
     </head>
     <body>
-    <header >
-        @include('menu')
-    </header>
         <!-- <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -139,8 +136,5 @@
                 </div>
 
             </div>
-        <footer>
-            @include('footer')
-        </footer>
     </body>
 </html>
