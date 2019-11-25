@@ -133,7 +133,6 @@ class RequerimentoController extends Controller
                         $dados = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
                         ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
                     }
-
                     if($request->get('data_fin')){
                         $validator = Validator::make($request->all(), [
                             'data_fin' => 'date',
@@ -164,12 +163,13 @@ class RequerimentoController extends Controller
                     'protocolo'=>'required|numeric|min:1',
                     'situacao'=>'numeric|min:1'
                     ]);
+                    if($situacao != "Selecione uma Situação" && $protocolo != null){
 
-                    if($situacao != "Selecione uma Situação"){
-                        $dados = Requerimento::whereDate('protocolo', $protocolo)
+                        $dados = Requerimento::where('protocolo', $protocolo)
                         ->where('status_id', $sit_id)
                         ->where('matricula_id',$matriculas[0]['id'])
                         ->paginate(5);
+                        dd($dados);
                     }else{
                         $dados = $exemplo;
                     }
