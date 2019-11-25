@@ -120,7 +120,7 @@ class RequerimentoController extends Controller
                     $dados = Requerimento::whereBetween('created_at', [date($data_ini), date($data_fin)])
                                         ->where('matricula_id',$matriculas[0]['id'])
                                         ->orderby('id', 'desc')
-                                        ->get();
+                                        ->paginate(5);
                 }else{
                     $dados = $exemplo;
                 }
@@ -131,7 +131,7 @@ class RequerimentoController extends Controller
                             'data_ini' => 'date',
                         ]);
                         $dados = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
-                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
                     }
 
                     if($request->get('data_fin')){
@@ -139,7 +139,7 @@ class RequerimentoController extends Controller
                             'data_fin' => 'date',
                         ]);
                         $dados = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
-                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
                     }
 
                     if($validator->fails()){
@@ -169,7 +169,7 @@ class RequerimentoController extends Controller
                         $dados = Requerimento::whereDate('protocolo', $protocolo)
                         ->where('status_id', $sit_id)
                         ->where('matricula_id',$matriculas[0]['id'])
-                        ->get();
+                        ->paginate(5);
                     }else{
                         $dados = $exemplo;
                     }
@@ -180,14 +180,14 @@ class RequerimentoController extends Controller
                             'situacao'=>'numeric|min:1',
                         ]);
                         $dados = Requerimento::where('status_id', $request->get('situacao'))
-                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
                     }
                     if($request->get('protocolo')){
                         $validator = Validator::make($request->all(), [
                             'protocolo'=>'required|numeric|min:1'
                         ]);
                         $dados = Requerimento::where('protocolo', $protocolo)
-                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->get();
+                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
                         // dd('deburguer');
                     }
 
