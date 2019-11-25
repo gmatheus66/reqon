@@ -121,7 +121,7 @@ class FuncionarioController extends Controller
                 if(!($validator->fails())){
                     $reqs = Requerimento::whereBetween('created_at', [date($data_ini), date($data_fin)])
                                         ->orderby('id', 'desc')
-                                        ->get();
+                                        ->paginate(8);
                 }else{
                     $reqs = $exemplo;
                 }
@@ -133,7 +133,7 @@ class FuncionarioController extends Controller
                         ]);
 
                         $reqs = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
-                        ->orderby('id', 'desc')->get();
+                        ->orderby('id', 'desc')->paginate(8);
                     //    dd($reqs);
                     }
 
@@ -143,7 +143,7 @@ class FuncionarioController extends Controller
                         ]);
 
                         $reqs = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
-                        ->orderby('id', 'desc')->get();
+                        ->orderby('id', 'desc')->paginate(8);
                         // dd($reqs);
                     }
 
@@ -170,7 +170,7 @@ class FuncionarioController extends Controller
                 if($situacao_str != "Selecione uma Situação"){
                     $reqs = Requerimento::where('protocolo', $protocolo)
                     ->where('status_id', $situacao_id)
-                    ->get();
+                    ->paginate(8);
                 }else{
                     $reqs = $exemplo;
                 }
@@ -184,7 +184,7 @@ class FuncionarioController extends Controller
                             ]);
 
                             $reqs = Requerimento::where('status_id', $situacao_id)
-                            ->orderby('id', 'desc')->get();
+                            ->orderby('id', 'desc')->paginate(8);
                         }
                     }
                     if($request->get('protocolo')){
@@ -193,7 +193,7 @@ class FuncionarioController extends Controller
                         ]);
 
                         $reqs = Requerimento::where('protocolo', $protocolo)
-                        ->orderby('id', 'desc')->get();
+                        ->orderby('id', 'desc')->paginate(8);
                         // dd($validator->fails());
                     }
 
