@@ -96,6 +96,10 @@
 	margin:0!important;
 	font-size:0.45em;
 	font-family: 'Arial', sans-serif;
+	border-color:#37bf8f;
+}
+.btnNewReq:hover{
+	border-color:#37bf8f;
 }
 .plus{
 	width:1.8em;
@@ -109,9 +113,11 @@
 .btnDetalhes{
 	width:14vh;
 	background-color:#2bb7df;
+	border-color:#2bb7df;
 }
 .btnDetalhes:hover{
 	background-color:#269bbd;
+	border-color:#269bbd;
 }
 .showreq{
     margin-left: 9%;
