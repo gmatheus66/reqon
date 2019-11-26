@@ -41,17 +41,20 @@
                       <h3 class="subTitleReq">Dados do Requerimento</h3>
 
                       <div class="">
-                        Tipo: {{$req['subtipo']['descricao']}}
-
-                        Situação:{{$req['status']['situacao']}}
-
-                        Data: {{date('d-m-Y', strtotime($req['created_at']))}}
-
-                        Protocolo : {{$req['protocolo']}}
-
-                        Setor:  {{$req['setor']['nome']}}
-
-                        descrição:{{$req['descricao']}}
+                        <div class="row">
+                          <div class="col">Tipo: {{$req['subtipo']['descricao']}}</div>
+                          <div class="col">Situação:{{$req['status']['situacao']}}</div>
+                          <div class="col">Data: {{date('d-m-Y', strtotime($req['created_at']))}}</div>
+                        </div>
+                        <div class="row">
+                          <div class="col">Descrição:{{$req['descricao']}}</div>
+                          <div class="row align-items-center">
+                            <div class="col">Setor:  {{$req['setor']['nome']}}</div>
+                              <div class="w-100"></div> <!-- força a quebra de linha -->
+                            <div class="col">Protocolo : {{$req['protocolo']}}</div>
+                          </div>
+                        </div>
+                        
                       </div>  
                     @endforeach
                 @endif
