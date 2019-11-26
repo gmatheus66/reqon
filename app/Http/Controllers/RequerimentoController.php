@@ -94,17 +94,19 @@ class RequerimentoController extends Controller
         $protocolo = $input['protocolo'];
         $data_ini = $input['data_ini'];
         $data_fin = $input['data_fin'];
-        $curso_id = $request->get('curso');
-
+        $matri = $request->get('curso');
+        $m = Matricula::where('matricula', $matri)->get();
+        foreach($m as $mt){
+            $matri_id = $mt['id'];
+        }
         $exemplo = Requerimento::where('protocolo', '-1')->get();
         $situ = Status::where('id', $situacao)->get();
         foreach($situ as $st){
             $sit_id = $st['id'];
         }
-        if($curso_id){
-            //dd($curso_id);
-           $matricula = Matricula::find(1)->where('matricula',$curso_id)->get();
-           //dd($matricula[0]->id);
+
+        if($matri && empty($matri)){
+           $matricula = Matricula::find(1)->where('matricula',$matri)->get();
            $dados = Requerimento::find(1)->where('matricula_id',$matricula[0]->id)->get();
         }
 
@@ -146,17 +148,17 @@ class RequerimentoController extends Controller
                                 ->withErrors($validator)
                                 ->withInput();
                     }
-
                     return view('requerimento.index',compact('dados', 'status', 'matriculas'));
                 }else{
                     return view('requerimento.index',compact('dados', 'status', 'matriculas'));
                     exit();
                 }
-            }else{
+            }/* else{
+                dg();
                 return redirect('/requerimento?src=Escolha+duas+datas')
                         ->withInput();
-            }
-        }else{
+            } */
+        }elseif($protocolo !=null || $situacao != "Selecione uma Situação"){
 
             if($request->get('situacao') || $request->get('protocolo')){
                 $validator = Validator::make($request->all(), [
@@ -169,11 +171,9 @@ class RequerimentoController extends Controller
                         ->where('status_id', $sit_id)
                         ->where('matricula_id',$matriculas[0]['id'])
                         ->paginate(5);
-                        dd($dados);
                     }else{
                         $dados = $exemplo;
                     }
-
                 if($exemplo == $dados){
                     if($request->get('situacao') != "Selecione uma Situação"){
                         $validator = Validator::make($request->all(), [
@@ -190,13 +190,18 @@ class RequerimentoController extends Controller
                         ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
                         // dd('deburguer');
                     }
-
                     return view('requerimento.index',compact('dados', 'status', 'matriculas'));
                 }else{
                     return view('requerimento.index',compact('dados', 'status', 'matriculas'));
                     exit();
                 }
             }
+
+        }
+
+        if(!empty($matri_id)){
+            $dados = Requerimento::where('matricula_id', $matri_id)->paginate(5);
+            return view('requerimento.index',compact('dados', 'status', 'matriculas'));
 
         }
 
