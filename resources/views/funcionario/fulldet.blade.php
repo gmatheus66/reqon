@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-    @include('funcionario.det', $requerimento)
+    @include('funcionario.det', [$requerimento, $status])
 @endsection
