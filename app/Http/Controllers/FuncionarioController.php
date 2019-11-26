@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class FuncionarioController extends Controller
 {
@@ -112,7 +113,7 @@ class FuncionarioController extends Controller
             $situacao_id = $st['id'];
         }
 
-        if($situacao_str == "Selecione uma Situação" && $protocolo ==null){
+        if($situacao_str == "Selecione uma Situação" && $protocolo == null){
             if ($request->get('data_ini') && $request->get('data_ini')) {
                 $validator = Validator::make($request->all(), [
                     'data_ini' => 'date',
@@ -147,27 +148,37 @@ class FuncionarioController extends Controller
                         // dd($reqs);
                     }
 
-
                     if($validator->fails()){
                         return redirect('/indexfunc?src=Insira+a+data+corretamente')
                                 ->withErrors($validator)
                                 ->withInput();
                     }
 
+                    if($reqs->count() == 0){
+                        // return Redirect::back()->withErrors('src', 'Não foi encontrado nenhum requerimento entre essas datas');
+                        return redirect('/indexfunc?src=Nenhum+requerimento+encontrado')
+                                ->withInput();
+                    }
+
                     return view('funcionario.indexfunc',compact('reqs', 'status'));
                 }else{
+                    // dg();
+                    if($reqs->count() == 0){
+                        // return Redirect::back()->withErrors('src', 'Não foi encontrado nenhum requerimento entre essas datas');
+                        return redirect('/indexfunc?src=Nenhum+requerimento+encontrado')
+                                ->withInput();
+                    }
                     return view('funcionario.indexfunc',compact('reqs', 'status'));
                     exit();
                 }
             }
         }else{
-
             if($request->get('situacao') || $request->get('protocolo')){
                 $validator = Validator::make($request->all(), [
                     'protocolo'=>'required|numeric|min:1',
                     'situacao'=>'numeric|min:1'
                 ]);
-                if($situacao_str != "Selecione uma Situação"){
+                if($situacao_str != "Selecione uma Situação" && $protocolo != null){
                     $reqs = Requerimento::where('protocolo', $protocolo)
                     ->where('status_id', $situacao_id)
                     ->paginate(8);
@@ -196,9 +207,16 @@ class FuncionarioController extends Controller
                         ->orderby('id', 'desc')->paginate(8);
                         // dd($validator->fails());
                     }
+                    // dg();
+                    // if($reqs->count() == 0){
+                        // return Redirect::back()->withErrors('src', 'Parâmetros inválidos');
+                    // }
 
                     return view('funcionario.indexfunc',compact('reqs', 'status'));
                 }else{
+                    // if($reqs->count() == 0){
+                    //     return Redirect::back()->withErrors('src', 'Parâmetros inválidos');
+                    // }
                     return view('funcionario.indexfunc',compact('reqs', 'status'));
                     exit();
                 }
