@@ -243,9 +243,10 @@ class FuncionarioController extends Controller
         $setor = Setor::all();
         $requerimento = Requerimento::find($id);
         $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento->id)->get();
+        $status = Status::all();
         //dd($reqpai);
         //return view('funcionario.show', compact('requerimento', 'setor','reqpai'));
-        return view('funcionario.fulldet', compact('requerimento'));
+        return view('funcionario.fulldet', compact('requerimento', 'status'));
     }
 
 }
