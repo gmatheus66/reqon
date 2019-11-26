@@ -26,19 +26,19 @@ class RequerimentoController extends Controller
 
     public function redirecionar(Request $request){
         //var_dump('derasdad');
-        //dd($request->all());
-
+        dd($request->all());
         $validator = Validator::make($request->all(), [
-            'subtipo'=>'required',
-            'status' =>'required',
-            'setor' => 'required',
-            'requerimento' => 'required',
-            'matricula' => 'required'
+            'subtipo'=>'required|numeric',
+            'status' =>'required|numeric',
+            'setor' => 'required|numeric',
+            'requerimento' => 'required|numeric',
+            'matricula' => 'required|numeric',
+            'teste' => 'required|numeric'
 
         ]);
 
         if ($validator->fails()) {
-            return redirect('showreqfunc'. $request->get('requerimento'))
+            return redirect()->back()
                         ->withErrors($validator)
                         ->withInput();
         }
@@ -50,13 +50,14 @@ class RequerimentoController extends Controller
             'status_id' => $request->get('status'),
             'req_pai_id' => $request->get('requerimento'),
             'funcionario_id' => auth()->user()->id,
-            'setor_id' => $request->get('setor'),
+            'setor_id' => $request->get('teste'),
             'matricula_id' => $request->get('matricula'),
             'comentario' =>  $request->get('comentario')
         ]);
 
         $req->save();
 
+        return redirect()->back();
         //return redirect()->route('showreqfunc')->withSuccess('Requerimento Criado');
     }
 
