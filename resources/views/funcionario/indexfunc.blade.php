@@ -49,7 +49,7 @@
 
                 </div>
                 <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
-            <a href="{{ route('requerimento.index')}}" class="linkFilter">Limpar filtro</a>
+            <a href="{{ route('func')}}" class="linkFilter">Limpar filtro</a>
 
             </form>
     </div>
@@ -71,6 +71,9 @@
                       Ação
                     </div>
                     <div class="w-100"></div>
+                    @if(sizeof($reqs) < 1)
+                    <th colspan="6" class="msgReqVazio">Não encontramos nenhum requerimento :(</th>
+                  @endif
                 @foreach ($reqs as $req)
                     <div class="col-sm">
                           {{$req['protocolo']}}
@@ -88,6 +91,7 @@
                           <a href="{{route('showreqfunc', $req['id'])}}" class="btn btn-primary">Detalhes</a>
                         </div>
                     <div class="w-100"></div>
+                    <hr class="my-1">
                 @endforeach
 </div>
 {{$reqs->links()}}
