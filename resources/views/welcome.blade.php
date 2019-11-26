@@ -77,6 +77,8 @@
             .carousel-item p{
                 padding:100px 200px 100px 200px;
             }
+        
+
         </style>
     </head>
     <body>
@@ -116,26 +118,32 @@
                 </div>
 
                 <div class="container">
-                    <div id="carouselContent" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active text-center p-4">
-                                <p>Abra um requerimento online a qualquer momento</p>
-                            </div>
-                            <div class="carousel-item text-center p-4">
-                                <p>Acompanhe o status do seu requerimento</p>
-                            </div>
-                            <div class="carousel-item text-center p-4">
-                                <p>Apoie a redução no uso de papel</p>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselContent" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselContent" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        </a>
-                    </div>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <p>Abra um requerimento online a qualquer momento</p>
                 </div>
+                <div class="carousel-item">
+                    <p>Acompanhe o status do seu requerimento</p>
+                </div>
+                <div class="carousel-item">
+                    <p>Apoie a redução no uso de papel</p>
+                </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <!-- <span class="sr-only">Previous</span> -->
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <!--   <span class="sr-only">Next</span> -->
+                </a>
+            </div>
 
             </div>
     </body>
