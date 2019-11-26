@@ -26,7 +26,6 @@ class RequerimentoController extends Controller
 
     public function redirecionar(Request $request){
         //var_dump('derasdad');
-        dd($request->all());
         $validator = Validator::make($request->all(), [
             'subtipo'=>'required|numeric',
             'status' =>'required|numeric',
@@ -91,6 +90,7 @@ class RequerimentoController extends Controller
         $status = Status::all();
 
         $input = $request->all();
+        // dd($input);
         $situacao = $input['situacao'];
         $protocolo = $input['protocolo'];
         $data_ini = $input['data_ini'];
@@ -127,21 +127,24 @@ class RequerimentoController extends Controller
                 }else{
                     $dados = $exemplo;
                 }
-
                 if($exemplo == $dados){
-                    if($request->get('data_ini')){
+                    // dd("1");
+                    if($request->get('data_fin')){
                         $validator = Validator::make($request->all(), [
                             'data_ini' => 'date',
                         ]);
                         $dados = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
                         ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
                     }
-                    if($request->get('data_fin')){
+
+                    if($request->get('data_ini')){
                         $validator = Validator::make($request->all(), [
                             'data_fin' => 'date',
                         ]);
                         $dados = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
                         ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
+                        // dd("teste");
+
                     }
 
                     if($validator->fails()){
@@ -154,11 +157,10 @@ class RequerimentoController extends Controller
                     return view('requerimento.index',compact('dados', 'status', 'matriculas'));
                     exit();
                 }
-            }/* else{
-                dg();
-                return redirect('/requerimento?src=Escolha+duas+datas')
-                        ->withInput();
-            } */
+            }else{
+                return redirect('/requerimento?src=Insira+a+data+corretamente')
+                                ->withInput();
+            }
         }elseif($protocolo !=null || $situacao != "Selecione uma Situação"){
 
             if($request->get('situacao') || $request->get('protocolo')){
