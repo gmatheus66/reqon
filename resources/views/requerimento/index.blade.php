@@ -33,7 +33,7 @@
                     <div class="form-row">
                         @if(sizeof($matriculas) > 1)
 
-                            <div class="form-group col-md-5 mb-3">
+                            <div class="form-group col-md-7 mb-3">
                                 <label for="Curso">Curso</label>
                                 <select name="curso" class="form-control" id="Curso">
                                     <option selected>Selecione um Curso</option>
@@ -45,7 +45,7 @@
 
                         @endif
 
-                        <div class="form-group col-md-6 mb-3">
+                        <div class="form-group col-md-7 mb-3">
                             <label for="situacao">Situação</label>
                             <select name="situacao" class="form-control" id="situacao">
                                 <option selected>Selecione uma Situação</option>
@@ -55,7 +55,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-md-5  mb-3">
+                        <div class="form-group col-md-6  mb-3">
                             <label for="procotolo">Protocolo</label>
                             <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo">
                         </div>
