@@ -37,6 +37,22 @@
                       Semestre:{{$req['matricula']['semestre']}}
 
                       </div>
+
+                      <h3 class="subTitleReq">Dados do Requerimento</h3>
+
+                      <div class="">
+                        Tipo: {{$req['subtipo']['descricao']}}
+
+                        Situação:{{$req['status']['situacao']}}
+
+                        Data: {{date('d-m-Y', strtotime($req['created_at']))}}
+
+                        Protocolo : {{$req['protocolo']}}
+
+                        Setor:  {{$req['setor']['nome']}}
+
+                        descrição:{{$req['descricao']}}
+                      </div>  
                     @endforeach
                 @endif
             </div>
