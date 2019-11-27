@@ -3,8 +3,8 @@
     border-radius: 4px;
     border: none;
     background-color: #37bf8f;
-    margin-top: 3px;
-    margin-left: -0.5%;
+    margin-top: 1%;
+    margin-left: 1%;
     color: white;
 }
 
@@ -120,8 +120,8 @@
 	border-color:#269bbd;
 }
 .showreq{
-    margin-left: 9%;
-    margin-right: 9%;
+    margin-left: 6%;
+    margin-right: 4%;
     margin-top: 4%;
 }
 .colReq > th{
@@ -147,4 +147,13 @@
 }
 .close:hover{
 	color:#fff;
+}
+.indeferido{
+    color: hsl(0, 100%, 30%);
+}
+.parcialmente-deferido{
+    color: hsl(60, 100%, 30%);
+}
+.deferido{
+    color: hsl(120, 100%, 30%);
 }
