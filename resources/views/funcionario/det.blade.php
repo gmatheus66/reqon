@@ -7,135 +7,85 @@
             </div>
        @endforeach
        @endif
-    <div id="cont">
-        <div class="container-fluid">
-                @if($requerimento)
+       <h3 class="subTitleReq">Dados do Estudante</h3>
 
-                    <div class="row">
-                            <div class="col-sm">
-                                Protocolo
-                            </div>
-                            <div class="col-sm">
-                                Data
-                            </div>
-                            <div class="col-sm">
-                                Situação
-                            </div>
-                            <div class="col-sm">
-                                Setor
-                            </div>
-                            <div class="col-sm">
-                                Descrição
-                            </div>
-                            <div class="w-100"></div>
+       <div class="">
+            <div class="row">
+                <div class="col-sm">Matrícula: {{$requerimento['matricula']['matricula']}}</div>
+                <div class="col-sm">Status da matrícula: {{$requerimento['matricula']['status']}}</div>
+                <div class="col-sm">Curso: {{$requerimento['matricula']['curso']['nome']}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">Nome: {{$requerimento->matricula->aluno->nome}}</div>
+                <div class="col-sm-4">Semestre: {{$requerimento['matricula']['semestre']}}</div>
+            </div>
+        </div>
 
-                            <div class="col-sm">
-                                {{$requerimento['protocolo']}}
-                            </div>
-                            <div class="col-sm">
-                                {{date('d-m-Y', strtotime($requerimento['created_at']))}}
-                            </div>
-                            <div class="col-sm">
-                                {{$requerimento['status']['situacao']}}
-                            </div>
-                            <div class="col-sm">
-                                {{$requerimento['setor']['nome']}}
-                            </div>
-                            <div class="col-sm">
-                                {{$requerimento['descricao']}}
-                            </div>
+        <div class="dadosreq"><h3 class="subTitleReq">Dados do Requerimento:</h3>  <h3 class="subTitleReq {{Str::slug($requerimento['status']['situacao'])}}">{{$requerimento['status']['situacao']}}</h3></div>
+
+        <div class="">
+           <div class="row">
+             <div class="col">Tipo: {{$requerimento['subtipo']['descricao']}}</div>
+             <div class="col">Situação: {{$requerimento['status']['situacao']}}</div>
+             <div class="col">Data: {{date('d-m-Y', strtotime($requerimento['created_at']))}}</div>
+           </div>
+           <div class="row">
+               <div class="col col-sm-8">Descrição:</div>
+               <div class="col">Setor:  {{$requerimento['setor']['nome']}}</div>
+                 <div class="w-100"></div> <!-- força a quebra de linha -->
+               <div class="col col-sm-8">{{$requerimento['descricao']}}</div>
+               <div class="col">Protocolo: {{$requerimento['protocolo']}}</div>
+           </div>
+           @if($requerimento->comentario)
+            <div class="row">
+                    <div class="col">Comentario: {{$requerimento->comentario}}</div>
+                </div>
+           @endif
+        </div>
+        <h3 class="subTitleReq">Encaminhar</h3>
+        <div class="">
+            <form action="{{ route('redirecionar') }}" method="post">
+                @csrf
+                <div class="row">
+                    <div class="form-group col">
+                        <select name="teste" class="selectpicker form-control" >
+                            <option value="" selected>Selecione um Setor</option>
+                            @foreach ($setor as $set)
+                                <option value="{{$set['id']}}">{{$set['nome']}}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <hr class="my-4">
-            <div class="" id="cont">
-                <form action="{{ route('redirecionar') }}" method="post">
-                    @csrf
-                    <div class="container-fluid">
-                        @if($requerimento['status']['situacao'] == "Deferido")
-                            <div class="col-sm btn-success status">
-                                    {{$requerimento['status']['situacao']}}
-                            </div>
-                        @elseif($requerimento['status']['situacao'] == "Parcialmente Deferido")
-                            <div class="col-sm btn-warning status">
-                                    {{$requerimento['status']['situacao']}}
-                            </div>
-                        @else
-                            <div class="col-sm btn-danger status">
-                                    {{$requerimento['status']['situacao']}}
-                            </div>
-                        @endif
-                        <div class="row">
-                            <div class="col-sm">
-                                Semestre
-                            </div>
-                            <div class="col-sm">
-                                Setor
-                            </div>
-                            <div class="col-sm">
-                                Descrição
-                            </div>
-                            <div class="col-sm">
-                                Para o Setor...
-                            </div>
-                            {{-- <div class="col-sm btn-secondary">
-                                {{$requerimento['status']['situacao']}}
-                            </div> --}}
-                            <div class="w-100"></div>
+                    <div class="form-group col">
+                        <select name="status" class="selectpicker form-control" >
+                            <option value="" selected>Selecione uma Situação</option>
+                            @foreach ($status as $stt)
+                                <option value="{{ $stt['id'] }}">{{ $stt['situacao'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
+                    <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
+                    <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
+                    <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
+                    <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
 
-                            <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
-                            <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
-                            <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
-                            <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
-                            <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
-
-                            <div class="col-sm">
-                                {{$requerimento['matricula']['semestre']}}
-                            </div>
-                            <div class="col-sm">
-                                {{$requerimento['setor']['nome']}}
-                            </div>
-                            <div class="col-sm">
-                                {{$requerimento['descricao']}}
-                            </div>
-
-
-                        </div>
-                        <div class="form-group">
-                            <select name="teste" class="selectpicker form-control" >
-                                <option value="" selected>Selecione um Setor</option>
-                                @foreach ($setor as $set)
-                                    <option value="{{$set['id']}}">{{$set['nome']}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select name="status" class="selectpicker form-control" >
-                                <option value="" selected>Selecione uma Situação</option>
-                                @foreach ($status as $stt)
-                                    <option value="{{ $stt['id'] }}">{{ $stt['situacao'] }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
+                </div>
+                <div class="row">
+                    <div class="input-group col">
+                        <div class="input-group-prepend">
                             <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
                             </div>
                             <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
                         </div>
-                        <button type="submit" class="coment-btn">Enviar</button>
-                    </div>
-                </form>
-            {{-- {{$requerimento->setor}} --}}
-
-                @if ($requerimento->funcionario_id == Auth::user()->id)
-                    {{Auth::user()->id}}
-                @endif
+                </div>
+                <div class="row">
+                    <button type="submit" class="coment-btn btn-lg col col-sm-2">Enviar</button>
+                </div>
+            </form>
+        </div>
 
                 {{-- <p>{{ $requerimento->children }}</p> --}}
                 @foreach ($requerimento->children as $requerimento)
                     @include('funcionario.det', [$requerimento, $status, $setor])
                 @endforeach
-            </div>
-            @endif
-        </div>
-    </div>
 </div>
