@@ -2,9 +2,9 @@
 
         @if($errors->any())
         @foreach($errors->any() as $message)
-        <div class="alert alert-danger" role="alert">
-         {{ $message }}
-       </div>
+            <div class="alert alert-danger" role="alert">
+                {{ $message }}
+            </div>
        @endforeach
        @endif
     <div id="cont">
@@ -50,10 +50,19 @@
                 <form action="{{ route('redirecionar') }}" method="post">
                     @csrf
                     <div class="container-fluid">
-
-                        <div class="col-sm btn-secondary status">
-                                {{$requerimento['status']['situacao']}}
-                        </div>
+                        @if($requerimento['status']['situacao'] == "Deferido")
+                            <div class="col-sm btn-success status">
+                                    {{$requerimento['status']['situacao']}}
+                            </div>
+                        @elseif($requerimento['status']['situacao'] == "Parcialmente Deferido")
+                            <div class="col-sm btn-warning status">
+                                    {{$requerimento['status']['situacao']}}
+                            </div>
+                        @else
+                            <div class="col-sm btn-danger status">
+                                    {{$requerimento['status']['situacao']}}
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-sm">
                                 Semestre
