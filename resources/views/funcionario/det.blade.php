@@ -55,17 +55,11 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col">
-                        <select name="status" class="selectpicker form-control" >
-                            <option value="" selected>Selecione uma Situação</option>
-                            @foreach ($status as $stt)
-                                <option value="{{ $stt['id'] }}">{{ $stt['situacao'] }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+
                     <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
                     <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
                     <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
+                    <input type="hidden" name="status" value="{{$requerimento['status']['id']}}">
                     <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
                     <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
 
