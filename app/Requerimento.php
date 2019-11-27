@@ -16,7 +16,8 @@ class Requerimento extends Model
             'req_pai_id',
             'funcionario_id',
             'setor_id',
-            'matricula_id'
+            'matricula_id',
+            'comentario'
     ];
 
     protected $guarded = [
