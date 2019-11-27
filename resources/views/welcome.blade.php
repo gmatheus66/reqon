@@ -4,136 +4,123 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ReqOn</title>
+        <title>Laravel</title>
 
+        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/script.js')}}"></script>
+
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <style>
-            html, body {
-                /* background-image: url("{{ asset('img/bg-welcome.jpg') }}"); */
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+        <!-- Styles -->
+        <style type="text/css">
+            body{
                 background-color: #000;
-                color: #00061a;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+                background-size:cover;
+                background-image: url({{asset('img/bg-welcome2.jpg')}});
             }
-
-            .full-height {
-                height: 100vh;
+            .my-nav{
+                position: absolute!important;
+                width: 100%!important;
+                z-index:999!important;
+                background:none!important;
+                border:0!important;
+                border-radius: 0!important;
             }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
+            .my-carousel{
+                position: absolute!important;
+                top:0!important;
             }
-
-            .position-ref {
-                position: relative;
+            .linksWelcome > a{
+                font-size:20px;
+                color:#4bb18d;
+                font-family: 'Titillium Web', sans-serif;
+                margin: 15px;
             }
-
-            .top-right {
+            .linksWelcome > a:hover{
+                color:#328064;
+                text-decoration:none;
+            }
+            .carousel-item{
+               height: 100vh;
+            }
+            .carousel-item > p{
+                position:absolute;
+                top:-10;
+            }
+            .ReqOn{
                 position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
+                z-index:1;
                 text-align: center;
-                background-image: url("{{ asset('img/bg-welcome.jpg') }}");
-                /* opacity: 0.7; */
-                min-height: 90%;
-            }
+                top:4%;
+                font-family: "Open Sans", sans-serif;
+                font-size:6vh;
+                color:#37bf8f;
+                left: 0;
+                right: 0;
 
-            .title, strong {
-                font-size: 84px;
             }
-
-            .links > a ,.carousel-item p{
-                color: #00061a;
-                padding: 0 25px;
-                font-size: 25px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
+            .carousel-caption > p{
+                font-size:3vh;
+                color:#4bb18d;
+                margin-bottom: 200px;
+                margin-left: 20%;
+                margin-right: 20%;
             }
-            
-            .links > a:hover{
-                box-shadow: 0px 5px 0px;
+            .carousel-control-next .carousel-control-prev{
+                z-index: 2;
             }
-            .links > a:active{
-                box-shadow: -5px 5px 0px ;
+            #logoVerde{
+                width: 10vh;
             }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-            .carousel-item p{
-                padding:100px 200px 100px 200px;
-            }
-        
-
         </style>
     </head>
     <body>
-        <!-- <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
 
-                @if(Auth::guard('funcionario')->check())
-                    <a href="{{ url('/indexfunc') }}">Requerimentos</a>
-                @elseif(Auth::guard()->check())
-                    <a href="{{ url('/requerimento') }}">Requerimentos</a>
-                @else
-                    <a href="{{ route('login') }}">Entrar</a>
-                @endif
-
-                </div>
-            @endif -->
-            <div class="content contentWelcome">
-                <div class="title m-b-md">
-                    Req<strong>On</strong>
-                </div>
-
-                <div class="links">
-                    <a href="/">Inicío</a>
-                    <a href="#">Sobre</a>
-                    <a href="#">Contato</a>
+    <div class="header">
+        <nav class="my-nav navbar navbar-expand-lg navbar-light bg-light">
+          <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form class="form-inline my-2 my-lg-0 linksWelcome">
+                    <a href="/">INÍCIO</a>
+                    <a href="#">SOBRE</a>
+                    <a href="#">CONTATO</a>
                     @if (Route::has('login'))
-
-                    @if(Auth::guard('funcionario')->check())
-                        <a href="{{ url('/indexfunc') }}">Requerimentos</a>
-                    @elseif(Auth::guard()->check())
-                        <a href="{{ url('/requerimento') }}">Requerimentos</a>
-                    @else
-                        <a href="{{ route('login') }}">Entrar</a>
+                        @if(Auth::guard('funcionario')->check())
+                            <a href="{{ url('/indexfunc') }}">REQUERIMENTOS</a>
+                        @elseif(Auth::guard()->check())
+                            <a href="{{ url('/requerimento') }}">REQUERIMENTOS</a>
+                        @else
+                            <a href="{{ route('login') }}">ENTRAR</a>
+                        @endif
                     @endif
-                    @endif
-                </div>
+            </form>
+          </div>
+        </nav>
+            
+          <span class="ReqOn"><img id="logoVerde" src="{{ asset('img/logoSite-verde.png') }}">ReqOn</span>
 
-                <div class="container">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">      
                 <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <p>Abra um requerimento online a qualquer momento</p>
-                </div>
-                <div class="carousel-item">
-                    <p>Acompanhe o status do seu requerimento</p>
-                </div>
-                <div class="carousel-item">
-                    <p>Apoie a redução no uso de papel</p>
-                </div>
+                    <div class="carousel-item active">
+                        <div class="carousel-caption">
+                            <p>Abra um requerimento online a qualquer momento, de forma prática e rápida.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-caption">
+                            <p>Acompanhe o status do seu requerimento e descubra se ele já foi deferido, em que setor está, dentre outras informações.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-caption">
+                            <p>Apoie a redução no uso de papel.</p>
+                        </div>
+                    </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -145,6 +132,5 @@
                 </a>
             </div>
 
-            </div>
     </body>
 </html>
