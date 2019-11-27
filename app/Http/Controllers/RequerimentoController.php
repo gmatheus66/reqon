@@ -32,7 +32,8 @@ class RequerimentoController extends Controller
             'setor' => 'required|numeric',
             'requerimento' => 'required|numeric',
             'matricula' => 'required|numeric',
-            'teste' => 'required|numeric'
+            'teste' => 'required|numeric',
+            'comentario' =>'required'
 
         ]);
 
