@@ -9,13 +9,7 @@
             <span class="breadcrumb-item active itemBread" aria-current="page">Detalhes </span>
         </nav>
       </div>
-          <center>
-            <div class="div-req">
-                <a href="{{ route('requerimento.create')}}"><button class="btnReq linkBtn btn btn-outline-primary">Criar requerimento</button></a>
-                <a href="{{ route('requerimento.index')}}"><button class="btnReq linkBtn btn btn-outline-primary">Meus requerimentos</button></a>
-            </div>
-          </center>
-
+      
           <h1 class="titleReq">Detalhes do Requerimento</h1>
          
       <div class="container" id="cont">
