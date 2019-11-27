@@ -1,5 +1,12 @@
 <div class="showreq">
 
+        @if($errors->any())
+        @foreach($errors->any() as $message)
+        <div class="alert alert-danger" role="alert">
+         {{ $message }}
+       </div>
+       @endforeach
+       @endif
         <div id="cont">
             <div class="container-fluid">
                 @if($requerimento)
@@ -85,6 +92,7 @@
                             </div>
                             <div class="form-group">
                                 <select name="teste" class="selectpicker form-control" >
+                                    <option value="" selected>Selecione um Setor</option>
                                     <option value="1">CRADT</option>
                                     <option value="2">COORDENAÇÃO</option>
                                     <option value="3">DAEECINFO</option>
@@ -93,6 +101,7 @@
                             </div>
                             <div class="form-group">
                                     <select name="status" class="selectpicker form-control" >
+                                        <option value="" selected>Selecione uma Situação</option>
                                         @foreach ($status as $stt)
                                             <option value="{{ $stt['id'] }}">{{ $stt['situacao'] }}</option>
                                         @endforeach
