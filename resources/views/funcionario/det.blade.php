@@ -94,7 +94,7 @@
                             <select name="teste" class="selectpicker form-control" >
                                 <option value="" selected>Selecione um Setor</option>
                                 @foreach ($setor as $set)
-                                    <option value="{{$set['id']}}">{{$set['descricao']}}</option>
+                                    <option value="{{$set['id']}}">{{$set['nome']}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -102,7 +102,7 @@
                             <select name="status" class="selectpicker form-control" >
                                 <option value="" selected>Selecione uma Situação</option>
                                 @foreach ($status as $stt)
-                                    <option value="{{ $stt['id'] }}">{{ $stt['nome'] }}</option>
+                                    <option value="{{ $stt['id'] }}">{{ $stt['situacao'] }}</option>
                                 @endforeach
                             </select>
                         </div>
