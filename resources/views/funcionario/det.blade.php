@@ -1,5 +1,5 @@
 <div class="showreq">
-
+        {{$errors->any()}}
         @if($errors->any())
         @foreach($errors->any() as $message)
             <div class="alert alert-danger" role="alert">
@@ -42,44 +42,90 @@
                 </div>
            @endif
         </div>
-        <h3 class="subTitleReq">Encaminhar</h3>
-        <div class="">
-            <form action="{{ route('redirecionar') }}" method="post">
-                @csrf
-                <div class="row">
-                    <div class="form-group col">
-                        <select name="teste" class="selectpicker form-control" >
-                            <option value="" selected>Selecione um Setor</option>
-                            @foreach ($setor as $set)
-                                <option value="{{$set['id']}}">{{$set['nome']}}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
-                    <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
-                    <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
-                    <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
-                    <input type="hidden" name="status" value="{{$requerimento['status']['id']}}">
-                    <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
-                    <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
-
-                </div>
-                <div class="row">
-                    <div class="input-group col">
-                        <div class="input-group-prepend">
-                            <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
+        <div id="btn-action">
+            <div class="row">
+                <button id="btn-encaminhar" class="coment-btn btn-lg col ">Encaminhar</button>
+                <button id="btn-responder" class="coment-btn btn-lg col ">Responder</button>
+            </div>
+        </div>
+        <div id="action-responder">
+                <h3 class="subTitleReq">Responder</h3>
+                <div class="">
+                    <form action="{{ route('redirecionar') }}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="form-group col">
+                                <select name="teste" class="selectpicker form-control" >
+                                    <option value="" selected>Selecione um Status</option>
+                                    @foreach ($status as $set)
+                                        <option value="{{$set['id']}}">{{$set['situacao']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
+
+                            <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
+                            <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
+                            <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
+                            <input type="hidden" name="status" value="{{$requerimento['status']['id']}}">
+                            <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
+                            <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
+
                         </div>
+                        <div class="row">
+                            <div class="input-group col">
+                                <div class="input-group-prepend">
+                                    <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
+                                    </div>
+                                    <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
+                                </div>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="coment-btn btn-lg col col-sm-2">Enviar</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="row">
-                    <button type="submit" class="coment-btn btn-lg col col-sm-2">Enviar</button>
-                </div>
-            </form>
+            </div>
+        <div id="action-encaminhar">
+            <h3 class="subTitleReq">Encaminhar</h3>
+            <div class="">
+                <form action="{{ route('redirecionar') }}" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="form-group col">
+                            <select name="teste" class="selectpicker form-control" >
+                                <option value="" selected>Selecione um Setor</option>
+                                @foreach ($setor as $set)
+                                    <option value="{{$set['id']}}">{{$set['nome']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
+                        <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
+                        <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
+                        <input type="hidden" name="status" value="{{$requerimento['status']['id']}}">
+                        <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
+                        <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
+
+                    </div>
+                    <div class="row">
+                        <div class="input-group col">
+                            <div class="input-group-prepend">
+                                <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
+                                </div>
+                                <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="coment-btn btn-lg col col-sm-2">Enviar</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
                 {{-- <p>{{ $requerimento->children }}</p> --}}
                 @foreach ($requerimento->children as $requerimento)
-                    @include('funcionario.det', [$requerimento, $status, $setor])
+                    @include('funcionario.det', [$requerimento, $status, $setor, $setorfunc])
                 @endforeach
 </div>
