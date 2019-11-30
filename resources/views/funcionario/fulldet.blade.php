@@ -8,5 +8,5 @@
 
         </div>
     </div>
-    @include('funcionario.det', [$requerimento, $status, $setor])
+    @include('funcionario.det', [$requerimento, $status, $setor, $setorfunc])
 @endsection
