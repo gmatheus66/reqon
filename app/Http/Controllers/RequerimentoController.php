@@ -27,7 +27,7 @@ class RequerimentoController extends Controller
     public function redirecionar(Request $request){
         //var_dump('derasdad');
         if(Auth::user()->setor_id == $request->get('setor')){
-            redirect()->back();
+            redirect()->back()->withErrors('src', 'Não e possivel encaminhar para o mesmo setor');
         }
 
         $validator = Validator::make($request->all(), [
