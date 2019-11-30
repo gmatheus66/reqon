@@ -10,6 +10,7 @@ use App\Tipo;
 use App\Aluno;
 use App\Matricula;
 use App\Curso;
+use App\SetorFuncionario;
 use App\Status;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -26,8 +27,13 @@ class RequerimentoController extends Controller
 
     public function redirecionar(Request $request){
         //var_dump('derasdad');
-        if(Auth::user()->setor_id == $request->get('setor')){
-            redirect()->back()->withErrors('src', 'Não e possivel encaminhar para o mesmo setor');
+        //dd($request->all());
+        $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
+        foreach($setorfunc as $st){
+            if($st->setor_id == $request->get('setor')){
+                return redirect()->back();
+                exit();
+            }
         }
 
         $validator = Validator::make($request->all(), [
