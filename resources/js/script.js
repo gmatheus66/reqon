@@ -3,9 +3,19 @@ const $ =  require("jquery");
 $(document).ready(function(){
     console.log('run');
 
+
     let btn1 = $("#btn1");
     let btn2 = $('#btn2');
     let aba = $(".abas");
+    let btnres = $('#btn-responder');
+    let btnenc = $('#btn-encaminhar');
+    let actenc = $('#action-encaminhar');
+    let actres = $('#action-responder');
+
+    $('#action-responder').each(function( ){
+        console.log(this);
+        $(this).css('display', 'none');
+    });
 
     btn1.on("click", function(evt){
         evt.preventDefault();
@@ -23,6 +33,20 @@ $(document).ready(function(){
         evt.preventDefault();
             $('input:radio').prop("checked", false);
     });
+
+    btnres.on("click", function(evt){
+        evt.preventDefault();
+        $("#action-encaminhar").css('display', 'none');
+        $("#action-responder").css('display', 'block');
+    })
+
+    btnenc.on('click', function(evt){
+        evt.preventDefault();
+        $("#action-encaminhar").css('display', 'block');
+        $("#action-responder").css('display', 'none');
+    })
+
+
 
 })
 
