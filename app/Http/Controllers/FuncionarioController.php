@@ -8,6 +8,7 @@ use App\Funcionario;
 use App\Setor;
 use App\Status;
 use App\Subtipo;
+use App\SetorFuncionario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -240,13 +241,14 @@ class FuncionarioController extends Controller
     }
 
     public function show($id){
+        $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
         $setor = Setor::all();
         $requerimento = Requerimento::find($id);
         $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento->id)->get();
         $status = Status::all();
-        //dd($reqpai);
+        //dd($setorfunc);
         //return view('funcionario.show', compact('requerimento', 'setor','reqpai'));
-        return view('funcionario.fulldet', compact('requerimento', 'status', 'setor'));
+        return view('funcionario.fulldet', compact('requerimento', 'status', 'setor','setorfunc'));
     }
 
 }
