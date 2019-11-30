@@ -26,6 +26,10 @@ class RequerimentoController extends Controller
 
     public function redirecionar(Request $request){
         //var_dump('derasdad');
+        if(Auth::user()->setor_id == $request->get('setor')){
+            redirect()->back();
+        }
+
         $validator = Validator::make($request->all(), [
             'subtipo'=>'required|numeric',
             'status' =>'required|numeric',
@@ -54,7 +58,6 @@ class RequerimentoController extends Controller
             'matricula_id' => $request->get('matricula'),
             'comentario' =>  $request->get('comentario')
         ]);
-
         $req->save();
 
         return redirect()->back();
