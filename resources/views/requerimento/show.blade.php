@@ -2,13 +2,10 @@
 
 
 @section('content')
-      <div class="container">
-          <div class="container" id="breadcrumb">
+      <div class="container" id="breadcrumb">
             <span class="itemBread"><a href="/">Início</a> ></span>
             <span class="itemBread"><a href="/requerimento">Requimentos</a> ></span>
             <span class="breadcrumb-item active itemBread" aria-current="page">Detalhes </span>
-        </nav>
-      </div>
       
           <h1 class="titleReq">Detalhes do Requerimento</h1>
          
@@ -98,4 +95,6 @@
                 </div>
 
         </div>
+      </div>
+    </div>
 @endsection
