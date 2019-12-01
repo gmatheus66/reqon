@@ -7,6 +7,9 @@
             </div>
        @endforeach
        @endif
+
+        <h1 class="titleReq">Detalhes do Requerimento</h1>
+
        <h3 class="subTitleReq">Dados do Estudante</h3>
 
        <div class="">
@@ -21,8 +24,8 @@
             </div>
         </div>
 
-        <div class="dadosreq"><h3 class="subTitleReq">Dados do Requerimento:</h3>  <h3 class="subTitleReq {{Str::slug($requerimento['status']['situacao'])}}">{{$requerimento['status']['situacao']}}</h3></div>
-
+        <div class="dadosreq"><h3 class="subTitleReq">Dados do Requerimento</h3></div>
+        
         <div class="">
            <div class="row">
              <div class="col">Tipo: {{$requerimento['subtipo']['descricao']}}</div>
