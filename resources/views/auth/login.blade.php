@@ -7,14 +7,16 @@
             <div class="card">
 
                 <div class="card-body">
-                    <ul class="btn-group btn-group-toggle" data-toggle="buttons">
-                          <li class=" btn btn-secondary active" id="btn1" >
-                            <input type="radio" id="option1" autocomplete="off" checked name="aluno" value="aluno"> {{ __('Entrar como Aluno') }}
-                          </li>
-                          <li class=" btn btn-secondary" id="btn2" >
-                            <input type="radio" id="option2" autocomplete="off" name="funcionario" value="funcionario"> {{ __('Entrar como Funcionário') }}
-                          </li>
-                    </ul>
+                    <div class="row justify-content-center">
+                        <ul class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <li class=" btn btn-outline-primary active" id="btn1" >
+                                <input type="radio" id="option1" autocomplete="off" checked name="aluno" value="aluno"> {{ __('Entrar como Aluno') }}
+                            </li>
+                            <li class=" btn btn-outline-primary" id="btn2" >
+                                <input type="radio" id="option2" autocomplete="off" name="funcionario" value="funcionario"> {{ __('Entrar como Funcionário') }}
+                            </li>
+                        </ul>
+                    </div>
                     <form id="form" method="POST" action="{{ route('login') }}">
                             @csrf
 
