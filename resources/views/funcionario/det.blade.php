@@ -99,7 +99,11 @@
                             <select name="teste" class="selectpicker form-control" >
                                 <option value="" selected>Selecione um Setor</option>
                                 @foreach ($setor as $set)
-                                    <option value="{{$set['id']}}">{{$set['nome']}}</option>
+                                    @foreach ($setorfunc as $setfunc)
+                                        @if ($set['id'] != $setfunc['setor_id'])
+                                            <option value="{{$set['id']}}">{{$set['nome']}}</option>
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             </select>
                         </div>
