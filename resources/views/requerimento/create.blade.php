@@ -62,9 +62,9 @@
                 @else
                     <div class="tab-pane fade" id="{{$tp->descricao}}" role="tabpanel" aria-label="{{$tp->descricao}}-tab">
                 @endif
-                    <div class="grupoSubT">
+                    <div class="grupoSubT row">
                     @foreach($tp->subtipos as $sub)
-                        <div class="custom-control custom-radio sub mar">
+                        <div class="custom-control custom-radio sub mar col-6 pb-2">
                             <input type="radio" class="custom-control-input" id="sub-{{$sub->id}}" name="subtipo" value="{{$sub->id}}">
                             <label class="custom-control-label" for="sub-{{$sub->id}}">{{$sub->descricao}}</label>
                     </div>
