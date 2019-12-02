@@ -28,6 +28,11 @@ class RequerimentoController extends Controller
     public function redirecionar(Request $request){
         //var_dump('derasdad');
         //dd($request->all());
+        $reqback = Requerimento::where('id',$request->get('requerimento'))->where('setor_id', $request->get('teste'))->get();
+        //dd(sizeof($reqback));
+        if(sizeof($reqback) >= 1 ){
+            return redirect()->back();
+        }
         $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
         foreach($setorfunc as $st){
             if($st->setor_id == $request->get('setor')){
@@ -35,6 +40,7 @@ class RequerimentoController extends Controller
                 exit();
             }
         }
+
 
         $validator = Validator::make($request->all(), [
             'subtipo'=>'required|numeric',
