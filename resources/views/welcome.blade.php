@@ -92,8 +92,6 @@
                 </button>
 
                 <div class="form-inline linksWelcome" id="navbarSupportedContent">
-
-                    <a href="/">INÍCIO</a>
                     <a href="#">SOBRE</a>
                     <a href="#">CONTATO</a>
                     @if (Route::has('login'))
@@ -137,22 +135,5 @@
             </div>
         </div>
         </div>
-        <!-- <div class="container contVant">
-            <div class="divVantagens">
-                <img src="{{ asset('img/icon1.png') }}">
-                <p>Abra um requerimento online a qualquer momento, de forma prática e rápida.</p>
-            </div>
-
-            <div class="divVantagens">
-                <img src="{{ asset('img/icon2.png') }}" align="left">
-                <p>Acompanhe o status do seu requerimento e descubra se ele já foi deferido, em que setor está, dentre outras informações.</p>
-            </div>
-
-            <div class="divVantagens">
-                <img src="{{ asset('img/icon3.png') }}" align="left">
-                <p>Apoie a redução no uso de papel.</p>
-            </div>
-        </div> -->
-
     </body>
 </html>
