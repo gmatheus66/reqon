@@ -4,7 +4,7 @@
 <div class="container">
 <div class="container" id="breadcrumb">
             <span class="itemBread"><a href="/">Início</a> ></span>
-            <span class="breadcrumb-item active itemBread" aria-current="page">Requerimento</span>
+            <span class="breadcrumb-item active itemBread" aria-current="page">Requerimentos</span>
 
     <div>
             @if($errors->any())
