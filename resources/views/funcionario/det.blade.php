@@ -25,11 +25,11 @@
         </div>
 
         <div class="dadosreq"><h3 class="subTitleReq">Dados do Requerimento</h3></div>
-        
+
         <div class="">
            <div class="row">
              <div class="col">Tipo: {{$requerimento['subtipo']['descricao']}}</div>
-             <div class="col">Situação: {{$requerimento['status']['situacao']}}</div>
+             <div class="col">Situação: <h5 class="{{Str::slug($requerimento['status']['situacao'])}}" >{{$requerimento['status']['situacao']}}</h5></div>
              <div class="col">Data: {{date('d-m-Y', strtotime($requerimento['created_at']))}}</div>
            </div>
            <div class="row">
