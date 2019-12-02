@@ -6,9 +6,9 @@
 <div class="container" id="breadcrumb">
             <span class="itemBread"><a href="/">Início</a> ></span>
             <span class="itemBread"><a href="/requerimento">Requerimentos</a> ></span>
-            <span class="breadcrumb-item active itemBread" aria-current="page">Criação de Requerimento</span>
+            <span class="breadcrumb-item active itemBread" aria-current="page">Novo requerimento</span>
 
-            <h1 class="titleReq">Criar um requerimento</h1>
+            <h1 class="titleReq">Novo requerimento</h1>
 
             @if($errors->any())
                 @foreach($errors->get('crs') as $message)
