@@ -8,7 +8,7 @@
             <span class="itemBread"><a href="/requerimento">Requerimentos</a> ></span>
             <span class="breadcrumb-item active itemBread" aria-current="page">Criação de Requerimento</span>
 
-            <h1 class="display-6">Criar um requerimento</h1>
+            <h1 class="titleReq">Criar um requerimento</h1>
 
             @if($errors->any())
                 @foreach($errors->get('crs') as $message)
@@ -20,7 +20,6 @@
 
         <form action="{{ route('requerimento.store') }}" method="post">
             @csrf
-            <p class="infoP">Escolha um tipo de requerimento</p>
                 @if($errors->any())
                      @foreach($errors->get('subtipo') as $message)
                      <div class="alert alert-danger" role="alert">
@@ -30,8 +29,9 @@
                 @endif
                 @if(sizeof($matriculas) > 1)
                     <div class="select">
-                    <select class="browser-default custom-select custom-select-lg" name="crs" required>
-                        <option selected>Selecione Um curso</option>
+                    <p class="subTitleReq">Selecione o seu curso *</p>
+                    <select class="form-control custom-select-lg" name="crs" required>
+                        <option selected>Selecione um curso</option>
                           @foreach ($matriculas as $matricula)
                               <option value="{{$matricula->curso->id}}">{{$matricula->curso->nome}}</option>
                           @endforeach
@@ -39,6 +39,7 @@
                     </select>
                     </div>
                 @endif
+            <p class="subTitleReq">Escolha um tipo de requerimento *</p>
             <ul class="nav nav-tabs abas" id="myTab" role="tablist">
                 @foreach($tipo as $tp)
                     @if($tp->id == 1)
@@ -73,7 +74,7 @@
                 @endforeach
 
             </div>
-            <p class="infoP">Insira uma descrição</p>
+            <p class="subTitleReq">Insira uma descrição *</p>
             @if($errors->any())
                      @foreach($errors->get('descricao') as $message)
                      <div class="alert alert-danger" role="alert">
@@ -83,8 +84,7 @@
                      @endforeach
                 @endif
             <div class="form-group" id="desc">
-                <label for="Descricao">Descrição:</label>
-                <textarea class="form-control rounded-0 " id="descricao" value="{{ old('descricao') }}" rows="6" name="descricao" maxlength="1000" style="border-color: {{$cor ?? 'black'}};">{{old('descricao')}}</textarea>
+                <textarea class="form-control rounded-0 " id="descricao" value="{{ old('descricao') }}" rows="6" name="descricao" maxlength="1000" placeholder="Digite aqui...">{{old('descricao')}}</textarea>
             </div>
 
             <input type="hidden" name="curso" value="{{$curso}}">
