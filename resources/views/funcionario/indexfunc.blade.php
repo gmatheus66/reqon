@@ -5,14 +5,12 @@
 <div class="container" id="breadcrumb">
             <span class="itemBread"><a href="/">Início</a> ></span>
             <span class="breadcrumb-item active itemBread" aria-current="page">Requerimentos</span>
-
-    <div>
             @if($errors->any())
             <div class="alert alert-danger" role="alert">
                  {{$_GET['src']}}
              </div>
              @endif
-
+             <div class="d-flex align-items-center flex-column bd-highlight mb-4">
             <form action="{{route('pesquisarfunc')}}" method="post">
                 @csrf
 
@@ -52,7 +50,6 @@
             <a href="{{ route('func')}}" class="linkFilter">Limpar filtro</a>
 
             </form>
-    </div>
     <div class="container" id="cont">
         <table class="table tableA">
               <thead class="table-active tableHead">
@@ -80,5 +77,7 @@
                 </tbody>
             </table>
         </div>
-{{$reqs->links()}}
+        {{$reqs->links()}}
+    </div>
+
 @endsection
