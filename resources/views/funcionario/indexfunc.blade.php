@@ -53,46 +53,32 @@
 
             </form>
     </div>
-    <div class="container">
-              <div class="row">
-                    <div class="col-sm">
-                      Protocolo
-                    </div>
-                    <div class="col-sm">
-                      Matrícula
-                    </div>
-                    <div class="col-sm">
-                      Status
-                    </div>
-                    <div class="col-sm">
-                      Data
-                    </div>
-                    <div class="col-sm">
-                      Ação
-                    </div>
-                    <div class="w-100"></div>
+    <div class="container" id="cont">
+        <table class="table tableA">
+              <thead class="table-active tableHead">
+                <tr class="colReq">
+                  <th scope="col">Nº do protocolo</th>
+                  <th scope="col">Matrícula</th>
+                  <th scope="col">Status</th>
+                  <th class="colData" scope="col">Data</th>
+                  <th scope="col">Ação</th>
+                </tr>
+              </thead>
+              <tbody>
                     @if(sizeof($reqs) < 1)
                     <th colspan="6" class="msgReqVazio">Não encontramos nenhum requerimento :(</th>
                   @endif
-                @foreach ($reqs as $req)
-                    <div class="col-sm">
-                          {{$req['protocolo']}}
-                        </div>
-                        <div class="col-sm">
-                          {{$req['matricula']['matricula']}}
-                        </div>
-                        <div class="col-sm">
-                            {{$req['matricula']['status']}}
-                        </div>
-                        <div class="col-sm">
-                          {{date('d-m-Y', strtotime($req['created_at']))}}
-                        </div>
-                        <div class="col-sm">
-                          <a href="{{route('showreqfunc', $req['id'])}}" class="btn btn-primary">Detalhes</a>
-                        </div>
-                    <div class="w-100"></div>
-                    <hr class="my-1">
-                @endforeach
-</div>
+                  @foreach ($reqs as $req)
+                    <tr>
+                      <th scope="row">{{$req['protocolo']}}</th>
+                      <td>{{$req['matricula']['matricula']}}</td>
+                      <td>{{$req['matricula']['status']}}</td>
+                      <td>{{date('d-m-Y', strtotime($req['created_at']))}}</td>
+                      <td><a href="{{route('showreqfunc', $req['id'])}}" class="btn btn-primary btnDetalhes">Detalhes</a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 {{$reqs->links()}}
 @endsection
