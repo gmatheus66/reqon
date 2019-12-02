@@ -22,7 +22,8 @@
             body{
                 background-color: #000;
                 background-size:cover;
-                background-image: url({{asset('img/bg-welcome2.jpg')}});
+                background-position: center;
+                background-image: url({{asset('img/bg-welcome.jpg')}});
             }
             .my-nav{
                 position: absolute!important;
@@ -83,23 +84,6 @@
     <body>
 
     <div class="header">
-        <!-- <nav class="navbar navbar-light bg-light">            
-          <a class="navbar-brand-welcome">ReqOn</a>
-          <form class="form-inline linksWelcome">
-            <a href="/">INÍCIO</a>
-                    <a href="#">SOBRE</a>
-                    <a href="#">CONTATO</a>
-                    @if (Route::has('login'))
-                        @if(Auth::guard('funcionario')->check())
-                            <a href="{{ url('/indexfunc') }}">REQUERIMENTOS</a>
-                        @elseif(Auth::guard()->check())
-                            <a href="{{ url('/requerimento') }}">REQUERIMENTOS</a>
-                        @else
-                            <a href="{{ route('login') }}">ENTRAR</a>
-                        @endif
-                    @endif
-          </form>
-        </nav> -->
         <nav class="navbar navbar-expand-md navbar-light shadow-sm navClassWelcome">
             <div class="container"> 
                 <a class="navbar-brand-welcome" href="{{ url('/') }}"><img id="logoSite" src="{{ asset('img/logoSite-verde.png') }}">ReqOn</a>
@@ -124,34 +108,51 @@
                 </div>
             </div>
         </nav>
-
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">      
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="carousel-caption">
-                            <p>Abra um requerimento online a qualquer momento, de forma prática e rápida.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption">
-                            <p>Acompanhe o status do seu requerimento e descubra se ele já foi deferido, em que setor está, dentre outras informações.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption">
-                            <p>Apoie a redução no uso de papel.</p>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <!-- <span class="sr-only">Previous</span> -->
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <!--   <span class="sr-only">Next</span> -->
-                </a>
+    </div>
+    <div class="container">
+        <p class="nomeSite">ReqOn</p>
+    </div>
+    <div class="container welcomeCont d-flex align-content-end flex-wrap">
+        <div class="card-deck">
+            <div class="card">
+              <div class="card-body bCard">
+                <img src="{{ asset('img/icon1.png') }}">
+                <h5 class="card-title tituloCard">Prático</h5>
+                <p class="card-text tCard">Abra um requerimento online a qualquer momento, de forma prática e rápida.</p>
+              </div>
             </div>
+            <div class="card">
+              <div class="card-body bCard">
+                <img src="{{ asset('img/icon2.png') }}">
+                <h5 class="card-title tituloCard">Acompanhamento</h5>
+                <p class="card-text tCard">Acompanhe o status do seu requerimento e descubra se ele já foi deferido, em que setor está, dentre outras informações.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body bCard">
+                <img src="{{ asset('img/icon3.png') }}">
+                <h5 class="card-title tituloCard">Papel</h5>
+                <p class="card-text tCard">Apoie a redução no uso de papel.</p>
+              </div>
+            </div>
+        </div>
+        </div>
+        <!-- <div class="container contVant">
+            <div class="divVantagens">
+                <img src="{{ asset('img/icon1.png') }}">
+                <p>Abra um requerimento online a qualquer momento, de forma prática e rápida.</p>
+            </div>
+
+            <div class="divVantagens">
+                <img src="{{ asset('img/icon2.png') }}" align="left">
+                <p>Acompanhe o status do seu requerimento e descubra se ele já foi deferido, em que setor está, dentre outras informações.</p>
+            </div>
+
+            <div class="divVantagens">
+                <img src="{{ asset('img/icon3.png') }}" align="left">
+                <p>Apoie a redução no uso de papel.</p>
+            </div>
+        </div> -->
 
     </body>
 </html>
