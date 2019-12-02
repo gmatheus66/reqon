@@ -25,60 +25,6 @@
                 background-position: center;
                 background-image: url({{asset('img/bg-welcome.jpg')}});
             }
-            .my-nav{
-                position: absolute!important;
-                width: 100%!important;
-                z-index:999!important;
-                background:none!important;
-                border:0!important;
-                border-radius: 0!important;
-            }
-            .my-carousel{
-                position: absolute!important;
-                top:0!important;
-            }
-            .linksWelcome > a{
-                font-size:20px;
-                color:#4bb18d;
-                font-family: 'Titillium Web', sans-serif;
-                margin: 15px;
-            }
-            .linksWelcome > a:hover{
-                color:#328064;
-                text-decoration:none;
-            }
-            .carousel-item{
-               height: 100vh;
-            }
-            .carousel-item > p{
-                position:absolute;
-                top:-10;
-            }
-            .ReqOn{
-                position: absolute;
-                z-index:1;
-                text-align: center;
-                top:4%;
-                font-family: "Open Sans", sans-serif;
-                font-size:6vh;
-                color:#37bf8f;
-                left: 0;
-                right: 0;
-
-            }
-            .carousel-caption > p{
-                font-size:3vh;
-                color:#4bb18d;
-                margin-bottom: 200px;
-                margin-left: 20%;
-                margin-right: 20%;
-            }
-            .carousel-control-next .carousel-control-prev{
-                z-index: 2;
-            }
-            #logoVerde{
-                width: 10vh;
-            }
         </style>
     </head>
     <body>
@@ -91,7 +37,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="form-inline linksWelcome" id="navbarSupportedContent">
+                <div class="form-inline linksWelcome">
                     <a href="#">SOBRE</a>
                     <a href="#">CONTATO</a>
                     @if (Route::has('login'))

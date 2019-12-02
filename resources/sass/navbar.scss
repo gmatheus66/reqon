@@ -1,7 +1,6 @@
 .navClass{
   background-color: $verde;
   height:10vh;
-  border-bottom: 5px solid $verdeNav;
 }
 .navbar-brand{
   color:white!important;
@@ -28,10 +27,25 @@
 }
 .navbar-brand-welcome{
   color:#37BF8F;
-  font-family: 'Open Sans', sans-serif;
   font-size:4vh;
 }
 .navbar-brand-welcome:hover{
   color:#37BF8F;
   text-decoration:none;
+}
+.navbar-geral{
+  color:#fff;
+}
+.navbar-geral:hover{
+  color:#fff;
+}
+.linksNavbar > a{
+    font-size:20px;
+    color:#fff;
+    font-family: 'Titillium Web', sans-serif;
+    margin: 15px;
+}
+.linksNavbar > a:hover{
+    color:#328064;
+    text-decoration:none;
 }

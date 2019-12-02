@@ -1,32 +1,26 @@
-<nav class="navbar navbar-expand-md navbar-light shadow-sm navClass">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm navClass">
 
             <div class="container"> 
-                <img id="logoSite" src="{{ asset('img/logoSite.png') }}">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('','ReqOn') }}
-                </a>
+                <a class="navbar-brand-welcome navbar-geral" href="{{ url('/') }}"><img id="logoSite" src="{{ asset('img/logoSite.png') }}">ReqOn</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @if (Route::has('login'))
-                            <div class="top-right links">
+                            <div class="form-inline linksNavbar">
 
                             @if(Auth::guard('funcionario')->check())
                                 <!-- <a class="nav-link" id="navbarDropdown" href="{{ url('/indexfunc') }}">{{ __('Requerimentos') }}</a> -->
                             @elseif(Auth::guard()->check())
                                 <!-- <a class="nav-link" id="navbarDropdown" href="{{ url('/requerimento') }}">{{ __('Requerimentos') }}</a> -->
                             @else
-                                <a class="nav-link" id="navbarDropdown" href="{{ route('login') }}">{{ __('Entrar') }}</a>
+                                <a href="#">SOBRE</a>
+                                <a href="#">CONTATO</a>
+                                <a href="{{ route('login') }}">ENTRAR</a>
                             @endif
 
                             </div>
@@ -53,5 +47,5 @@
                         @endif
                     </ul>
                 </div>
-            </div>
+
         </nav>
