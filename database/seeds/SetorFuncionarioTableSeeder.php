@@ -16,6 +16,7 @@ class SetorFuncionarioTableSeeder extends Seeder
 	        'setor_id' => '1',
         	'funcionario_id' => '1'
         ]);
+
         SetorFuncionario::create([
 	        'setor_id' => '2',
         	'funcionario_id' => '2'
@@ -24,6 +25,36 @@ class SetorFuncionarioTableSeeder extends Seeder
 	        'setor_id' => '3',
         	'funcionario_id' => '3'
         ]);
-        factory('App\SetorFuncionario', 7)->create();
+        SetorFuncionario::create([
+            'setor_id' => '1',
+            'funcionario_id' => '4'
+        ]);
+        SetorFuncionario::create([
+            'setor_id' => '2',
+            'funcionario_id' => '5'
+        ]);
+        SetorFuncionario::create([
+            'setor_id' => '3',
+            'funcionario_id' => '6'
+        ]);
+        SetorFuncionario::create([
+            'setor_id' => '1',
+            'funcionario_id' => '7'
+        ]);
+        SetorFuncionario::create([
+            'setor_id' => '2',
+            'funcionario_id' => '8'
+        ]);
+        SetorFuncionario::create([
+            'setor_id' => '3',
+            'funcionario_id' => '9'
+        ]);
+        SetorFuncionario::create([
+            'setor_id' => '1',
+            'funcionario_id' => '10'
+        ]);
+
+
+        //factory('App\SetorFuncionario', 7)->create();
     }
 }
