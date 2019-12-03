@@ -7,14 +7,14 @@ $(document).ready(function(){
     let btn1 = $("#btn1");
     let btn2 = $('#btn2');
     let aba = $(".abas");
-    let btnres = $('#btn-responder');
-    let btnenc = $('#btn-encaminhar');
-    let actenc = $('#action-encaminhar');
-    let actres = $('#action-responder');
+    let btnres = $('.btn-responder');
+    let btnenc = $('.btn-encaminhar');
+    //let actenc = $('#action-encaminhar');
+    //let actres = $('#action-responder');
     let icon = $('.icon');
 
     //icon.toggle(function(){ icon.text("-")},function(){icon.text("+")})
-    $('input[name="data_ini"]').daterangepicker();
+    //$('input[name="data_ini"]').daterangepicker();
     /*
     icon.click(function(evt){
         //console.log(icon);
@@ -28,14 +28,19 @@ $(document).ready(function(){
     })
     */
 
-    btnres.click(function(evt){
+    $('.btn-action').click(function(evt){
         evt.preventDefault();
-        actres.toggle("slow")
+        let formSel = $(this).data('form');
+        $('.form-action').hide()
+        $(formSel).toggle()
+        //actres.toggle("slow")
     });
-    btnenc.click(function(evt){
-        evt.preventDefault();
-        actenc.toggle("slow")
-    });
+    $('.child .icon').click(function(evt) {
+        let bodySel = $(this).data('body');
+        $(bodySel).toggle()
+        $(this).toggleClass('collapse')
+        $(this).toggleClass('expand')
+    })
 
     btn1.on("click", function(evt){
         evt.preventDefault();
@@ -78,4 +83,7 @@ $(document).ready(function(){
         let msg = $("#sucessoReq");
         $( "#sucessoReq" ).fadeOut(500);
     },2000);
+    setTimeout(function(){
+        $( "#msgscs" ).fadeOut(500);
+    },3000);
 })
