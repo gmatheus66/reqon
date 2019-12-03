@@ -29,15 +29,17 @@ class RequerimentoController extends Controller
         //var_dump('derasdad');
         //dd($request->all());
         $reqback = Requerimento::where('id',$request->get('requerimento'))->where('setor_id', $request->get('teste'))->get();
-        //dd(sizeof($reqback));
-        if(sizeof($reqback) >= 1 ){
+        $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
+        //dd($reqback, $request->all(), $setorfunc);
+        if(sizeof($reqback) > 1 ){
+            dd($reqback, $request->all());
             return redirect()->back();
         }
-        $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
+
         foreach($setorfunc as $st){
-            if($st->setor_id == $request->get('setor')){
+            if($st->setor_id == $request->get('teste')){
+                //dd('entrou');
                 return redirect()->back();
-                exit();
             }
         }
 
@@ -61,14 +63,15 @@ class RequerimentoController extends Controller
 
         $req = new Requerimento([
             'protocolo' => mt_rand(1,999999999),
-            'descricao' => $request->get('descricao'),
             'subtipo_id' => $request->get('subtipo'),
+            //'descricao' => $request->get('descricao'),
             'status_id' => $request->get('status'),
             'req_pai_id' => $request->get('requerimento'),
             'funcionario_id' => auth()->user()->id,
             'setor_id' => $request->get('teste'),
             'matricula_id' => $request->get('matricula'),
-            'comentario' =>  $request->get('comentario')
+            //'comentario' => $request->get('comentario')
+            'descricao' =>  $request->get('comentario'),
         ]);
         $req->save();
 
