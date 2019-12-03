@@ -16,6 +16,9 @@
             </div>
        @endforeach
     @endif
+    @if(session('success'))
+        <div class="alert alert-success msgSucesso msgsuccess" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong><button type="button" class="close" data-dismiss="alert">x</button></div>
+    @endif
     <h1 class="titleReq">Detalhes do Requerimento</h1>
 
     <h3 class="subTitleReq">Dados do Estudante</h3>
@@ -32,6 +35,12 @@
         </div>
     </div>
 
-    @include('funcionario.det', [$requerimento, $status, $setor, $setorfunc])
+    <div class="col">Tipo: {{$requerimento['subtipo']['descricao']}}</div>
+
+    @php
+        $open = true;
+    @endphp
+    @include('funcionario.det', [$requerimento, $status, $setor, $setorfunc, $open])
+
 </div>
 @endsection
