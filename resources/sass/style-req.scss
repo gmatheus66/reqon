@@ -24,6 +24,30 @@
         padding-left: 2em;
         margin-left: 1em;
         position: relative;
+        .child-header {
+            border-bottom: 1px solid hsl(0, 0%, 80%);
+            border-top: 1px solid hsl(0, 0%, 80%);
+            .setor {
+                font-weight: bold;
+            }
+            .date {
+                color: hsl(0, 0%, 40%);
+                font-size: .9em;
+            }
+            .protocol {
+                color: hsl(0, 0%, 40%);
+                font-style: italic;
+                font-size: .9em;
+            }
+
+            .status {
+                padding: .5em;
+
+                &.status-em-andamento {
+                    background: hsl(90, 90%, 60%);
+                }
+            }
+        }
         .icon {
             position: absolute;
             width: 2em;
@@ -49,5 +73,12 @@
                 content: '+';
             }
         }
+    }
+    .msgsuccess{
+        position:absolute;
+        width: 5%;
+        left:55%;
+        background-color:#4f827d;
+        color:#fff;
     }
 }
