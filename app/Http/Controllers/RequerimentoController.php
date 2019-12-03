@@ -36,7 +36,7 @@ class RequerimentoController extends Controller
             'matricula' => 'required|numeric|min:1',
             'teste' => 'required|numeric|min:1',
             'comentario' =>'required|min:4|max:100',
-            'descricao' => 'required|min:4|max:100'
+            'descricao' => 'required|min:1|max:100'
 
         ]);
 
@@ -77,7 +77,7 @@ class RequerimentoController extends Controller
         ]);
         $req->save();
 
-        return redirect()->back();
+        return redirect()->back()->withSuccess('Requerimento Criado');
         //return redirect()->route('showreqfunc')->withSuccess('Requerimento Criado');
     }
 
