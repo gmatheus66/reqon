@@ -12,9 +12,14 @@ $(document).ready(function(){
     let actenc = $('#action-encaminhar');
     let actres = $('#action-responder');
 
-    $('#action-responder').each(function( ){
-        console.log(this);
-        $(this).css('display', 'none');
+
+    btnres.click(function(evt){
+        evt.preventDefault();
+        actres.toggle("slow")
+    });
+    btnenc.click(function(evt){
+        evt.preventDefault();
+        actenc.toggle("slow")
     });
 
     btn1.on("click", function(evt){
