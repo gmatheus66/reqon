@@ -47,12 +47,12 @@ class RequerimentoController extends Controller
         }
 
         $reqback = Requerimento::where('id',$request->get('requerimento'))->where('setor_id', $request->get('teste'))->get();
+        $reqret = Requerimento::where('req_pai_id', $request->get('requerimento'))->where('setor_id', $request->get('teste'))->get();
         $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
-        //dd($reqback, $request->all(), $setorfunc);
-
-
-        if(sizeof($reqback) > 2){
-            dd("testees");
+        //dd($reqback, $request->all(), $setorfunc, $reqret);
+        //dd(sizeof($reqback));
+        if(sizeof($reqback) > 1 || sizeof($reqret) > 1){
+            //dd("testees");
             return redirect()->back()->withErrors('Não e possivel encaminhar para o mesmo setor varias vezes');
         }
 
