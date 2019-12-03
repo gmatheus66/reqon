@@ -52,7 +52,7 @@
                 <button id="btn-responder" class="coment-btn btn-lg col ">Responder</button>
             </div>
         </div>
-        <div id="action-responder">
+        <div id="action-responder" style="display: none">
                 <h3 class="subTitleReq">Responder</h3>
                 <div class="">
                     <form action="{{ route('redirecionar') }}" method="post">
@@ -89,7 +89,7 @@
                     </form>
                 </div>
             </div>
-        <div id="action-encaminhar">
+        <div id="action-encaminhar" style="display: none">
             <h3 class="subTitleReq">Encaminhar</h3>
             <div class="">
                 <form action="{{ route('redirecionar') }}" method="post">
