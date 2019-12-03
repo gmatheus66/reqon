@@ -23,5 +23,14 @@ class StatusesTableSeeder extends Seeder
                 'situacao' => 'Parcialmente deferido'
             ]
         ]);
+
+        DB::table('statuses')->insert([
+            [
+                'situacao' => 'Em Andamento'
+            ],
+            [
+                'situacao' => 'Processando'
+            ]
+        ]);
     }
 }
