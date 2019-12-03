@@ -69,7 +69,7 @@
                     <tr>
                       <th scope="row">{{$req['protocolo']}}</th>
                       <td>{{$req['matricula']['matricula']}}</td>
-                      <td>{{$req['matricula']['status']}}</td>
+                      <td>{{$req['status']['situacao']}}</td>
                       <td>{{date('d-m-Y', strtotime($req['created_at']))}}</td>
                       <td><a href="{{route('showreqfunc', $req['id'])}}" class="btn btn-primary btnDetalhes">Detalhes</a></td>
                     </tr>
