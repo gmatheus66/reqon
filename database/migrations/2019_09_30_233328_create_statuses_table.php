@@ -15,7 +15,7 @@ class CreateStatusesTable extends Migration
     {
         Schema::create('statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('situacao', ['Deferido','Indeferido', 'Parcialmente Deferido']);
+            $table->enum('situacao', ['Deferido','Indeferido', 'Parcialmente Deferido', 'Em Andamento', 'Processando']);
             $table->timestamps();
         });
     }
