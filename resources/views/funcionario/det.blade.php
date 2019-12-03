@@ -1,21 +1,7 @@
-<div class="showreq">
 
+<div class="showreq child">
+        <div class="icon collapse"></div>
 
-        <h1 class="titleReq">Detalhes do Requerimento</h1>
-
-       <h3 class="subTitleReq">Dados do Estudante</h3>
-
-       <div class="">
-            <div class="row">
-                <div class="col-sm">Matrícula: {{$requerimento['matricula']['matricula']}}</div>
-                <div class="col-sm">Status da matrícula: {{$requerimento['matricula']['status']}}</div>
-                <div class="col-sm">Curso: {{$requerimento['matricula']['curso']['nome']}}</div>
-            </div>
-            <div class="row">
-                <div class="col-sm-8">Nome: {{$requerimento->matricula->aluno->nome}}</div>
-                <div class="col-sm-4">Semestre: {{$requerimento['matricula']['semestre']}}</div>
-            </div>
-        </div>
 
         <div class="dadosreq"><h3 class="subTitleReq">Dados do Requerimento</h3></div>
 

@@ -11,7 +11,22 @@ $(document).ready(function(){
     let btnenc = $('#btn-encaminhar');
     let actenc = $('#action-encaminhar');
     let actres = $('#action-responder');
+    let icon = $('.icon');
 
+    //icon.toggle(function(){ icon.text("-")},function(){icon.text("+")})
+    $('input[name="data_ini"]').daterangepicker();
+    /*
+    icon.click(function(evt){
+        //console.log(icon);
+        //console.log(this.textContent);
+        //icon.toggle(function(){icon.text("-")});
+        if(this.textContent == "+"){
+            icon.text("-");
+        }else{
+            icon.text("+");
+        }
+    })
+    */
 
     btnres.click(function(evt){
         evt.preventDefault();
@@ -51,9 +66,12 @@ $(document).ready(function(){
         $("#action-responder").css('display', 'none');
     })
 
-
+    $('div[id=main]', 'div[class=showreq]',(evt) => {
+        console.log(evt);
+    });
 
 })
+
 
 $(document).ready(function(){
     setTimeout(function(){

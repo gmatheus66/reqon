@@ -1,4 +1,4 @@
- .container{
+.container{
 
     #myTabContent{
         .sub{
@@ -18,5 +18,36 @@
     }
     .select{
         margin-bottom: 3%;
+    }
+    .child {
+        border-left: 1px solid hsl(0, 0%, 80%);
+        padding-left: 2em;
+        margin-left: 1em;
+        position: relative;
+        .icon {
+            position: absolute;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            border: 1px solid hsl(0, 0%, 80%);
+            background: hsl(120, 80%, 100%);
+            top: .2em;
+            left: -1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            &:hover {
+                background: hsl(120, 0%, 90%);
+            }
+
+            &.collapse:after {
+                content: '-';
+            }
+
+            &.expand:after {
+                content: '+';
+            }
+        }
     }
 }
