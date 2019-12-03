@@ -49,8 +49,10 @@ class RequerimentoController extends Controller
         $reqback = Requerimento::where('id',$request->get('requerimento'))->where('setor_id', $request->get('teste'))->get();
         $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
         //dd($reqback, $request->all(), $setorfunc);
-        if(sizeof($reqback) > 1 ){
-            //dd($reqback, $request->all());
+
+
+        if(sizeof($reqback) > 2){
+            dd("testees");
             return redirect()->back()->withErrors('Não e possivel encaminhar para o mesmo setor varias vezes');
         }
 
@@ -60,7 +62,6 @@ class RequerimentoController extends Controller
                 return redirect()->back()->withErrors('Não e possivel mandar para seu proprio setor');
             }
         }
-
 
         $req = new Requerimento([
             'protocolo' => mt_rand(1,999999999),
