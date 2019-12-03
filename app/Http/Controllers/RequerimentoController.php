@@ -297,7 +297,7 @@ class RequerimentoController extends Controller
             'protocolo' => mt_rand(1,999999999),
             'descricao' => $request->get('descricao'),
             'subtipo_id' => $request->get('subtipo'),
-            'status_id' => 2,
+            'status_id' => 4,
             'req_pai_id' => null,
             'funcionario_id' => null,
             'setor_id' => $str,
