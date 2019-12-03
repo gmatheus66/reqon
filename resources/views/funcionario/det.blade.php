@@ -1,12 +1,5 @@
 <div class="showreq">
-        {{$errors->any()}}
-        @if($errors->any())
-        @foreach($errors->any() as $message)
-            <div class="alert alert-danger" role="alert">
-                {{ $message }}
-            </div>
-       @endforeach
-       @endif
+
 
         <h1 class="titleReq">Detalhes do Requerimento</h1>
 
