@@ -28,30 +28,15 @@ class RequerimentoController extends Controller
     public function redirecionar(Request $request){
         //var_dump('derasdad');
         //dd($request->all());
-        $reqback = Requerimento::where('id',$request->get('requerimento'))->where('setor_id', $request->get('teste'))->get();
-        $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
-        //dd($reqback, $request->all(), $setorfunc);
-        if(sizeof($reqback) > 1 ){
-            dd($reqback, $request->all());
-            return redirect()->back();
-        }
-
-        foreach($setorfunc as $st){
-            if($st->setor_id == $request->get('teste')){
-                //dd('entrou');
-                return redirect()->back();
-            }
-        }
-
-
         $validator = Validator::make($request->all(), [
-            'subtipo'=>'required|numeric',
-            'status' =>'required|numeric',
-            'setor' => 'required|numeric',
-            'requerimento' => 'required|numeric',
-            'matricula' => 'required|numeric',
-            'teste' => 'required|numeric',
-            'comentario' =>'required'
+            'subtipo'=>'required|numeric|min:1',
+            'status' =>'required|numeric|min:1',
+            'setor' => 'required|numeric|min:1',
+            'requerimento' => 'required|numeric|min:1',
+            'matricula' => 'required|numeric|min:1',
+            'teste' => 'required|numeric|min:1',
+            'comentario' =>'required|min:4|max:100',
+            'descricao' => 'required|min:4|max:100'
 
         ]);
 
@@ -60,6 +45,22 @@ class RequerimentoController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
+
+        $reqback = Requerimento::where('id',$request->get('requerimento'))->where('setor_id', $request->get('teste'))->get();
+        $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
+        //dd($reqback, $request->all(), $setorfunc);
+        if(sizeof($reqback) > 1 ){
+            //dd($reqback, $request->all());
+            return redirect()->back()->withErrors('Não e possivel encaminhar para o mesmo setor varias vezes');
+        }
+
+        foreach($setorfunc as $st){
+            if($st->setor_id == $request->get('teste')){
+                //dd('entrou');
+                return redirect()->back()->withErrors('Não e possivel mandar para seu proprio setor');
+            }
+        }
+
 
         $req = new Requerimento([
             'protocolo' => mt_rand(1,999999999),
