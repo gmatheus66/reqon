@@ -33,6 +33,7 @@
             .date {
                 color: hsl(0, 0%, 40%);
                 font-size: .9em;
+
             }
             .protocol {
                 color: hsl(0, 0%, 40%);
@@ -45,6 +46,22 @@
 
                 &.status-em-andamento {
                     background: hsl(90, 90%, 60%);
+                }
+            }
+            .status-bol{
+                border: 0px solid black;
+                height: 15px;
+                width: 15px;
+                border-radius: 25px;
+                padding-left: 3px;
+                &.status-em-andamento {
+                    background: hsl(90, 90%, 60%);
+                }
+                &.status-parcialmente-deferido {
+                    background: hsl(60, 100%, 30%);
+                }
+                &.status-indeferido {
+                    background:  hsl(0, 100%, 30%);
                 }
             }
         }
