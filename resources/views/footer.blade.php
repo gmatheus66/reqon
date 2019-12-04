@@ -35,7 +35,13 @@
             <a href="{{ url('/') }}">Início</a>
           </li>
           <li>
-            <a href="{{ route('register') }}">Cadastro</a>
+            <a href="{{ url('/') }}">Sobre</a>
+          </li>
+          <li>
+            <a href="{{ url('/') }}">Contato</a>
+          </li>
+          <li>
+            <a href="{{ url('/requerimento') }}">Requerimento</a>
           </li>
           <li>
             <a href="{{ route('login') }}">Login</a>
