@@ -24,6 +24,33 @@ class RequerimentoController extends Controller
         $this->middleware('auth');
     }
 
+  public function resposta(request $request){
+
+    //dd($request->all());       
+        $validator = Validator::make($request->all(), [
+            'subtipo'=>'required|numeric|min:1',
+            'status' =>'required|numeric|min:1',
+            'setor' => 'required|numeric|min:1',
+            'requerimento' => 'required|numeric|min:1',
+            'matricula' => 'required|numeric|min:1',
+            'teste' => 'required|numeric|min:1',
+            'comentario' =>'required|min:4|max:100',
+            'descricao' => 'required|min:1|max:100'
+
+]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+
+}
+        $update = Requerimento::where('id', $request->get('requerimento'))
+        ->update('setor_id', $request->get('setor'))
+        ->update('status_id',$request->get('teste'))
+        ->update('funcionario_id',Auth::user()->id)
+        ->update('comentario', $request->get('comentario'));
+}
+
 
     public function redirecionar(Request $request){
         //var_dump('derasdad');
