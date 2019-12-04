@@ -13,7 +13,7 @@
                                 <input type="radio" id="option1" autocomplete="off" checked name="aluno" value="aluno"> {{ __('Entrar como Aluno') }}
                             </li>
                             <li class=" btn btn-outline-primary" id="btn2" >
-                                <input type="radio" id="option2" autocomplete="off" name="funcionario" value="funcionario"> {{ __('Entrar como Funcionário') }}
+                                <input type="radio" dusk="option2" id="option2" autocomplete="off" name="funcionario" value="funcionario"> {{ __('Entrar como Funcionário') }}
                             </li>
                         </ul>
                     </div>
