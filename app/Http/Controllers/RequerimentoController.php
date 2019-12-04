@@ -45,11 +45,14 @@ class RequerimentoController extends Controller
 
 }
         $update = Requerimento::where('id', $request->get('requerimento'))
-        ->update(['setor_id' => $request->get('setor'),'status_id' => $request->get('teste'), 
+        ->update(['status_id' => $request->get('teste'), 
         'funcionario_id' => Auth::user()->id, 'comentario'=> $request->get('comentario')]);
         //->update(['status_id' => $request->get('teste')])
         //->update(['funcionario_id' => Auth::user()->id])
         //->update(['comentario'=> $request->get('comentario')]);
+
+
+        return redirect()->back()->withSuccess('Requerimento Respondido');
 }
 
 
