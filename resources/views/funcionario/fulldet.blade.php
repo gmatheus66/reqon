@@ -33,9 +33,11 @@
             <div class="col-sm-8">Nome: {{$requerimento->matricula->aluno->nome}}</div>
             <div class="col-sm-4">Semestre: {{$requerimento['matricula']['semestre']}}</div>
         </div>
+        <div class="row">
+            <div class="col">Tipo: {{$requerimento['subtipo']['descricao']}}</div>
+        </div>
     </div>
 
-    <div class="col">Tipo: {{$requerimento['subtipo']['descricao']}}</div>
 
     @php
         $open = true;

@@ -14,11 +14,11 @@
         </div>
     </div>
     <div class="child-body container-flex" id="body-{{$requerimento->id}}" @if(!$open) style="display:none" @endif>
-        <p>
+        <p class="p-1">
             {{$requerimento['descricao']}}
         </p>
         @if($requerimento->comentario)
-            <p class="answer">
+            <p class="answer p-1">
                 {{$requerimento->comentario}}
             </p>
         @endif
