@@ -9,7 +9,8 @@
         </div>
         <div class="p-1">
             <span class="protocol">#{{$requerimento['protocolo']}}</span>
-            <span class="status badge status-{{Str::slug($requerimento['status']['situacao'])}}">{{$requerimento['status']['situacao']}}</span>
+            <span class="status-bol status-{{Str::slug($requerimento['status']['situacao'])}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="status badge">{{$requerimento['status']['situacao']}}</span>
         </div>
     </div>
     <div class="child-body container-flex" id="body-{{$requerimento->id}}" @if(!$open) style="display:none" @endif>
