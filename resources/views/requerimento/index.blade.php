@@ -54,24 +54,28 @@
                                 @endforeach
                             </select>
                         </div>
-
-                        <div class="form-group col-md-6  mb-3">
+                        <div class="form-group col-md-5  mb-3">
                             <label for="procotolo">Protocolo</label>
                             <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo">
                         </div>
 
-                        <div class="form-group col-md-3 mb-2">
-                            <label for="dateini">Data Inicial</label>
-                            <input type="date" name="data_ini" class="form-control" id="dateini" placeholder="Data Inicial">
+                        <div class="w-100"></div>
+                          Data de abertura do requerimento
+                          <div class="w-100"></div>
+                        <div class="row">
+                          <div class="col">
+                            <label for="dateini"><input type="date" name="data_ini" class="form-control" id="dateini" placeholder="Data Inicial"></label>
+                          </div>
+                          <div class="col">
+                            a
+                          </div>
+                          <div class="col">
+                            <label for="datend"><input type="date" name="data_fin" class="form-control" id="datend" placeholder="Data Final"></label>
+                          </div>
                         </div>
-
-                        <div class="form-group col-md-3 mb-2">
-                            <label for="datend">Data Final</label>
-                            <input type="date" name="data_fin" class="form-control" id="datend" placeholder="Data Final">
-                        </div>
-
-                    </div>
-                    <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
+                        
+                        
+                  <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
                 <a href="{{ route('requerimento.index')}}" class="linkFilter">Limpar filtro</a>
 
                 </form>
