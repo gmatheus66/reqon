@@ -33,7 +33,7 @@
         <div class="form-action" id="responder-{{$requerimento->id}}" style="display: none">
             <h3 class="subTitleReq">Responder</h3>
             <div class="">
-                <form action="{{ route('redirecionar') }}" method="post">
+                <form action="{{ route('resposta') }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="form-group col">
