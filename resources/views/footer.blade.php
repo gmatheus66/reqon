@@ -40,12 +40,6 @@
           <li>
             <a href="{{ url('/') }}">Contato</a>
           </li>
-          <li>
-            <a href="{{ url('/requerimento') }}">Requerimento</a>
-          </li>
-          <li>
-            <a href="{{ route('login') }}">Login</a>
-          </li>
         </ul>
 
       </div>
