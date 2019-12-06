@@ -26,7 +26,7 @@ class RequerimentoController extends Controller
 
   public function resposta(request $request){
 
-    //dd($request->all());       
+    //dd($request->all());
         $validator = Validator::make($request->all(), [
             'subtipo'=>'required|numeric|min:1',
             'status' =>'required|numeric|min:1',
@@ -45,7 +45,7 @@ class RequerimentoController extends Controller
 
 }
         $update = Requerimento::where('id', $request->get('requerimento'))
-        ->update(['status_id' => $request->get('teste'), 
+        ->update(['status_id' => $request->get('teste'),
         'funcionario_id' => Auth::user()->id, 'comentario'=> $request->get('comentario')]);
         //->update(['status_id' => $request->get('teste')])
         //->update(['funcionario_id' => Auth::user()->id])

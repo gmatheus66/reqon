@@ -11,9 +11,12 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('/', 'RequerimentoController@index');
 
 Auth::routes();
 Route::post('func-login', ['as'=>'funcionario', 'use'=>'Auth\LoginController@loginFunc']);
@@ -24,8 +27,6 @@ Route::resource('registerfunc', 'FuncionarioController');
 Route::apiResource('registerfunc','FuncionarioController');
 Route::get('/indexfunc', 'FuncionarioController@index')->name('func');
 Route::post('/pesquisarfunc', 'FuncionarioController@search')->name('pesquisarfunc');
-
-Route::get('/home', 'RequerimentoController@index')->name('home');
 
 Route::resource('requerimento', 'RequerimentoController');
 Route::apiResource('requerimento','RequerimentoController');
