@@ -3,10 +3,6 @@
 
 @section('content')
       <div class="container" id="breadcrumb">
-              <span class="itemBread"><a href="/">Início</a> ></span>
-              <span class="breadcrumb-item active itemBread" aria-current="page">Requerimentos</span>
-
-
                   <h1 class="titleReq">Meus requerimentos<a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary btnNewReq" id="criarReq"><img class="plus" src="/icon/plus.png" alt="icon name">Novo requerimento</button>
                    </a></h1>
 
