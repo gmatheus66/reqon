@@ -248,7 +248,7 @@ class FuncionarioController extends Controller
         $status = Status::all();
         //dd($setorfunc);
         //return view('funcionario.show', compact('requerimento', 'setor','reqpai'));
-        return view('funcionario.fulldet', compact('requerimento', 'status', 'setor','setorfunc'));
+        return view('fulldet', compact('requerimento', 'status', 'setor','setorfunc'));
     }
 
 }
