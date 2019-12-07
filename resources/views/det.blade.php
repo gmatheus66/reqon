@@ -84,6 +84,9 @@
                                         @endif
                                     @endforeach
                                 @endforeach
+                                @foreach ($professor as $prof)
+                                    <option value="{{$prof['id']}}">{{$prof['nome']}}</option>
+                                @endforeach
                             </select>
                         </div>
 
