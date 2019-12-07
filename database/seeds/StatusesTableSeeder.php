@@ -29,7 +29,7 @@ class StatusesTableSeeder extends Seeder
                 'situacao' => 'Em Andamento'
             ],
             [
-                'situacao' => 'Processando'
+                'situacao' => 'Criado'
             ]
         ]);
     }
