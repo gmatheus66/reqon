@@ -243,12 +243,13 @@ class FuncionarioController extends Controller
     public function show($id){
         $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
         $setor = Setor::all();
+        $professor = Funcionario::where('cargo', 'Professor')->get();
         $requerimento = Requerimento::find($id);
         $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento->id)->get();
         $status = Status::all();
         //dd($setorfunc);
         //return view('funcionario.show', compact('requerimento', 'setor','reqpai'));
-        return view('fulldet', compact('requerimento', 'status', 'setor','setorfunc'));
+        return view('fulldet', compact('requerimento', 'status', 'setor', 'professor','setorfunc'));
     }
 
 }
