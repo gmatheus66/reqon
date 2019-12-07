@@ -75,8 +75,9 @@
                     @csrf
                     <div class="row">
                         <div class="form-group col">
-                            <select name="teste" class="selectpicker form-control" >
+                            <select name="teste" class="selectpicker form-control" data-live-search="true">
                                 <option value="" selected>Selecione um Setor</option>
+                                <optgroup label="Setores" data-max-options="2">
                                 @foreach ($setor as $set)
                                     @foreach ($setorfunc as $setfunc)
                                         @if ($set['id'] != $setfunc['setor_id'])
@@ -84,9 +85,12 @@
                                         @endif
                                     @endforeach
                                 @endforeach
+                                </optgroup>
+                                <optgroup label="Professores" data-max-options="2">
                                 @foreach ($professor as $prof)
                                     <option value="{{$prof['id']}}">{{$prof['nome']}}</option>
                                 @endforeach
+                                </optgroup>
                             </select>
                         </div>
 
