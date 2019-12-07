@@ -98,7 +98,7 @@ class RequerimentoController extends Controller
             'protocolo' => mt_rand(1,999999999),
             'subtipo_id' => $request->get('subtipo'),
             //'descricao' => $request->get('descricao'),
-            'status_id' => $request->get('status'),
+            'status_id' => 4,
             'req_pai_id' => $request->get('requerimento'),
             'funcionario_id' => auth()->user()->id,
             'setor_id' => $request->get('teste'),
@@ -195,7 +195,7 @@ class RequerimentoController extends Controller
                         ]);
                         $dados = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
                         ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
-                        // dd("teste");
+                         //dd("dados");
 
                     }
 
@@ -328,7 +328,7 @@ class RequerimentoController extends Controller
             'protocolo' => mt_rand(1,999999999),
             'descricao' => $request->get('descricao'),
             'subtipo_id' => $request->get('subtipo'),
-            'status_id' => 4,
+            'status_id' => 5,
             'req_pai_id' => null,
             'funcionario_id' => null,
             'setor_id' => $str,
