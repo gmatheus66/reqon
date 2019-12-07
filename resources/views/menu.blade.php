@@ -18,8 +18,6 @@
                             @elseif(Auth::guard()->check())
                                 <!-- <a class="nav-link" id="navbarDropdown" href="{{ url('/requerimento') }}">{{ __('Requerimentos') }}</a> -->
                             @else
-                                <a href="#">SOBRE</a>
-                                <a href="#">CONTATO</a>
                                 <a href="{{ route('login') }}">ENTRAR</a>
                             @endif
 

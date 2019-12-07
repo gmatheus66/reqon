@@ -38,8 +38,6 @@
                 </button>
 
                 <div class="form-inline linksWelcome">
-                    <a href="#">SOBRE</a>
-                    <a href="#">CONTATO</a>
                     @if (Route::has('login'))
                         @if(Auth::guard('funcionario')->check())
                             <a href="{{ url('/indexfunc') }}">REQUERIMENTOS</a>
