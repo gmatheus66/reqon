@@ -12,6 +12,7 @@ use App\Matricula;
 use App\Curso;
 use App\SetorFuncionario;
 use App\Status;
+use App\Funcionario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -342,10 +343,13 @@ class RequerimentoController extends Controller
 
     public function show($id){
         $setor = Setor::all();
-        $requerimento =  Requerimento::find(1)->where('id',$id)->get();
-        $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento[0]->id)->get();
+        $requerimento = Requerimento::find($id);
+        //dd($requerimento->id);
+        $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento->id)->get();
+        $status = Status::all();
+        $professor = Funcionario::where('cargo', 'Professor')->get();
         //dd($reqpai);
-        return view('requerimento.show', compact('requerimento', 'setor','reqpai'));
+        return view('fulldet', compact('requerimento', 'status', 'setor', 'professor'));
     }
 
     public function update(Request $request){
