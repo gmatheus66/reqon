@@ -22,6 +22,7 @@
                 {{$requerimento->comentario}}
             </p>
         @endif
+    @if(Auth::guard('funcionario')->check())
         <div class="row">
             <div class="col-6">
                 <button class="btn-action btn btn-block btn-primary" data-form="#encaminhar-{{$requerimento->id}}">Encaminhar</button>
@@ -79,11 +80,13 @@
                                 <option value="" selected>Selecione um Setor</option>
                                 <optgroup label="Setores" data-max-options="2">
                                 @foreach ($setor as $set)
+                                    @if($setorfunc)
                                     @foreach ($setorfunc as $setfunc)
                                         @if ($set['id'] != $setfunc['setor_id'])
                                             <option value="{{$set['id']}}">{{$set['nome']}}</option>
                                         @endif
                                     @endforeach
+                                    @endif
                                 @endforeach
                                 </optgroup>
                                 <optgroup label="Professores" data-max-options="2">
@@ -116,12 +119,17 @@
                 </form>
             </div>
         </div>
-
+        @endif
         @foreach ($requerimento->children as $requerimento)
             @php
                 $open = false
             @endphp
-            @include('det', [$requerimento, $status, $setor, $setorfunc, $open])
+
+            @if(Auth::guard('funcionario')->check())
+                @include('det', [$requerimento, $status, $setor, $setorfunc, $open])
+            @elseif(Auth::guard()->check())
+                @include('det', [$requerimento, $status, $setor, $open])
+            @endif
         @endforeach
     </div>
 </div>
