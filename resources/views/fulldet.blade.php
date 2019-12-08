@@ -42,7 +42,10 @@
     @php
         $open = true;
     @endphp
-    @include('det', [$requerimento, $status, $setor, $setorfunc, $open])
-
+    @if(Auth::guard('funcionario')->check())
+        @include('det', [$requerimento, $status, $setor, $setorfunc, $open])
+    @elseif(Auth::guard()->check())
+        @include('det', [$requerimento, $status, $setor, $open])
+    @endif
 </div>
 @endsection
