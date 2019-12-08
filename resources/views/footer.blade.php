@@ -35,7 +35,7 @@
             <a href="{{ url('/') }}">Início</a>
           </li>
           <li>
-            <a href="{{ url('/') }}">Sobre</a>
+            <a href="{{ url('/sobre') }}">Sobre</a>
           </li>
           <li>
             <a href="{{ url('/') }}">Contato</a>
