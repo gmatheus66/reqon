@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\Console\Input\Input;
 
 class FuncionarioController extends Controller
 {
@@ -22,7 +23,6 @@ class FuncionarioController extends Controller
 
     public function index(Request $request){
         $nome_func = Auth::user()->nome;
-
         $setor = Setor::where('nome', $nome_func)->get('id');
         $reqs = Requerimento::where('setor_id', $setor[0]['id'])->orderby('id', 'desc')->paginate(8);
         // $reqs->all();
@@ -247,9 +247,12 @@ class FuncionarioController extends Controller
         $requerimento = Requerimento::find($id);
         $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento->id)->get();
         $status = Status::all();
+        foreach($setor as $str){
+            $setor_nome=$str['nome'];
+        }
         //dd($setorfunc);
         //return view('funcionario.show', compact('requerimento', 'setor','reqpai'));
-        return view('fulldet', compact('requerimento', 'status', 'setor', 'professor','setorfunc'));
+        return view('fulldet', compact('requerimento', 'status', 'setor', 'setor_nome', 'professor','setorfunc'));
     }
 
 }
