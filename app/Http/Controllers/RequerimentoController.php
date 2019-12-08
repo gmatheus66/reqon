@@ -38,13 +38,13 @@ class RequerimentoController extends Controller
             'comentario' =>'required|min:4|max:100',
             'descricao' => 'required|min:1|max:100'
 
-]);
+        ]);
         if ($validator->fails()) {
             return redirect()->back()
                         ->withErrors($validator)
                         ->withInput();
 
-}
+        }
         $update = Requerimento::where('id', $request->get('requerimento'))
         ->update(['status_id' => $request->get('teste'),
         'funcionario_id' => Auth::user()->id, 'comentario'=> $request->get('comentario')]);
@@ -54,7 +54,7 @@ class RequerimentoController extends Controller
 
 
         return redirect()->back()->withSuccess('Requerimento Respondido');
-}
+    }
 
 
     public function redirecionar(Request $request){
