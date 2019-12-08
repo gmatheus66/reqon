@@ -61,7 +61,7 @@
                                 <div class="input-group-prepend">
                                     <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
                                     </div>
-                                    <textarea class="form-control comentario" name="comentario" aria-label="Comentario">{{Input::old('comentario')}}</textarea>
+                                    <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
                                 </div>
                         </div>
                         <div class="row">
