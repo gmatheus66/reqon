@@ -52,13 +52,13 @@
                         </div>
                         <div class="form-group col-md-7  mb-3">
                             <label for="procotolo">Protocolo</label>
-                            <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo">
+                            <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo" value="{{old('protocolo')}}">
                         </div>
 
                         <div class="w-100"></div>
                           Data de abertura do requerimento
                           <div class="w-100"></div>
-                          
+
                           <div class="row">
                           <div class="col">
                             <label for="dateini"><input type="date" name="data_ini" class="form-control" id="dateini" placeholder="Data Inicial"></label>
@@ -70,8 +70,8 @@
                             <label for="datend"><input type="date" name="data_fin" class="form-control" id="datend" placeholder="Data Final"></label>
                           </div>
                         </div>
-                        
-                        
+
+
                   <button type="submit" class="linkBtn btn btnFilter" id="criarReq">Buscar</button>
                 <a href="{{ route('requerimento.index')}}" class="linkFilter">Limpar filtro</a>
 
