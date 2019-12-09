@@ -31,7 +31,6 @@
                 <button class="btn-action btn btn-block btn-secondary btn-size" data-form="#responder-{{$requerimento->id}}">Responder</button>
             </div>
         </div>
-        <p>{{$setor_nome}}</p>
         @if ($setor_nome != Auth::user()->nome)
             <div class="form-action" id="responder-{{$requerimento->id}}" style="display: none">
                 <h3 class="subTitleReq">Responder</h3>
