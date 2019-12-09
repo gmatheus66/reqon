@@ -23,10 +23,20 @@ class FuncionarioController extends Controller
 
     public function index(Request $request){
         $nome_func = Auth::user()->nome;
-        $setor = Setor::where('nome', $nome_func)->get();
-        $setor2 = SetorFuncionario::where('id',Auth::user()->id)->get();
-        //dd($setor2[0]->setor_id);
-        $reqs = Requerimento::where('setor_id', $setor2[0]->setor_id)->orderby('id', 'desc')->paginate(8);
+        //dd(Auth::user()->cargo);
+        if(Auth::user()->cargo == "Professor"){
+            $func = Funcionario::where('nome', Auth::user()->nome)->get('id');
+            foreach($func as $fnc){
+                $func_id = $fnc['id'];
+            }
+            $reqs = Requerimento::where('funcionario_id', $func_id)->paginate(8);
+            //dd($reqs, $func);
+        }else{
+            $setor = Setor::where('nome', $nome_func)->get();
+            $setor2 = SetorFuncionario::where('id',Auth::user()->id)->get();
+            //dd($setor2[0]->setor_id);$status
+            $reqs = Requerimento::where('setor_id', $setor2[0]->setor_id)->orderby('id', 'desc')->paginate(8);
+        }
         //dd($req)
         // $reqs->all();
 
