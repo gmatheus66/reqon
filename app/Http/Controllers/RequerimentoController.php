@@ -59,7 +59,7 @@ class RequerimentoController extends Controller
 
     public function redirecionar(Request $request){
         //var_dump('derasdad');
-        //dd($request->all());
+
         $validator = Validator::make($request->all(), [
             'subtipo'=>'required|numeric|min:1',
             'status' =>'required|numeric|min:1',
@@ -78,6 +78,7 @@ class RequerimentoController extends Controller
                         ->withInput();
         }
 
+
         $reqback = Requerimento::where('id',$request->get('requerimento'))->where('setor_id', $request->get('teste'))->get();
         $reqret = Requerimento::where('req_pai_id', $request->get('requerimento'))->where('setor_id', $request->get('teste'))->get();
         $setorfunc = SetorFuncionario::where('funcionario_id',Auth::user()->id)->get();
@@ -95,18 +96,41 @@ class RequerimentoController extends Controller
             }
         }
 
-        $req = new Requerimento([
-            'protocolo' => mt_rand(1,999999999),
-            'subtipo_id' => $request->get('subtipo'),
-            //'descricao' => $request->get('descricao'),
-            'status_id' => 4,
-            'req_pai_id' => $request->get('requerimento'),
-            'funcionario_id' => auth()->user()->id,
-            'setor_id' => $request->get('teste'),
-            'matricula_id' => $request->get('matricula'),
-            //'comentario' => $request->get('comentario')
-            'descricao' =>  $request->get('comentario'),
-        ]);
+        if($request['teste'] > 2){
+            $id_prof = $request['teste'];
+            $data_prof = SetorFuncionario::where('funcionario_id', $id_prof)->get();
+            foreach($data_prof as $dp){
+                $prof_setor_id = $dp['setor_id'];
+                //dd($prof_setor_id);
+            }
+            $req = new Requerimento([
+                'protocolo' => mt_rand(1,999999999),
+                'subtipo_id' => $request->get('subtipo'),
+                //'descricao' => $request->get('descricao'),
+                'status_id' => 4,
+                'req_pai_id' => $request->get('requerimento'),
+                'funcionario_id' => $id_prof,
+                'setor_id' => $prof_setor_id,
+                'matricula_id' => $request->get('matricula'),
+                //'comentario' => $request->get('comentario')
+                'descricao' =>  $request->get('comentario'),
+            ]);
+        }else{
+            $req = new Requerimento([
+                'protocolo' => mt_rand(1,999999999),
+                'subtipo_id' => $request->get('subtipo'),
+                //'descricao' => $request->get('descricao'),
+                'status_id' => 4,
+                'req_pai_id' => $request->get('requerimento'),
+                'funcionario_id' => auth()->user()->id,
+                'setor_id' => $request->get('teste'),
+                'matricula_id' => $request->get('matricula'),
+                //'comentario' => $request->get('comentario')
+                'descricao' =>  $request->get('comentario'),
+            ]);
+        }
+
+
         $req->save();
 
         return redirect()->back()->withSuccess('Requerimento Criado');
