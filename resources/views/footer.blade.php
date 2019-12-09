@@ -38,7 +38,7 @@
             <a href="{{ url('/sobre') }}">Sobre</a>
           </li>
           <li>
-            <a href="{{ url('/') }}">Contato</a>
+            <a href="{{ url('/contato') }}">Contato</a>
           </li>
         </ul>
 
