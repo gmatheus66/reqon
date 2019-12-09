@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::get('/sobre', function(){
     return view('sobre');
 });
+Route::get('/contato', function(){
+    return view('contato');
+});
 
 //Route::get('/', 'RequerimentoController@index');
 
