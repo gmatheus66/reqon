@@ -245,6 +245,7 @@ class FuncionarioController extends Controller
         $setor = Setor::all();
         $professor = Funcionario::where('cargo', 'Professor')->get();
         $requerimento = Requerimento::find($id);
+        //dd($requerimento['setor']['nome']);
         $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento->id)->get();
         $status = Status::all();
         foreach($setor as $str){
