@@ -2,7 +2,7 @@
 
 
 @section('content')
-      <div class="container" id="breadcrumb">
+      <div class="container">
                   <h1 class="titleReq">Meus requerimentos<a href="{{ route('requerimento.create')}}"><button class="linkBtn btn btn-outline-primary btnNewReq" id="criarReq"><img class="plus" src="/icon/plus.png" alt="icon name">Novo requerimento</button>
                    </a></h1>
 
@@ -11,7 +11,7 @@
                         {{$_GET['src']}}
                     </div>
                     @endif
-        <div class="container" id="cont">
+        <div id="cont">
             <div class="d-flex align-items-center flex-column bd-highlight mb-4">
 
               @if(session('success'))
