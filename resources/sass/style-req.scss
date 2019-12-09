@@ -63,6 +63,12 @@
                 &.status-indeferido {
                     background:  hsl(0, 100%, 30%);
                 }
+                &.status-criado{
+                    background: hsl(90, 90%, 80%);
+                }
+                &.status-deferido{
+                    background: hsl(104, 100%, 35%);
+                }
             }
         }
         .child-body{
