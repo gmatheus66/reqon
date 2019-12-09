@@ -23,8 +23,11 @@ class FuncionarioController extends Controller
 
     public function index(Request $request){
         $nome_func = Auth::user()->nome;
-        $setor = Setor::where('nome', $nome_func)->get('id');
-        $reqs = Requerimento::where('setor_id', $setor[0]['id'])->orderby('id', 'desc')->paginate(8);
+        $setor = Setor::where('nome', $nome_func)->get();
+        $setor2 = SetorFuncionario::where('id',Auth::user()->id)->get();
+        //dd($setor2[0]->setor_id);
+        $reqs = Requerimento::where('setor_id', $setor2[0]->setor_id)->orderby('id', 'desc')->paginate(8);
+        //dd($req)
         // $reqs->all();
 
         $subtp_ids = [];
