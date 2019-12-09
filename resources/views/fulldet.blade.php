@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <div id="main" class="container">
-    <div class="container">
-        <div class="container" id="breadcrumb">
-            <span class="itemBread"><a href="/">Início</a> ></span>
-            <span class="itemBread"><a href="/indexfunc">Requerimentos</a> ></span>
-            <span class="breadcrumb-item active itemBread" aria-current="page">Detalhes</span>
-        </div>
-    </div>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/requerimento">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detalhes</li>
+              </ol>
+            </nav>
 
     @if($errors->any())
         @foreach($errors->all() as $message)
