@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
 
-<div class="container" id="breadcrumb">
-            <span class="itemBread"><a href="/">Início</a> ></span>
-            <span class="itemBread"><a href="/requerimento">Requerimentos</a> ></span>
-            <span class="breadcrumb-item active itemBread" aria-current="page">Novo requerimento</span>
+<div class="container">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/requerimento">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Novo requerimento</li>
+              </ol>
+            </nav>
 
             <h1 class="titleReq">Novo requerimento</h1>
 
