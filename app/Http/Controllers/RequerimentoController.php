@@ -380,6 +380,8 @@ class RequerimentoController extends Controller
 
     }
 
-
+    public function reabrir(Request $request){
+        dd($request->all());
+    }
 
 }
