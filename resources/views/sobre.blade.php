@@ -56,21 +56,21 @@
         <h1 class="titleReq">Nosso Governo é Eletrônico!</h1>
         <p class="subtitleFunc">Temos como prioridade facilitar e modernizar o processo de requerimentos institucionais.</p>
 
-    <div class="container">
+    
 
         <!-- Three columns of featurettes -->
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-4 bCard">
             <img class="imageFunc" style="width: 200px;" src="{{ asset('img/icon1.png') }}">
             <h3 class="tituloCard">Crie seu requerimento <span class="text-muted">Rápido e Online.</span></h3>
             <p class="tCard">A criação do requerimento pode ser feita de maneira rápida, descomplicada e de maneira 100% digital.</p>
           </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
+          <div class="col-lg-4 bCard">
             <img class="imageFunc" style="width: 200px;" src="{{ asset('img/icon3.png') }}">
             <h3 class="tituloCard">Chega de Papel <span class="text-muted">Praticidade para todos.</span></h3>
             <p class="tCard">Queremos digitalizar todo o processo de criação e tramitação dos requerimentos, reduzindo o consumo e desperdício de papel.</p>
           </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
+          <div class="col-lg-4 bCard">
             <img class="imageFunc" style="width: 200px;" src="{{ asset('img/icon2.png') }}">
             <h3 class="tituloCard">Acompanhe tudo online <span class="text-muted">Mobilidade para você.</span></h3>
             <p class="tCard">Acompanhe de qualquer lugar o status dos seus requerimentos, fique por dentro dos detalhes em tempo real.</p>
@@ -78,16 +78,13 @@
         </div><!-- /.row -->
 
         <!-- /END THE featS -->
-</div>
 
         <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <div class="container py-3">
-            <div class="row text-center">
               <div class="col-lg-8 mx-auto">
                 <h1 class="tituloFunc">CONHEÇA NOSSA EQUIPE</h1>
               </div>
-            </div>
           </div>
 
         <!-- Page Content -->
