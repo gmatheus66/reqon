@@ -38,5 +38,5 @@ Route::resource('requerimento', 'RequerimentoController');
 Route::apiResource('requerimento','RequerimentoController');
 Route::post('/pesquisar', 'RequerimentoController@search')->name('pesquisar');
 Route::post('/redirecionar', 'RequerimentoController@redirecionar')->middleware('auth:funcionario')->name('redirecionar');
-
+Route::post('/reabrir', 'RequerimentoController@reabrir')->middleware('auth:funcionario')->name('reabrir');
 Route::post('/resposta', 'RequerimentoController@resposta')->middleware('auth:funcionario')->name('resposta');
