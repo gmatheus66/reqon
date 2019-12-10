@@ -63,7 +63,9 @@
                                             <select name="teste" class="selectpicker form-control" >
                                                 <option value="" selected>Selecione um Status</option>
                                                 @foreach ($status as $set)
-                                                    <option value="{{$set['id']}}">{{$set['situacao']}}</option>
+                                                    @if ($set['situacao'] != 'Criado' && $set['situacao'] != 'Em Andamento')
+                                                        <option value="{{$set['id']}}">{{$set['situacao']}}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
