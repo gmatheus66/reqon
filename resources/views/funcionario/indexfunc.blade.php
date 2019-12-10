@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<div class="container" id="breadcrumb">
+  <h1 class="titleReq">Requerimentos</h1>
             @if($errors->any())
             <div class="alert alert-danger" role="alert">
                  {{$_GET['src']}}
