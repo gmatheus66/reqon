@@ -25,6 +25,20 @@
                 background-position: center;
                 background-image: url({{asset('img/bg-welcome.jpg')}});
             }
+            .footerClass{
+                background-color: #fff;
+                color: #3d9476;
+            }
+            .linkFooter a{
+                color:#4bb18d;
+            }
+            .linkFooter a:hover{
+                color:#328064;
+            }
+            .titleFooter{
+                color:#3d9476;
+            }
+            
         </style>
     </head>
     <body>
