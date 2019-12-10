@@ -44,7 +44,7 @@
             </div>
         </nav>
     </div>
-    
+
     <div class="container">
     <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
@@ -53,59 +53,39 @@
           </ol>
       </nav>
 
-    <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Nosso Governo é Eletrônico!</h1>
+        <h1 class="titleReq">Nosso Governo é Eletrônico!</h1>
         <p class="subtitleFunc">Temos como prioridade facilitar e modernizar o processo de requerimentos institucionais.</p>
-    </div>
-    </div>
 
     <div class="container">
-        <!-- START THE func -->
-        
-        <div class="row func">
-          <div class="col-md-7">
-            <h2 class="tituloFunc">Crie seu requerimento - <span class="text-muted">Rápido e Online.</span></h2>
-            <p class="subtitleFunc">A criação do requerimento pode ser feita de maneira rápida, descomplicada e de maneira 100% digital.</p>
-          </div>
-          <div class="col-md-5">
+
+        <!-- Three columns of featurettes -->
+        <div class="row">
+          <div class="col-lg-4">
             <img class="imageFunc" style="width: 200px;" src="{{ asset('img/icon1.png') }}">
-          </div>
-        </div>
-
-        <hr class="funcDivider">
-
-        <div class="row func">
-          <div class="col-md-7 order-md-2">
-            <h2 class="tituloFunc">Chega de Papel - <span class="text-muted">Praticidade para todos.</span></h2>
-            <p class="subtitleFunc">Queremos digitalizar todo o processo de criação e tramitação dos requerimentos, reduzindo o consumo e desperdício de papel.</p>
-          </div>
-          <div class="col-md-5 order-md-1">
+            <h3 class="tituloCard">Crie seu requerimento <span class="text-muted">Rápido e Online.</span></h3>
+            <p class="tCard">A criação do requerimento pode ser feita de maneira rápida, descomplicada e de maneira 100% digital.</p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
             <img class="imageFunc" style="width: 200px;" src="{{ asset('img/icon3.png') }}">
-          </div>
-        </div>
-
-        <hr class="funcDivider">
-
-        <div class="row func">
-          <div class="col-md-7">
-            <h2 class="tituloFunc">Acompanhe tudo online - <span class="text-muted">Mobilidade para você.</span></h2>
-            <p class="subtitleFunc">Acompanhe de qualquer lugar o status dos seus requerimentos, fique por dentro dos detalhes em tempo real.</p>
-          </div>
-          <div class="col-md-5">
+            <h3 class="tituloCard">Chega de Papel <span class="text-muted">Praticidade para todos.</span></h3>
+            <p class="tCard">Queremos digitalizar todo o processo de criação e tramitação dos requerimentos, reduzindo o consumo e desperdício de papel.</p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
             <img class="imageFunc" style="width: 200px;" src="{{ asset('img/icon2.png') }}">
-          </div>
-        </div>
+            <h3 class="tituloCard">Acompanhe tudo online <span class="text-muted">Mobilidade para você.</span></h3>
+            <p class="tCard">Acompanhe de qualquer lugar o status dos seus requerimentos, fique por dentro dos detalhes em tempo real.</p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
 
         <!-- /END THE featS -->
 </div>
 
         <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <div class="container py-5">
+          <div class="container py-3">
             <div class="row text-center">
               <div class="col-lg-8 mx-auto">
-                <h1 class="display-4">Conheça a nossa equipe</h1>
+                <h1 class="tituloFunc">CONHEÇA NOSSA EQUIPE</h1>
               </div>
             </div>
           </div>
