@@ -48,7 +48,7 @@
     <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Nosso Governo é Eletrônico!</h1>
-        <p class="subtitleFunc">Temos como prioridade facilitar e modernizar o processo de requerimentos instintitucionais.</p>
+        <p class="subtitleFunc">Temos como prioridade facilitar e modernizar o processo de requerimentos institucionais.</p>
     </div>
     </div>
 
@@ -70,7 +70,7 @@
         <div class="row func">
           <div class="col-md-7 order-md-2">
             <h2 class="tituloFunc">Chega de Papel - <span class="text-muted">Praticidade para todos.</span></h2>
-            <p class="subtitleFunc">Queremos digitalizar todo o processo de criação e tramitação dos requerimentos, reduzindo o consumo e desperdicio de papel.</p>
+            <p class="subtitleFunc">Queremos digitalizar todo o processo de criação e tramitação dos requerimentos, reduzindo o consumo e desperdício de papel.</p>
           </div>
           <div class="col-md-5 order-md-1">
             <img class="imageFunc" style="width: 200px;" src="{{ asset('img/icon3.png') }}">
@@ -81,7 +81,7 @@
 
         <div class="row func">
           <div class="col-md-7">
-            <h2 class="tituloFunc">Acompanhe tudo online - <span class="text-muted">Moblidade para você.</span></h2>
+            <h2 class="tituloFunc">Acompanhe tudo online - <span class="text-muted">Mobilidade para você.</span></h2>
             <p class="subtitleFunc">Acompanhe de qualquer lugar o status dos seus requerimentos, fique por dentro dos detalhes em tempo real.</p>
           </div>
           <div class="col-md-5">
@@ -223,6 +223,7 @@
         </div><!-- /.container -->
 
   </div><!-- End -->
+</div><!-- End container-->
 </div>
     @include('footer')
     </body>
