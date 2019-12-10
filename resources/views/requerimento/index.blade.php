@@ -32,9 +32,9 @@
                             <div class="form-group col-md-7 mb-3">
                                 <label for="Curso">Curso</label>
                                 <select name="curso" class="form-control" id="Curso">
-                                    <option selected>Selecione um Curso</option>
+                                    <option value="">Qualquer curso</option>
                                     @foreach ($matriculas as $matricula)
-                                    <option value="{{$matricula->matricula}}">{{$matricula->curso->nome}}</option>
+                                      <option value="{{$matricula->curso->id}}" {{$matricula->curso->id == ($curso ?? false) ? 'selected' : ''}}>{{$matricula->curso->nome}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -44,15 +44,15 @@
                         <div class="form-group col-md-7 mb-3">
                             <label for="situacao">Situação</label>
                             <select name="situacao" class="form-control" id="situacao">
-                                <option selected>Selecione uma Situação</option>
-                                @foreach ($status ?? '' as $stt)
-                            <option value="{{$stt->id}}" >{{$stt->situacao}}</option>
+                                <option value="">Qualquer situação</option>
+                                @foreach ($status ?? [] as $stt)
+                                  <option value="{{$stt->id}}" {{$stt->id == ($situacao ?? false) ? 'selected' : ''}} >{{$stt->situacao}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-7  mb-3">
                             <label for="procotolo">Protocolo</label>
-                            <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo" value="{{old('protocolo')}}">
+                            <input type="text" name="protocolo" class="form-control" id="procotolo" placeholder="Protocolo" value="{{$protocolo ?? ''}}">
                         </div>
 
                         <div class="w-100"></div>
