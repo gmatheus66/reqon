@@ -1,3 +1,18 @@
 .breadcrumb{
-	margin-top:1em;
+	margin-top:2em;
+	background-color: #E2F0FB;
+		a{
+			color:#385d7a;
+			font-family: "Open Sans", sans-serif;
+		}
+}
+.breadcrumb-item.active {
+    color: #808080;
+    font-family: "Open Sans", sans-serif;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: #385d7a;
+    content: "/";
 }
