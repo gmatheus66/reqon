@@ -107,7 +107,7 @@ class RequerimentoController extends Controller
                 'protocolo' => mt_rand(1,999999999),
                 'subtipo_id' => $request->get('subtipo'),
                 //'descricao' => $request->get('descricao'),
-                'status_id' => 4,
+                'status_id' => 5,
                 'req_pai_id' => $request->get('requerimento'),
                 'funcionario_id' => $id_prof,
                 'setor_id' => $prof_setor_id,
@@ -120,7 +120,7 @@ class RequerimentoController extends Controller
                 'protocolo' => mt_rand(1,999999999),
                 'subtipo_id' => $request->get('subtipo'),
                 //'descricao' => $request->get('descricao'),
-                'status_id' => 4,
+                'status_id' => 5,
                 'req_pai_id' => $request->get('requerimento'),
                 'funcionario_id' => auth()->user()->id,
                 'setor_id' => $request->get('teste'),
@@ -130,6 +130,7 @@ class RequerimentoController extends Controller
             ]);
         }
 
+        $up = Requerimento::find($request->get('requerimento'))->update(['status_id' => 4]);
 
         $req->save();
 
