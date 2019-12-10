@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        
+
         <!-- Styles -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -24,7 +24,7 @@
 
     <div class="header">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm navClassWelcome">
-            <div class="container"> 
+            <div class="container">
                 <a class="navbar-brand-welcome" href="{{ url('/') }}"><img id="logoSite" src="{{ asset('img/logoSite-verde.png') }}">ReqOn</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -52,23 +52,34 @@
             <li class="breadcrumb-item active" aria-current="page">Contato</li>
         </ol>
     </nav>
+    @if($errors->any())
+        @foreach($errors->all() as $message)
+            <div class="alert alert-danger" role="alert">
+                {{ $message }}
+            </div>
+       @endforeach
+    @endif
+    @if(session('success'))
+        <div class="alert alert-success msgSucesso msgsuccess" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong><button type="button" class="close" data-dismiss="alert">x</button></div>
+    @endif
 	<h1 class="titleReq">Contato</h1>
-	<form>
+    <form action="{{ route('contato') }}" method="post">
+        @csrf
 	  <div class="form-row">
 	  	<div class="form-group col-md-6">
 	      <label for="nome">Nome completo</label>
-	      <input type="text" class="form-control" id="nome">
+	      <input type="text" class="form-control" name="nome" id="nome">
 	    </div>
 	    <div class="form-group col-md-6">
 	      <label for="email">Email</label>
-	      <input type="email" class="form-control" id="email">
+	      <input type="email" class="form-control" name="email" id="email">
 	    </div>
 	    <div class="form-group col-lg-12">
 	      <label for="mensagem">Mensagem</label>
-	      <textarea class="form-control" maxlength="1000" rows="10" id="mensagem"></textarea>
+	      <textarea name="msg" class="form-control" maxlength="1000" rows="10" id="mensagem"></textarea>
 	    </div>
 	  </div>
-	  
+
 	  <button type="submit" id="enviarMsg" class="btn btn-outline-primary">Enviar</button>
 	</form>
 </div>
