@@ -7,7 +7,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <div class="row justify-content-center">
+                    <div class="row">
                         <ul class="btn-group btn-group-toggle" data-toggle="buttons">
                             <li class=" btn btn-outline-primary active" id="btn1" >
                                 <input type="radio" id="option1" autocomplete="off" checked name="aluno" value="aluno"> {{ __('Entrar como Aluno') }}
@@ -21,7 +21,7 @@
                             @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
+                            <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('Senha') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="offset-md-3">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Entrar') }}
                                 </button>
