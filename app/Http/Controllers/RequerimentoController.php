@@ -25,6 +25,16 @@ class RequerimentoController extends Controller
         $this->middleware('auth');
     }
 
+    
+    // public function pesquisa(){
+    //  // redirect()->route('requerimento.index');
+    //     $teste = $_GET['page'];
+    //     echo $teste;
+    //     return redirect('/requerimento?page=' . $teste);
+
+
+    // }
+
   public function resposta(request $request){
 
     //dd($request->all());
@@ -164,137 +174,161 @@ class RequerimentoController extends Controller
         $matriculas = Auth::user()->matriculas->sort(function($m1, $m2) {
             return strcmp($m1->curso->nome, $m2->curso->nome);
         });
+        $matriculasIds = $matriculas->modelKeys();
 
         $status = Status::all();
 
         $input = $request->all();
+        $page = $input['page'] ?? false;
+        if ($page === false) {
+            $request->session()->put('situacao', $input['situacao']);
+            $request->session()->put('protocolo', $input['protocolo']);
+            $request->session()->put('data_ini', $input['data_ini']);
+            $request->session()->put('data_fin', $input['data_fin']);
+            $request->session()->put('curso', $input['curso'] ?? '');
+        }
+        $situacao = $request->session()->get('situacao', '') ?: '%';
+        $protocolo = $request->session()->get('protocolo', '') ?: '%';
+        $data_ini = $request->session()->get('data_ini', '') ?: '1970-01-01';
+        $data_fin = $request->session()->get('data_fin', '') ?: '2100-01-01';
+        $curso = $request->session()->get('curso', '') ?: '%';
+
+        if ($curso != '%') {
+            $matriculasIds = [];
+            foreach($matriculas as $matricula) {
+                if ($matricula->curso_id == $curso) {
+                    $matriculasIds[] = $matricula['id'];
+                }
+            }
+        }
+
+        $dados = Requerimento::whereIn('matricula_id',$matriculasIds)
+                            ->whereBetween('created_at', [date($data_ini), date($data_fin)])
+                            ->where('status_id', 'like', $situacao)
+                            ->where('protocolo', 'like', $protocolo)
+                            ->orderby('id', 'desc')
+                            ->paginate(5);
+
+        if ($protocolo == '%') {
+            $protocolo = '';
+        }
+        return view('requerimento.index',compact('dados', 'status', 'matriculas', 'protocolo', 'situacao', 'data_ini', 'data_fin', 'curso'));
         // dd($input);
-        $situacao = $input['situacao'];
-        $protocolo = $input['protocolo'];
-        $data_ini = $input['data_ini'];
-        $data_fin = $input['data_fin'];
-        $matri = $request->get('curso');
-        $m = Matricula::where('matricula', $matri)->get();
-        foreach($m as $mt){
-            $matri_id = $mt['id'];
-        }
-        $exemplo = Requerimento::where('protocolo', '-1')->get();
-        $situ = Status::where('id', $situacao)->get();
-        foreach($situ as $st){
-            $sit_id = $st['id'];
-        }
+        // $exemplo = Requerimento::where('protocolo', '-1')->get();
+        // $situ = Status::where('id', $situacao)->get();
+        // foreach($situ as $st){
+        //     $sit_id = $st['id'];
+        // }
 
-        if($matri && empty($matri)){
-           $matricula = Matricula::find(1)->where('matricula',$matri)->get();
-           $dados = Requerimento::find(1)->where('matricula_id',$matricula[0]->id)->get();
-        }
+        // if($matri && empty($matri)){
+        //    $matricula = Matricula::find(1)->where('matricula',$matri)->get();
+        //    $dados = Requerimento::find(1)->where('matricula_id',$matricula[0]->id)->get();
+        // }
 
-        if($situacao == "Selecione uma Situação" && $protocolo == null){
+        // if($situacao == "Selecione uma Situação" && $protocolo == null){
 
-            if ($request->get('data_ini') && $request->get('data_ini')) {
-                $validator = Validator::make($request->all(), [
-                    'data_ini' => 'date',
-                    'data_fin' => 'date'
-                ]);
+        //     if ($request->get('data_ini') && $request->get('data_ini')) {
+        //         $validator = Validator::make($request->all(), [
+        //             'data_ini' => 'date',
+        //             'data_fin' => 'date'
+        //         ]);
 
-                if(!($validator->fails())){
-                    $dados = Requerimento::whereBetween('created_at', [date($data_ini), date($data_fin)])
-                                        ->where('matricula_id',$matriculas[0]['id'])
-                                        ->orderby('id', 'desc')
-                                        ->paginate(5);
-                }else{
-                    $dados = $exemplo;
-                }
-                if($exemplo == $dados){
-                    // dd("1");
-                    if($request->get('data_fin')){
-                        $validator = Validator::make($request->all(), [
-                            'data_ini' => 'date',
-                        ]);
-                        $dados = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
-                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
-                    }
+        //         if(!($validator->fails())){
+        //             $dados = Requerimento::whereBetween('created_at', [date($data_ini), date($data_fin)])
+        //                                 ->where('matricula_id',$matriculas[0]['id'])
+        //                                 ->orderby('id', 'desc')
+        //                                 ->paginate(5);
+        //         }else{
+        //             $dados = $exemplo;
+        //         }
+        //         if($exemplo == $dados){
+        //             // dd("1");
+        //             if($request->get('data_fin')){
+        //                 $validator = Validator::make($request->all(), [
+        //                     'data_ini' => 'date',
+        //                 ]);
+        //                 $dados = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
+        //                 ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
+        //             }
 
-                    if($request->get('data_ini')){
-                        $validator = Validator::make($request->all(), [
-                            'data_fin' => 'date',
-                        ]);
-                        $dados = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
-                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
-                         //dd("dados");
+        //             if($request->get('data_ini')){
+        //                 $validator = Validator::make($request->all(), [
+        //                     'data_fin' => 'date',
+        //                 ]);
+        //                 $dados = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
+        //                 ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
+        //                  //dd("dados");
 
-                    }
+        //             }
 
-                    if($validator->fails()){
-                        return redirect('/requerimento?src=Insira+a+data+corretamente')
-                                ->withErrors($validator)
-                                ->withInput();
-                    }
-                    return view('requerimento.index',compact('dados', 'status', 'matriculas'));
-                }else{
-                    return view('requerimento.index',compact('dados', 'status', 'matriculas'));
-                    exit();
-                }
-            }else{
-                return redirect('/requerimento?src=Insira+a+data+corretamente')
-                                ->withInput();
-            }
-        }elseif($protocolo !=null || $situacao != "Selecione uma Situação"){
+        //             if($validator->fails()){
+        //                 return redirect('/requerimento?src=Insira+a+data+corretamente')
+        //                         ->withErrors($validator)
+        //                         ->withInput();
+        //             }
+        //             return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+        //         }else{
+        //             return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+        //             exit();
+        //         }
+        //     }else{
+        //         return redirect('/requerimento?src=Insira+a+data+corretamente')
+        //                         ->withInput();
+        //     }
+        // }else{
+        //     if($request->get('situacao') || $request->get('protocolo')){                
+        //             if($situacao != "Selecione uma Situação" && $protocolo != null){
+        //                  //dd("deburguer");
 
-            if($request->get('situacao') || $request->get('protocolo')){
-                $validator = Validator::make($request->all(), [
-                    'protocolo'=>'required|numeric|min:1',
-                    'situacao'=>'numeric|min:1'
-                    ]);
-                    if($situacao != "Selecione uma Situação" && $protocolo != null){
+        //                 $dados = Requerimento::where('protocolo', $protocolo)
+        //                 ->where('status_id', $sit_id)
+        //                 ->where('matricula_id',$matriculas[0]['id'])
+        //                 ->paginate(5);
+        //                 //dd($dados);
+        //             }else{
+        //                 $dados = $exemplo;
+        //             }
 
-                        $dados = Requerimento::where('protocolo', $protocolo)
-                        ->where('status_id', $sit_id)
-                        ->where('matricula_id',$matriculas[0]['id'])
-                        ->paginate(5);
-                    }else{
-                        $dados = $exemplo;
-                    }
-                if($exemplo == $dados){
-                    if($request->get('situacao') != "Selecione uma Situação"){
-                        $validator = Validator::make($request->all(), [
-                            'situacao'=>'numeric|min:1',
-                        ]);
-                        $dados = Requerimento::where('status_id', $request->get('situacao'))
-                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
-                    }
-                    if($request->get('protocolo')){
-                        $validator = Validator::make($request->all(), [
-                            'protocolo'=>'required|numeric|min:1'
-                        ]);
-                        $dados = Requerimento::where('protocolo', $protocolo)
-                        ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
-                        // dd('deburguer');
-                    }
-                    return view('requerimento.index',compact('dados', 'status', 'matriculas'));
-                }else{
-                    return view('requerimento.index',compact('dados', 'status', 'matriculas'));
-                    exit();
-                }
-            }
+        //         if($exemplo == $dados){
+        //             if($request->get('situacao') != "Selecione uma Situação"){
+                       
+        //                 $dados = Requerimento::where('status_id', $request->get('situacao'))
+        //                 ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
+        //                 //dd($dados);
+        //             return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+        //             }
+        //             if($request->get('protocolo')){
+        //                 $dados = Requerimento::where('protocolo', $protocolo)
+        //                 ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
+        //                  dd($dados);
 
-        }
+        //             }
+        //                 dd("to aqui");
+        //             return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+        //         }else{
+        //             dd($dados);
+        //             return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+                   
+        //         }
+        //     }
 
-        if(!empty($matri_id)){
-            $dados = Requerimento::where('matricula_id', $matri_id)->paginate(5);
-            return view('requerimento.index',compact('dados', 'status', 'matriculas'));
+        // }
 
-        }
+        // if(!empty($matri_id)){
+        //     $dados = Requerimento::where('matricula_id', $matri_id)->paginate(5);
+        //     return view('requerimento.index',compact('dados', 'status', 'matriculas'));
 
-        $validator = Validator::make($request->all(), [
-            'data_fin' => 'date',
-        ]);
+        // }
 
-        if ($validator->fails()) {
-            return redirect('/requerimento?src=Selecione+um+filtro')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
+        // $validator = Validator::make($request->all(), [
+        //     'data_fin' => 'date',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return redirect('/requerimento?src=Selecione+um+filtro')
+        //                 ->withErrors($validator)
+        //                 ->withInput();
+        // }
 
         /*return view('requerimento.index', compact('dados', 'matriculas', 'status'));
 
