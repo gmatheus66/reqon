@@ -81,7 +81,7 @@
                                             <div class="input-group-prepend">
                                                 <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
                                                 </div>
-                                                <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
+                                                <textarea class="form-control comentario" name="comentario" aria-label="Comentario">{{old('comentario')}}</textarea>
                                             </div>
                                     </div>
                                     <div class="row">
@@ -164,7 +164,7 @@
                                         <div class="input-group-prepend">
                                             <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
                                             </div>
-                                            <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
+                                            <textarea class="form-control comentario" name="comentario" aria-label="Comentario">{{old('comentario')}}</textarea>
                                         </div>
                                 </div>
                                 <div class="row">
