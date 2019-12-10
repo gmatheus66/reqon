@@ -37,71 +37,76 @@
                     </div>
                 </div>
                 @if ($setor_nome != Auth::user()->nome)
-                    <div class="form-action" id="responder-{{$requerimento->id}}" style="display: none">
-                        <h3 class="subTitleReq">Responder</h3>
-                        <div class="">
-                            <form action="{{ route('resposta') }}" method="post">
-                                @csrf
-                                <div class="row">
-                                    <div class="form-group col">
-                                        <select name="teste" class="selectpicker form-control" >
-                                            <option value="" selected>Selecione um Status</option>
-                                            @foreach ($status as $set)
-                                                <option value="{{$set['id']}}">{{$set['situacao']}}</option>
-                                            @endforeach
-                                        </select>
+                    @if ($requerimento->comentario == NULL)
+                        <div class="form-action" id="responder-{{$requerimento->id}}" style="display: none">
+                            <h3 class="subTitleReq">Responder</h3>
+                            <div class="">
+                                <form action="{{ route('resposta') }}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="form-group col">
+                                            <select name="teste" class="selectpicker form-control" >
+                                                <option value="" selected>Selecione um Status</option>
+                                                @foreach ($status as $set)
+                                                    <option value="{{$set['id']}}">{{$set['situacao']}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
+                                        <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
+                                        <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
+                                        <input type="hidden" name="status" value="{{$requerimento['status']['id']}}">
+                                        <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
+                                        <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
+
                                     </div>
-
-                                    <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
-                                    <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
-                                    <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
-                                    <input type="hidden" name="status" value="{{$requerimento['status']['id']}}">
-                                    <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
-                                    <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
-
-                                </div>
-                                <div class="row">
-                                    <div class="input-group col">
-                                        <div class="input-group-prepend">
-                                            <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
+                                    <div class="row">
+                                        <div class="input-group col">
+                                            <div class="input-group-prepend">
+                                                <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
+                                                </div>
+                                                <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
                                             </div>
-                                            <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
-                                        </div>
-                                </div>
-                                <div class="row">
-                                    <button type="submit" class="coment-btn btn-lg col col-sm-2">Enviar</button>
-                                </div>
-                            </form>
+                                    </div>
+                                    <div class="row">
+                                        <button type="submit" class="coment-btn btn-lg col col-sm-2">Enviar</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-action" id="reabrir-{{$requerimento->id}}" style="display: none">
-                        <h3 class="subTitleReq">Editar</h3>
-                        <div class="">
-                            <form action="{{ route('reabrir') }}" method="post">
-                                @csrf
-                                <div class="row">
-                                    <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
-                                    <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
-                                    <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
-                                    <input type="hidden" name="status" value="{{$requerimento['status']['id']}}">
-                                    <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
-                                    <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
+                    @endif
+                    @if ($requerimento->comentario != NULL)
+                        <div class="form-action" id="reabrir-{{$requerimento->id}}" style="display: none">
+                            <h3 class="subTitleReq">Editar</h3>
+                            <div class="">
+                                <form action="{{ route('reabrir') }}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <input type="hidden" name="requerimento" value="{{$requerimento['id']}}">
+                                        <input type="hidden" name="matricula" value="{{$requerimento['matricula']['id']}}">
+                                        <input type="hidden" name="subtipo" value="{{$requerimento['subtipo']['id']}}">
+                                        <input type="hidden" name="status" value="{{$requerimento['status']['id']}}">
+                                        <input type="hidden" name="setor" value="{{$requerimento['setor']['id']}}">
+                                        <input type="hidden" name="descricao" value="{{$requerimento['descricao']}}">
 
-                                </div>
-                                <div class="row">
-                                    <div class="input-group col">
-                                        <div class="input-group-prepend">
-                                            <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col">
+                                            <div class="input-group-prepend">
+                                                <button class="btn cmt" type="button" id="button-addon1">Comentário</button>
+                                                </div>
+                                                <textarea class="form-control comentario" name="comentario" aria-label="Comentario">{{$requerimento->comentario}}</textarea>
                                             </div>
-                                            <textarea class="form-control comentario" name="comentario" aria-label="Comentario"></textarea>
-                                        </div>
-                                </div>
-                                <div class="row">
-                                    <button type="submit" class="coment-btn btn-lg col col-sm-2">Enviar</button>
-                                </div>
-                            </form>
+                                    </div>
+                                    <div class="row">
+                                        <button type="submit" class="coment-btn btn-lg col col-sm-2">Enviar</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    @endif
+
                     <div class="form-action" id="encaminhar-{{$requerimento->id}}" style="display: none">
                         @method('Symfony\Component\Console\Input\Input')
                         <h3 class="subTitleReq">Encaminhar</h3>
