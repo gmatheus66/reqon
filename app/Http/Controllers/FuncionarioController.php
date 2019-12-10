@@ -29,13 +29,13 @@ class FuncionarioController extends Controller
             foreach($func as $fnc){
                 $func_id = $fnc['id'];
             }
-            $reqs = Requerimento::where('funcionario_id', $func_id)->paginate(8);
+            $reqs = Requerimento::where('funcionario_id', $func_id)->simplePaginate(8);
             //dd($reqs, $func);
         }else{
             $setor = Setor::where('nome', $nome_func)->get();
             $setor2 = SetorFuncionario::where('id',Auth::user()->id)->get();
             //dd($setor2[0]->setor_id);$status
-            $reqs = Requerimento::where('setor_id', $setor2[0]->setor_id)->orderby('id', 'desc')->paginate(8);
+            $reqs = Requerimento::where('setor_id', $setor2[0]->setor_id)->orderby('id', 'desc')->simplePaginate(8);
         }
         //dd($req)
         // $reqs->all();
@@ -88,6 +88,7 @@ class FuncionarioController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
+ 
 
     protected function store(Request $request){
 
@@ -136,7 +137,7 @@ class FuncionarioController extends Controller
                 if(!($validator->fails())){
                     $reqs = Requerimento::whereBetween('created_at', [date($data_ini), date($data_fin)])
                                         ->orderby('id', 'desc')
-                                        ->paginate(8);
+                                        ->simplePaginate(8);
                 }else{
                     $reqs = $exemplo;
                 }
@@ -148,7 +149,7 @@ class FuncionarioController extends Controller
                         ]);
 
                         $reqs = Requerimento::whereDate('updated_at','=', date($request->get('data_fin')))
-                        ->orderby('id', 'desc')->paginate(8);
+                        ->orderby('id', 'desc')->simplePaginate(8);
                     //    dd($reqs);
                     }
 
@@ -158,7 +159,7 @@ class FuncionarioController extends Controller
                         ]);
 
                         $reqs = Requerimento::whereDate('created_at', '=', date($request->get('data_ini')))
-                        ->orderby('id', 'desc')->paginate(8);
+                        ->orderby('id', 'desc')->simplePaginate(8);
                         // dd($reqs);
                     }
 
@@ -195,7 +196,7 @@ class FuncionarioController extends Controller
                 if($situacao_str != "Selecione uma Situação" && $protocolo != null){
                     $reqs = Requerimento::where('protocolo', $protocolo)
                     ->where('status_id', $situacao_id)
-                    ->paginate(8);
+                    ->simplePaginate(8);
                 }else{
                     $reqs = $exemplo;
                 }
@@ -209,7 +210,7 @@ class FuncionarioController extends Controller
                             ]);
 
                             $reqs = Requerimento::where('status_id', $situacao_id)
-                            ->orderby('id', 'desc')->paginate(8);
+                            ->orderby('id', 'desc')->simplePaginate(8);
                         }
                     }
                     if($request->get('protocolo')){
@@ -218,7 +219,7 @@ class FuncionarioController extends Controller
                         ]);
 
                         $reqs = Requerimento::where('protocolo', $protocolo)
-                        ->orderby('id', 'desc')->paginate(8);
+                        ->orderby('id', 'desc')->simplePaginate(8);
                         // dd($validator->fails());
                     }
                     // dg();
