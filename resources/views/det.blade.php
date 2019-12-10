@@ -29,12 +29,27 @@
                     <div class="col-4">
                         <button class="btn-action btn btn-block btn-primary btn-size" data-form="#encaminhar-{{$requerimento->id}}">Encaminhar</button>
                     </div>
-                    <div class="col-4">
-                        <button class="btn-action btn btn-block btn-secondary btn-size" data-form="#responder-{{$requerimento->id}}">Responder</button>
-                    </div>
-                    <div class="col-4">
-                        <button class="btn-action btn btn-block btn-secondary btn-size" data-form="#reabrir-{{$requerimento->id}}">Reabrir</button>
-                    </div>
+
+                    @if ($requerimento->comentario != NULL)
+                        <div class="col-4">
+                            <button class="btn-action btn btn-block btn-secondary btn-size disabled" data-form="#responder-{{$requerimento->id}}" aria-disabled="true">Responder</button>
+                        </div>
+                    @else
+                        <div class="col-4">
+                            <button class="btn-action btn btn-block btn-secondary btn-size" data-form="#responder-{{$requerimento->id}}">Responder</button>
+                        </div>
+                    @endif
+
+                    @if ($requerimento->comentario == NULL)
+                        <div class="col-4">
+                            <button class="btn-action btn btn-block btn-secondary btn-size disabled" data-form="#reabrir-{{$requerimento->id}}" aria-disabled="true">Reabrir</button>
+                        </div>
+                    @else
+                        <div class="col-4">
+                            <button class="btn-action btn btn-block btn-secondary btn-size" data-form="#reabrir-{{$requerimento->id}}">Reabrir</button>
+                        </div>
+                    @endif
+
                 </div>
                 @if ($setor_nome != Auth::user()->nome)
                     @if ($requerimento->comentario == NULL)
