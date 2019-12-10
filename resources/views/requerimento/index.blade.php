@@ -79,7 +79,7 @@
                 </form>
       </div>
 
-        <div class="container" id="cont">
+        <div id="cont">
             <table class="table tableA">
               <thead class="table-active tableHead">
                 <tr class="colReq">
