@@ -1,29 +1,18 @@
-.func{
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px;
-}
 .jumbotron{
-    // background-color: #000;
-    // background-size:cover;
-    // background-position: center;
-    // background-image: url('img/bg-welcome.jpg');
-    // background: rgb(68, 118, 156); 
-    h1{
-        font-weight: bold;
-        font-family: 'Titillium Web', sans-serif;
-    }
-    p{
-        font-size:20px;
-    }
+    background: #e2f0fb; 
 }
 .tituloFunc{
-	font-weight: bold;
-	color:#3d9476;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:bold;
+    color:$verde;
+    padding-top:0.3em;
+    padding-bottom:0.5em;
+    text-align:center;
 }
 .subtitleFunc{
-    color:#404040;
-    font-size:16px;
+    color:#3d9476;
+    font-size:1.3em;
+    padding-bottom:1.5em;
 }
 .funcDivider{
     padding: 5px;
