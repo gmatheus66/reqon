@@ -113,7 +113,7 @@
                 <div class="tCard">Web Developer</div>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://github.com/GuileSuica" class="social-link"><i class="fa fa-github"></i></a></li>
-                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="list-inline-item"><a href="https://www.linkedin.com/in/guilherme-lira-a74259186/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                 <div class="tCard">Web Developer</div>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://github.com/jucielefernandes" class="social-link"><i class="fa fa-github"></i></a></li>
-                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="list-inline-item"><a href="https://www.linkedin.com/in/juciele-fernandes-57761715a/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                 <div class="tCard">Web Developer</div>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://github.com/leonardolfp" class="social-link"><i class="fa fa-github"></i></a></li>
-                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="list-inline-item"><a href="https://www.linkedin.com/in/leonardo-fernandes-616b5b171/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                 <div class="tCard">Web Developer</div>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://github.com/gmatheus66" class="social-link"><i class="fa fa-github"></i></a></li>
-                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="list-inline-item"><a href="https://www.linkedin.com/in/matheus-gon%C3%A7alves-9a0733105/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
                 </div>
             </div>
@@ -169,7 +169,7 @@
                 <div class="tCard">Web Developer</div>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://github.com/K0rgana" class="social-link"><i class="fa fa-github"></i></a></li>
-                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="list-inline-item"><a href="https://www.linkedin.com/in/k0rgana/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
                 </div>
             </div>
@@ -183,7 +183,7 @@
                 <div class="tCard">Web Developer</div>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://github.com/pphenriquesm" class="social-link"><i class="fa fa-github"></i></a></li>
-                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="list-inline-item"><a href="https://www.linkedin.com/in/pedro-marinho-b0948718b/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                 <div class="tCard">Web Developer</div>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://github.com/RenissonSilva" class="social-link"><i class="fa fa-github"></i></a></li>
-                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="list-inline-item"><a href="https://www.linkedin.com/in/renisson-silva" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
                 </div>
             </div>
