@@ -381,7 +381,28 @@ class RequerimentoController extends Controller
     }
 
     public function reabrir(Request $request){
-        dd($request->all());
+        //dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'subtipo'=>'required|numeric|min:1',
+            'status' =>'required|numeric|min:1',
+            'setor' => 'required|numeric|min:1',
+            'requerimento' => 'required|numeric|min:1',
+            'matricula' => 'required|numeric|min:1',
+            'comentario' =>'required|min:4|max:100',
+            'descricao' => 'required|min:1|max:100'
+
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+
+        }
+        $update = Requerimento::where('id', $request->get('requerimento'))
+        ->update(['status_id' => 4,
+        'funcionario_id' => Auth::user()->id, 'comentario'=> $request->get('comentario')]);
+
+        return redirect()->back()->withSuccess('Editado com Sucesso');
     }
 
 }
