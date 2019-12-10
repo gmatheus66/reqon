@@ -41,7 +41,7 @@
                             <label for="dateini"><input type="date" name="data_ini" class="form-control" id="dateini" placeholder="Data Inicial"></label>
                           </div>
                           <div class="row">
-                         <p style="margin: 7px;"> a
+                         <p style="margin: 9px;margin-right: 2px;"> a
                          </p>                          
                         <div class="col">
                         <label for="datend"><input type="date" name="data_fin" class="form-control" id="datend" placeholder="Data Final"></label>
