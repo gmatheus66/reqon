@@ -19,6 +19,15 @@
         <div class="alert alert-success msgSucesso msgsuccess" role="alert" id="sucessoReq"><strong>{{session('success')}}</strong><button type="button" class="close" data-dismiss="alert">x</button></div>
     @endif
     <h1 class="titleReq">Detalhes do Requerimento</h1>
+    @if(isset($pdfopen))
+        <div class="downpdf">
+            <form action="{{ route('pdf')}}" method="post">
+                @csrf
+                <input type="hidden" name="idreq" value="{{$requerimento->id}}">
+                <button type="submit" class="btn"><i class="fa fa-download"></i> Download PDF</button>
+            </form>
+        </div>
+    @endif
 
     <h3 class="subTitleReq">Dados do Estudante</h3>
 
