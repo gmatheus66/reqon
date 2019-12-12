@@ -25,7 +25,7 @@ class RequerimentoController extends Controller
         $this->middleware('auth');
     }
 
-    
+
     // public function pesquisa(){
     //  // redirect()->route('requerimento.index');
     //     $teste = $_GET['page'];
@@ -276,7 +276,7 @@ class RequerimentoController extends Controller
         //                         ->withInput();
         //     }
         // }else{
-        //     if($request->get('situacao') || $request->get('protocolo')){                
+        //     if($request->get('situacao') || $request->get('protocolo')){
         //             if($situacao != "Selecione uma Situação" && $protocolo != null){
         //                  //dd("deburguer");
 
@@ -291,7 +291,7 @@ class RequerimentoController extends Controller
 
         //         if($exemplo == $dados){
         //             if($request->get('situacao') != "Selecione uma Situação"){
-                       
+
         //                 $dados = Requerimento::where('status_id', $request->get('situacao'))
         //                 ->where('matricula_id',$matriculas[0]['id'])->orderby('id', 'desc')->paginate(5);
         //                 //dd($dados);
@@ -308,7 +308,7 @@ class RequerimentoController extends Controller
         //         }else{
         //             dd($dados);
         //             return view('requerimento.index',compact('dados', 'status', 'matriculas'));
-                   
+
         //         }
         //     }
 
@@ -403,12 +403,38 @@ class RequerimentoController extends Controller
     public function show($id){
         $setor = Setor::all();
         $requerimento = Requerimento::find($id);
-        //dd($requerimento->id);
+        $pdfopen = false;
+        $pdfarr = [];
+        //dd($requerimento->children);
+        if($requerimento->status_id == 1 || $requerimento->status_id == 2 || $req->status_id == 3){
+            array_push($pdfarr, true);
+        }
+        else{
+            array_push($pdfarr, false);
+        }
+        foreach( $requerimento->children as $req){
+            if($req->status_id == 1 || $req->status_id == 2  || $req->status_id == 3 ){
+                array_push($pdfarr, true);
+            }
+            else{
+                array_push($pdfarr, false);
+            }
+        }
+        //dd($pdfarr);
+        for($i = 0; $i < count($pdfarr); $i++){
+            if($pdfarr[$i]){
+                $pdfopen = true;
+            }
+            else{
+                $pdfopen = false;
+            }
+        }
+        //dd($pdfopen);
         $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento->id)->get();
         $status = Status::all();
         $professor = Funcionario::where('cargo', 'Professor')->get();
         //dd($reqpai);
-        return view('fulldet', compact('requerimento', 'status', 'setor', 'professor'));
+        return view('fulldet', compact('requerimento', 'status', 'setor', 'professor', 'pdfopen'));
     }
 
     public function update(Request $request){
