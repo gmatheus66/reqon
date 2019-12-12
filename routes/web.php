@@ -41,3 +41,5 @@ Route::post('/redirecionar', 'RequerimentoController@redirecionar')->middleware(
 Route::post('/reabrir', 'RequerimentoController@reabrir')->middleware('auth:funcionario')->name('reabrir');
 Route::post('/resposta', 'RequerimentoController@resposta')->middleware('auth:funcionario')->name('resposta');
 Route::post('/contato', 'ContatoController@store')->name('contato');
+
+Route::post('/printpdf', 'CustomController@printpdf')->name('pdf');
