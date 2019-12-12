@@ -9,6 +9,21 @@
     #desc{
         margin-top: 5%;
     }
+    .downpdf{
+        position: absolute;
+        right: 20%;
+        .btn {
+            background-color: $verde;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .btn:hover {
+            background-color: $verdeNav;
+        }
+    }
 
     .btn-req{
         margin-bottom: 10%;
