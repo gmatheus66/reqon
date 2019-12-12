@@ -406,7 +406,7 @@ class RequerimentoController extends Controller
         $pdfopen = false;
         $pdfarr = [];
         //dd($requerimento->children);
-        if($requerimento->status_id == 1 || $requerimento->status_id == 2 || $req->status_id == 3){
+        if($requerimento->status_id == 1 || $requerimento->status_id == 2 || $requerimento->status_id == 3){
             array_push($pdfarr, true);
         }
         else{
