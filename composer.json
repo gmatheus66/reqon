@@ -9,7 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "barryvdh/laravel-dompdf": "^0.8.5",
         "fideloper/proxy": "^4.0",
+        "laravel/dusk": "^5.6",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0"
     },
@@ -19,7 +21,8 @@
         "laravel/ui": "^1.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.0",
+        "staudenmeir/dusk-updater": "^1.1"
     },
     "config": {
         "optimize-autoloader": true,
