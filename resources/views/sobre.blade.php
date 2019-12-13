@@ -99,7 +99,7 @@
                 <div class="tCard">Web Developer</div>
                 <ul class="social mb-0 list-inline mt-3">
                   <li class="list-inline-item"><a href="https://github.com/alinevenceslau" class="social-link"><i class="fa fa-github"></i></a></li>
-                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="list-inline-item"><a href="https://www.linkedin.com/in/aline-venceslau-a4109a19a" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
                 </div>
             </div>
