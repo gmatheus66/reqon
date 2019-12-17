@@ -88,7 +88,7 @@ class FuncionarioController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
- 
+
 
     protected function store(Request $request){
 
@@ -259,15 +259,39 @@ class FuncionarioController extends Controller
         $setor = Setor::all();
         $professor = Funcionario::where('cargo', 'Professor')->get();
         $requerimento = Requerimento::find($id);
+        $pdfopen = false;
+        $pdfarr = [];
         //dd($requerimento['setor']['nome']);
         $reqpai = Requerimento::find(1)->where('req_pai_id', $requerimento->id)->get();
         $status = Status::all();
         foreach($setor as $str){
             $setor_nome=$str['nome'];
         }
+        if($requerimento->status_id == 1 || $requerimento->status_id == 2 || $requerimento->status_id == 3){
+            array_push($pdfarr, true);
+        }
+        else{
+            array_push($pdfarr, false);
+        }
+        foreach( $requerimento->children as $req){
+            if($req->status_id == 1 || $req->status_id == 2  || $req->status_id == 3 ){
+                array_push($pdfarr, true);
+            }
+            else{
+                array_push($pdfarr, false);
+            }
+        }
+        for($i = 0; $i < count($pdfarr); $i++){
+            if($pdfarr[$i]){
+                $pdfopen = true;
+            }
+            else{
+                $pdfopen = false;
+            }
+        }
         //dd($setorfunc);
         //return view('funcionario.show', compact('requerimento', 'setor','reqpai'));
-        return view('fulldet', compact('requerimento', 'status', 'setor', 'setor_nome', 'professor','setorfunc'));
+        return view('fulldet', compact('requerimento', 'status', 'setor', 'setor_nome', 'professor','setorfunc','pdfopen'));
     }
 
 }
