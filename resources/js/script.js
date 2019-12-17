@@ -41,6 +41,12 @@ $(document).ready(function(){
         $(this).toggleClass('collapse')
         $(this).toggleClass('expand')
     })
+    $('.child .p-1').click(function(evt) {
+        let bodySel = $(this).data('body');
+        $(bodySel).toggle()
+        $(this).toggleClass('collapse')
+        $(this).toggleClass('expand')
+    })
 
     btn1.on("click", function(evt){
         evt.preventDefault();
