@@ -46,7 +46,7 @@ class RequerimentoController extends Controller
             'matricula' => 'required|numeric|min:1',
             'teste' => 'required|numeric|min:1',
             'comentario' =>'required|min:4|max:100',
-            'descricao' => 'required|min:1|max:100'
+            'descricao' => 'required|min:1|max:200'
 
         ]);
         if ($validator->fails()) {
@@ -78,7 +78,7 @@ class RequerimentoController extends Controller
             'matricula' => 'required|numeric|min:1',
             'teste' => 'required|numeric|min:1',
             'comentario' =>'required|min:4|max:100',
-            'descricao' => 'required|min:1|max:100'
+            'descricao' => 'required|min:1|max:200'
 
         ]);
 
