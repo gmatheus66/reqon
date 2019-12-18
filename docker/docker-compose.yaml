@@ -1,0 +1,27 @@
+version: '3'
+services:
+  laravel-app:
+    build: ../../reqon
+    ports:
+      - "8000:80"
+    volumes:
+       - ../../reqon:/usr/share/nginx
+    networks:
+     - app_network
+
+  mysql-app:
+    build: .
+    ports:
+      - '13306:3306'
+
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: laravel
+
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
